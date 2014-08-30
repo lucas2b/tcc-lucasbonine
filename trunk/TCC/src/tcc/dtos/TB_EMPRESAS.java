@@ -5,7 +5,7 @@ public class TB_EMPRESAS {
 	//Dados referentes à empresa
 	private int ID_EMPRESA;
 	private String NOME_EMPRESA;
-	private TB_CIDADE CIDADE;
+	private TB_CIDADES CIDADE;
 	private String CNPJ_EMPRESA;
 	private String ENDERECO_EMPRESA;
 	private double EMPRESA_LATITUDE;
@@ -41,10 +41,10 @@ public class TB_EMPRESAS {
 	public void setNOME_EMPRESA(String nOME_EMPRESA) {
 		NOME_EMPRESA = nOME_EMPRESA;
 	}
-	public TB_CIDADE getCIDADE() {
+	public TB_CIDADES getCIDADE() {
 		return CIDADE;
 	}
-	public void setCIDADE(TB_CIDADE cIDADE) {
+	public void setCIDADE(TB_CIDADES cIDADE) {
 		CIDADE = cIDADE;
 	}
 	public String getCNPJ_EMPRESA() {

@@ -1,6 +1,6 @@
 package tcc.dtos;
 
-public class TB_CIDADE {
+public class TB_CIDADES {
 	
 	private int ID_CIDADE;
 	private String NOME_CIDADE;
