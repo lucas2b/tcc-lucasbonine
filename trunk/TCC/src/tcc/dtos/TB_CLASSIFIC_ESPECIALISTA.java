@@ -1,0 +1,30 @@
+package tcc.dtos;
+
+public class TB_CLASSIFIC_ESPECIALISTA {
+	
+	private int ID_CLASSIFIC_ESPECIALISTA;
+	private String CATEGORIA_DE_CLASSIFIC;
+	private String CONCEITO;
+	
+	public int getID_CLASSIFIC_ESPECIALISTA() {
+		return ID_CLASSIFIC_ESPECIALISTA;
+	}
+	public void setID_CLASSIFIC_ESPECIALISTA(int iD_CLASSIFIC_ESPECIALISTA) {
+		ID_CLASSIFIC_ESPECIALISTA = iD_CLASSIFIC_ESPECIALISTA;
+	}
+	public String getCATEGORIA_DE_CLASSIFIC() {
+		return CATEGORIA_DE_CLASSIFIC;
+	}
+	public void setCATEGORIA_DE_CLASSIFIC(String cATEGORIA_DE_CLASSIFIC) {
+		CATEGORIA_DE_CLASSIFIC = cATEGORIA_DE_CLASSIFIC;
+	}
+	public String getCONCEITO() {
+		return CONCEITO;
+	}
+	public void setCONCEITO(String cONCEITO) {
+		CONCEITO = cONCEITO;
+	}
+	
+	
+
+}
