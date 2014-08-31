@@ -1,5 +1,6 @@
 package tcc.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -9,46 +10,76 @@ import tcc.dtos.TB_RESPOSTAS_PESQUISA;
 
 public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<TB_RESPOSTAS_PESQUISA>{
 
+	EmpresasDAO empresaDAO = new EmpresasDAO();
+	PerguntasDAO perguntasDAO = new PerguntasDAO();
+	AlternativasDAO alternativasDAO = new AlternativasDAO();
+	
 	@Override
 	public LinkedList<TB_RESPOSTAS_PESQUISA> listarTodos()
 			throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		LinkedList<TB_RESPOSTAS_PESQUISA> retorno = new LinkedList<TB_RESPOSTAS_PESQUISA>();
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_RESPOSTAS_PESQUISA");
+		
+		while(rs.next()){
+			retorno.add(popular(rs));
+		}
+		
+		return retorno;
 	}
 
 	@Override
 	public boolean adicionar(TB_RESPOSTAS_PESQUISA parametro)
 			throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		PreparedStatement ps = getPreparedStatement("INSERT INTO TB_RESPOSTAS_PESQUISA(ID_EMPRESA, ID_PERGUNTA, ID_ALTERNATIVA) VALUES (?,?,?)");
+		ps.setInt(1, parametro.getEMPRESA().getID_EMPRESA());
+		ps.setInt(2, parametro.getPERGUNTA().getID_PERGUNTA());
+		ps.setInt(3, parametro.getALTERNATIVA().getID_ALTERNATIVA());
+		
+		return ps.execute();
 	}
 
 	@Override
 	public boolean editar(TB_RESPOSTAS_PESQUISA parametro)
 			throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		PreparedStatement ps = getPreparedStatement("UPDATE TB_RESPOSTAS_PESQUISA SET ID_EMPRESA=?, ID_PERGUNTA=?, ID_ALTERNATIVA=? WHERE ID_RESPOSTA=?");
+		ps.setInt(1, parametro.getEMPRESA().getID_EMPRESA());
+		ps.setInt(2, parametro.getPERGUNTA().getID_PERGUNTA());
+		ps.setInt(3, parametro.getALTERNATIVA().getID_ALTERNATIVA());
+		ps.setInt(4, parametro.getID_RESPOSTA());
+		
+		return ps.execute();
 	}
 
 	@Override
 	public boolean excluir(TB_RESPOSTAS_PESQUISA parametro)
 			throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		PreparedStatement ps = getPreparedStatement("DELETE FROM TB_RESPOSTAS_PESQUISA WHERE ID_REPOSTA=?");
+		ps.setInt(1, parametro.getID_RESPOSTA());
+		
+		return ps.execute();
 	}
 
 	@Override
 	public TB_RESPOSTAS_PESQUISA popular(ResultSet rs) throws SQLException,
 			ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		TB_RESPOSTAS_PESQUISA resposta = new TB_RESPOSTAS_PESQUISA();
+		resposta.setID_RESPOSTA(rs.getInt("ID_RESPOSTA"));
+		resposta.setEMPRESA(empresaDAO.buscarPorID(rs.getInt("ID_EMPRESA")));
+		resposta.setPERGUNTA(perguntasDAO.buscarPorID(rs.getInt("ID_PERGUNTA")));
+		resposta.setALTERNATIVA(alternativasDAO.buscarPorID(rs.getInt("ID_ALTERNATIVA")));
+		
+		return resposta;
 	}
 
 	@Override
 	public TB_RESPOSTAS_PESQUISA buscarPorID(int id)
 			throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_RESPOSTAS_PESQUISA WHERE ID_RESPOSTA="+id);
+		
+		if(rs.next())
+			return popular(rs);
+		else
+			return null;
 	}
 
 }
