@@ -9,10 +9,13 @@ import tcc.dtos.TB_PRODUCAO_EMPRESA;
 
 public class ProducaoEmpresaDAO extends DatabaseUtil implements InterfaceDAO<TB_PRODUCAO_EMPRESA>{
 
+	EmpresasDAO empresaDAO = new EmpresasDAO();
+	ProdutosDAO produtosDAO = new ProdutosDAO();
+	
 	@Override
 	public LinkedList<TB_PRODUCAO_EMPRESA> listarTodos()
 			throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -40,8 +43,13 @@ public class ProducaoEmpresaDAO extends DatabaseUtil implements InterfaceDAO<TB_
 	@Override
 	public TB_PRODUCAO_EMPRESA popular(ResultSet rs) throws SQLException,
 			ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		TB_PRODUCAO_EMPRESA producaoEmpresa = new TB_PRODUCAO_EMPRESA();
+		producaoEmpresa.setID_PRODUCAO_EMPRESA(rs.getInt("ID_PRODUCAO_EMPRESA"));
+		producaoEmpresa.setEMPRESA(empresaDAO.buscarPorID(rs.getInt("ID_EMPRESA")));
+		producaoEmpresa.setPRODUTO(produtosDAO.buscarPorID(rs.getInt("ID_PRODUTO")));
+		producaoEmpresa.setPESO_PRODUCAO(rs.getFloat("PESO_PRODUCAO"));
+		
+		return producaoEmpresa;
 	}
 
 	@Override
