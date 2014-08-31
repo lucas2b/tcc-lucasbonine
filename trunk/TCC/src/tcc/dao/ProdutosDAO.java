@@ -40,8 +40,12 @@ public class ProdutosDAO extends DatabaseUtil implements InterfaceDAO<TB_PRODUTO
 	@Override
 	public TB_PRODUTOS popular(ResultSet rs) throws SQLException,
 			ClassNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		TB_PRODUTOS produto = new TB_PRODUTOS();
+		produto.setID_PRODUTO(rs.getInt("ID_PRODUTO"));
+		produto.setCOD_ALTERNATIVA(rs.getString("COD_ALTERNATIVA"));
+		produto.setPRODUTO_DESC(rs.getString("PRODUTO_DESC"));
+		
+		return produto;
 	}
 
 	@Override
