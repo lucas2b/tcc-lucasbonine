@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+  		<link href="${request.contextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+
+<h:body>
+<h:form>
+	<p:panel>
+		
+		<p:graphicImage id="logo2" url="/imagens/logo.png" onclick="inicio()" style="display: block; margin-left:auto; margin-right:auto; padding-bottom:10px; padding-top:10px;"/>
+
+		    <p:growl id="messages"/>
+		    
+		    <p:menubar styleClass="centeredMenuBar">
+		    	<p:menuitem value="Página Inicial" url="/index.xhtml"/>
+		    	
+		    	<p:submenu label="Cadastros" icon="ui-icon-document">  
+		  			<p:menuitem value="Gerenciar Empresas" url="/AdministracaoDoSistema/CadastroDePacientes/listagemDePacientes.xhtml" />
+		            <p:separator />
+		            <p:menuitem value="Gerenciar Perguntas" url="/AdministracaoDoSistema/CadastroDeMedicos/listagemDeMedicos.xhtml" />		       
+		            <p:separator />
+		            <p:menuitem value="Usuários do sistema"/>
+		        </p:submenu>
+		        
+		        <p:submenu label="Gerenciar Respostas" icon="ui-icon-document">  
+		  			<p:menuitem value="Listar Respostas"/>
+		  			<p:separator/>
+		  			<p:menuitem value="Inserir Resposta" url="/AdministracaoDoSistema/CadastroDePacientes/listagemDePacientes.xhtml" />
+		            <p:separator />
+		            <p:menuitem value="Alterar Resposta" url="/AdministracaoDoSistema/CadastroDeMedicos/listagemDeMedicos.xhtml" />		       
+		        </p:submenu>
+		        
+		        <p:submenu label="Extrair conhecimento" icon="ui-icon-document">  
+		  			<p:menuitem value="Agrupamentos" url="/ManutencaoDoSistema/CadastroDeConvenios/convenios.xhtml" />
+		            <p:separator />
+		            <p:menuitem value="Associações" url="/ManutencaoDoSistema/CadastroDeLaboratorios/cadastrarNovoLaboratorio.xhtml" />
+		            <p:separator />
+		            <p:menuitem value="Classificações" url="/ManutencaoDoSistema/CadastroDeExames/cadastrarNovoExame.xhtml" />
+		            <p:separator />
+		        </p:submenu>
+		        
+		        <p:submenu label="Relatórios" icon="ui-icon-document">
+		    		<p:menuitem value="Empresas cadastradas"/>
+		    	</p:submenu>
+		          
+		        <p:menuitem value="Sair" action="#{loginBean.deslogar}" ajax="false"/> 
+		   </p:menubar>
+
+	</p:panel>
+</h:form>  
+
+</h:body>
+</html>

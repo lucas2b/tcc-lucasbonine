@@ -1,0 +1,38 @@
+@CHARSET "ISO-8859-1";
+
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 15px !important;
+	font-weight: bold;
+}
+
+.centraliza{
+	text-align: center;
+}
+
+#content{
+	background-color: #cff;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+.logo2{
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.centeredMenuBar.ui-menubar {
+    text-align: center;
+}
+
+.centeredMenuBar .ui-menu-list {
+    display: inline-block;
+}
+
+#entrada{
+	
+}
+
+#table{background:blue; border:1px solid olive;}
