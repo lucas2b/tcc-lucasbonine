@@ -4,5 +4,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
+	<converter>
+		<converter-id>conversorEstado</converter-id>
+		<converter-class>tcc.conversores.ConversorEstado</converter-class>
+	</converter>
+	<managed-bean>
+		<managed-bean-name>cidadesBEAN</managed-bean-name>
+		<managed-bean-class>tcc.beans.CidadesBEAN</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>
