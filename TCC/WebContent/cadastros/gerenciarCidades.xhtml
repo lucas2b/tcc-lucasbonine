@@ -15,7 +15,34 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-	<h:outputText value="Estados: "/>
+		
+		<!--  ADICIONAR NOVA CIDADE -->
+		<h:commandButton value="Adicionar Cidade" action="#{cidadesBEAN.startAdicionarCidade}"/>
+		<br></br>
+		<br></br>
+		
+		<!-- FORM QUE APARECERÁ APENAS NA ADIÇÃO DE CIDADE -->
+		<h:form rendered="#{cidadesBEAN.adicionarCidade}">
+			<p:fieldset legend="Adicionar Cidade">
+				<h:outputText value="Teste de form renderizado 1 adição cidade"/>
+				<br></br>
+				<h:outputText value="Teste de form renderizado 2"/>
+			</p:fieldset>
+		</h:form>
+		
+		<!-- FORM QUE APARECERÁ APENAS NA EDIÇÃO DE CIDADE -->
+		<h:form rendered="#{cidadesBEAN.editarCidade}">
+			<p:fieldset legend="Editar Cidade">
+				<h:outputText value="Teste de form renderizado 1 edição cidade"/>
+				<br></br>
+				<h:outputText value="Teste de form renderizado 2"/>
+			</p:fieldset>
+		</h:form>
+		<br></br>
+		<br></br>
+		
+		<!-- COMBO DE ESTADOS -->
+		<h:outputText value="Estados: "/>
 		<h:selectOneMenu value="#{cidadesBEAN.estadoSelecionado}" 
 						 converter="conversorEstado"
 						 valueChangeListener="#{cidadesBEAN.comboEstadoMudou}" 
@@ -23,6 +50,8 @@
 			<f:selectItems value="#{cidadesBEAN.estados}"/>
 		</h:selectOneMenu>
 		<br></br>
+		
+		<!-- DATATABLE QUE APRESENTA LISTA DE CIDADES -->
 		<p:dataTable value="#{cidadesBEAN.cidades}" var="item">
 			<p:column headerText="ID">
 				<h:outputText value="#{item.ID_CIDADE}"/>
@@ -31,9 +60,10 @@
 				<h:outputText value="#{item.NOME_CIDADE}"/>
 			</p:column>
 			<p:column headerText="AÇÃO">
-				<h:commandLink value="Editar"/>
+				<h:commandLink value="Editar" action="#{cidadesBEAN.startEditarCidade}"/>
 			</p:column>
 		</p:dataTable>
+		
 	</h:form>
 	</ui:define>
 </ui:composition>
