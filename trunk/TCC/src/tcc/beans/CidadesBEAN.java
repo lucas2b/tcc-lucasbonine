@@ -19,10 +19,28 @@ public class CidadesBEAN {
 	private UfDAO ufDAO = new UfDAO();
 	private CidadesDAO cidadeDAO = new CidadesDAO();
 	private int idEstadoSelecionado;
+	private boolean adicionarCidade = false;
+	private boolean editarCidade = false;
 
 
 	//---------- GETTERS E SETTERS --------
 	
+	public boolean isEditarCidade() {
+		return editarCidade;
+	}
+
+	public void setEditarCidade(boolean editarCidade) {
+		this.editarCidade = editarCidade;
+	}
+
+	public boolean isAdicionarCidade() {
+		return adicionarCidade;
+	}
+
+	public void setAdicionarCidade(boolean adicionarCidade) {
+		this.adicionarCidade = adicionarCidade;
+	}
+
 	public TB_UF getEstadoSelecionado() {
 		return estadoSelecionado;
 	}
@@ -53,6 +71,26 @@ public class CidadesBEAN {
 	public void comboEstadoMudou(ValueChangeEvent evt){
 		idEstadoSelecionado = ((TB_UF)evt.getNewValue()).getID_UF();
 
+	}
+	
+	public String startAdicionarCidade(){
+		adicionarCidade = true;
+		return "refresh";
+	}
+	
+	public String startEditarCidade(){
+		System.out.println("chegou no método Start Adicionar Cidade");
+		editarCidade = true;
+		return "refresh";
+	}
+	
+	public String finishAdicionarCidade(){
+		adicionarCidade = false;
+		return null;
+	}
+	
+	public String finishEditarCidade(){
+		return null;
 	}
 
 }
