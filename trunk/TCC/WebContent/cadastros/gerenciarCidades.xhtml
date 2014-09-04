@@ -14,11 +14,27 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
+	<h:form>
 	<h:outputText value="Estados: "/>
-		<h:selectOneMenu converter="conversorEstado" >
+		<h:selectOneMenu value="#{cidadesBEAN.estadoSelecionado}" 
+						 converter="conversorEstado"
+						 valueChangeListener="#{cidadesBEAN.comboEstadoMudou}" 
+						 onchange="submit();">
 			<f:selectItems value="#{cidadesBEAN.estados}"/>
 		</h:selectOneMenu>
-
+		<br></br>
+		<p:dataTable value="#{cidadesBEAN.cidades}" var="item">
+			<p:column headerText="ID">
+				<h:outputText value="#{item.ID_CIDADE}"/>
+			</p:column>
+			<p:column headerText="ID">
+				<h:outputText value="#{item.NOME_CIDADE}"/>
+			</p:column>
+			<p:column headerText="AÇÃO">
+				<h:commandLink value="Editar"/>
+			</p:column>
+		</p:dataTable>
+	</h:form>
 	</ui:define>
 </ui:composition>
 </h:body>

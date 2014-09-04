@@ -8,6 +8,10 @@
 		<converter-id>conversorEstado</converter-id>
 		<converter-class>tcc.conversores.ConversorEstado</converter-class>
 	</converter>
+	<converter>
+		<converter-id>conversorCidade</converter-id>
+		<converter-class>tcc.conversores.ConversorCidade</converter-class>
+	</converter>
 	<managed-bean>
 		<managed-bean-name>cidadesBEAN</managed-bean-name>
 		<managed-bean-class>tcc.beans.CidadesBEAN</managed-bean-class>
