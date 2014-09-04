@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.List;
 
 import tcc.bd.DatabaseUtil;
 import tcc.dtos.TB_CIDADES;
@@ -59,7 +60,7 @@ public class CidadesDAO extends DatabaseUtil implements InterfaceDAO<TB_CIDADES>
 			ClassNotFoundException {
 		TB_CIDADES cidade = new TB_CIDADES();
 		cidade.setID_CIDADE(rs.getInt("ID_CIDADE"));
-		cidade.setNOME_CIDADE("NOME_CIDADE");
+		cidade.setNOME_CIDADE(rs.getString("NOME_CIDADE"));
 		cidade.setUF(ufDAO.buscarPorID(rs.getInt("ID_UF")));
 		return cidade;
 	}
@@ -73,6 +74,18 @@ public class CidadesDAO extends DatabaseUtil implements InterfaceDAO<TB_CIDADES>
 			return popular(rs);
 		else
 			return null;
+	}
+	
+	public List<TB_CIDADES> listarCidadesPorIdUF(int idUF) throws ClassNotFoundException, SQLException{
+		LinkedList<TB_CIDADES> retorno = new LinkedList<TB_CIDADES>();
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_CIDADES WHERE ID_UF="+idUF);
+		
+		while(rs.next()){
+			retorno.add(popular(rs));
+		}
+		
+		return retorno;
+		
 	}
 
 }
