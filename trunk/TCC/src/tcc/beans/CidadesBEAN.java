@@ -5,6 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 
+
+
+
+
+import javax.faces.component.html.HtmlInputText;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
@@ -17,10 +23,13 @@ import tcc.dtos.TB_UF;
 public class CidadesBEAN {
 
 	//Atributos
-	private TB_UF estadoSelecionado;
 	private TB_CIDADES cidadeSelecionada = new TB_CIDADES();
 	private int idEstadoSelecionado;
-
+	private HtmlInputText txtNomeCidade;
+	
+	//Flags
+	private boolean novoRegistro = true;
+	private boolean cancelarEdicao = false;
 
 	//DAOs
 	private UfDAO ufDAO = new UfDAO();
@@ -29,20 +38,36 @@ public class CidadesBEAN {
 
 	//---------- GETTERS E SETTERS --------
 	
+	public boolean isCancelarEdicao() {
+		return cancelarEdicao;
+	}
+
+	public void setCancelarEdicao(boolean cancelarEdicao) {
+		this.cancelarEdicao = cancelarEdicao;
+	}
+
+	public HtmlInputText getTxtNomeCidade() {
+		return txtNomeCidade;
+	}
+
+	public void setTxtNomeCidade(HtmlInputText txtNomeCidade) {
+		this.txtNomeCidade = txtNomeCidade;
+	}
+
+	public boolean isNovoRegistro() {
+		return novoRegistro;
+	}
+
+	public void setNovoRegistro(boolean novoRegistro) {
+		this.novoRegistro = novoRegistro;
+	}
+
 	public TB_CIDADES getCidadeSelecionada() {
 		return cidadeSelecionada;
 	}
 
 	public void setCidadeSelecionada(TB_CIDADES cidadeSelecionada) {
 		this.cidadeSelecionada = cidadeSelecionada;
-	}
-
-	public TB_UF getEstadoSelecionado() {
-		return estadoSelecionado;
-	}
-
-	public void setEstadoSelecionado(TB_UF estadoSelecionado) {
-		this.estadoSelecionado = estadoSelecionado;
 	}
 
 	
@@ -69,21 +94,34 @@ public class CidadesBEAN {
 
 	}
 	
-	public String adicionarCidade() throws ClassNotFoundException, SQLException{
-		cidadeSelecionada.setUF(estadoSelecionado);
-		cidadeDAO.adicionar(cidadeSelecionada);
+	//salva tanto um novo registro quanto uma edição
+	public String acaoBotaoSalvar() throws ClassNotFoundException, SQLException{
+		if(novoRegistro){
+			txtNomeCidade.setValue("");
+			cidadeDAO.adicionar(cidadeSelecionada);
+		}else{
+			cidadeDAO.editar(cidadeSelecionada);
+		}
 		
+		FacesContext.getCurrentInstance().renderResponse();
 		return "refresh";
 	}
 	
-	public String startEditarCidade(){
-		System.out.println("chegou no método Start Adicionar Cidade");
+	//Traz o nome da tabela para o campo texto para editar
+	public String acaoBotaoEditar(){
+		txtNomeCidade.setValue(cidadeSelecionada.getNOME_CIDADE());
+		cancelarEdicao = true;
+		FacesContext.getCurrentInstance().renderResponse();
 		return "refresh";
 	}
 	
-	
-	public String finishEditarCidade(){
-		return null;
+	//cancela a operação de edição e torna uma operação de adição
+	public String botaoCancelarEdicao(){
+		txtNomeCidade.setValue("");
+		novoRegistro = true;
+		cancelarEdicao = false;
+		FacesContext.getCurrentInstance().renderResponse();
+		return "refresh";
 	}
 
 }

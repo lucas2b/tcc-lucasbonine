@@ -19,7 +19,7 @@
 		<p:panel header="Lista de cidades por estado">
 			<br></br>
 			<h:outputText value="Estado :"/>
-			<h:selectOneMenu value="#{cidadesBEAN.estadoSelecionado}" 
+			<h:selectOneMenu value="#{cidadesBEAN.cidadeSelecionada.UF}" 
 							 converter="conversorEstado"
 							 valueChangeListener="#{cidadesBEAN.comboEstadoMudou}" 
 							 onchange="submit();">
@@ -35,7 +35,10 @@
 					<h:outputText value="#{item.NOME_CIDADE}"/>
 				</p:column>
 				<p:column headerText="AÇÃO">
-					<h:commandLink value="Editar" action="#{cidadesBEAN.startEditarCidade}"/>
+					<h:commandLink value="Editar" action="#{cidadesBEAN.acaoBotaoEditar}">
+						<f:setPropertyActionListener target="#{cidadesBEAN.novoRegistro}" value="false"/>
+						<f:setPropertyActionListener target="#{cidadesBEAN.cidadeSelecionada}" value="#{item}"/>
+					</h:commandLink>
 				</p:column>
 			</p:dataTable>
 			
@@ -45,8 +48,9 @@
 			<p:fieldset legend="Adicionar/Editar Cidade">
 					<p:panelGrid columns="2">
 						<h:outputText value="Nome: "/>
-						<h:inputText value="#{cidadesBEAN.cidadeSelecionada.NOME_CIDADE}"/>
-						<h:commandButton value="Salvar" action="#{cidadesBEAN.adicionarCidade}"/>
+						<h:inputText value="#{cidadesBEAN.cidadeSelecionada.NOME_CIDADE}" binding="#{cidadesBEAN.txtNomeCidade}"/>
+						<h:commandButton value="Salvar" action="#{cidadesBEAN.acaoBotaoSalvar}"/>
+						<h:commandButton value="Cancelar Edição" action="#{cidadesBEAN.botaoCancelarEdicao}" rendered="#{cidadesBEAN.cancelarEdicao}"/>
 					</p:panelGrid>		
 			</p:fieldset>
 		</p:panel>
