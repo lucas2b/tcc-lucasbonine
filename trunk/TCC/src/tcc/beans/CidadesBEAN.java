@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
@@ -15,30 +16,25 @@ import tcc.dtos.TB_UF;
 
 public class CidadesBEAN {
 
+	//Atributos
 	private TB_UF estadoSelecionado;
+	private TB_CIDADES cidadeSelecionada = new TB_CIDADES();
+	private int idEstadoSelecionado;
+
+
+	//DAOs
 	private UfDAO ufDAO = new UfDAO();
 	private CidadesDAO cidadeDAO = new CidadesDAO();
-	private int idEstadoSelecionado;
-	private boolean adicionarCidade = false;
-	private boolean editarCidade = false;
 
 
 	//---------- GETTERS E SETTERS --------
 	
-	public boolean isEditarCidade() {
-		return editarCidade;
+	public TB_CIDADES getCidadeSelecionada() {
+		return cidadeSelecionada;
 	}
 
-	public void setEditarCidade(boolean editarCidade) {
-		this.editarCidade = editarCidade;
-	}
-
-	public boolean isAdicionarCidade() {
-		return adicionarCidade;
-	}
-
-	public void setAdicionarCidade(boolean adicionarCidade) {
-		this.adicionarCidade = adicionarCidade;
+	public void setCidadeSelecionada(TB_CIDADES cidadeSelecionada) {
+		this.cidadeSelecionada = cidadeSelecionada;
 	}
 
 	public TB_UF getEstadoSelecionado() {
@@ -73,21 +69,18 @@ public class CidadesBEAN {
 
 	}
 	
-	public String startAdicionarCidade(){
-		adicionarCidade = true;
+	public String adicionarCidade() throws ClassNotFoundException, SQLException{
+		cidadeSelecionada.setUF(estadoSelecionado);
+		cidadeDAO.adicionar(cidadeSelecionada);
+		
 		return "refresh";
 	}
 	
 	public String startEditarCidade(){
 		System.out.println("chegou no método Start Adicionar Cidade");
-		editarCidade = true;
 		return "refresh";
 	}
 	
-	public String finishAdicionarCidade(){
-		adicionarCidade = false;
-		return null;
-	}
 	
 	public String finishEditarCidade(){
 		return null;

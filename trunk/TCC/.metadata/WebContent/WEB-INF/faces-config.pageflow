@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14097568841630" configfile="/TCC/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarCidades.xhtml" x="346" y="166" id="pf14098703497490" outlinks="pf14098703497501" inlinks="pf14098703497501" path="/cadastros/gerenciarCidades.xhtml"/>
-  <links id="pf14098703497501" target="pf14098703497490" source="pf14098703497490" outcome="refresh">
-    <bendPoints d1Height="-36" d2Height="-36"/>
-    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
-    <bendPoints d1Width="-64" d2Width="-64"/>
-  </links>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarCidades.xhtml" x="346" y="166" id="pf14098703497490" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="/cadastros/gerenciarCidades.xhtml"/>
 </pageflow:Pageflow>
