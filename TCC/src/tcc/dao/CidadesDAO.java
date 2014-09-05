@@ -41,7 +41,7 @@ public class CidadesDAO extends DatabaseUtil implements InterfaceDAO<TB_CIDADES>
 			SQLException {
 		PreparedStatement ps = getPreparedStatement("UPDATE TB_CIDADES SET NOME_CIDADE=? WHERE ID_CIDADE=?");
 		ps.setString(1, parametro.getNOME_CIDADE());
-		ps.setInt(2, parametro.getUF().getID_UF());
+		ps.setInt(2, parametro.getID_CIDADE());
 		
 		return ps.execute();
 	}
