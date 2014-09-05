@@ -14,55 +14,42 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
-	<h:form>
-		
-		<!--  ADICIONAR NOVA CIDADE -->
-		<h:commandButton value="Adicionar Cidade" action="#{cidadesBEAN.startAdicionarCidade}"/>
-		<br></br>
-		<br></br>
-		
-		<!-- FORM QUE APARECERÁ APENAS NA ADIÇÃO DE CIDADE -->
-		<h:form rendered="#{cidadesBEAN.adicionarCidade}">
-			<p:fieldset legend="Adicionar Cidade">
-				<h:outputText value="Teste de form renderizado 1 adição cidade"/>
-				<br></br>
-				<h:outputText value="Teste de form renderizado 2"/>
+	<h:form>	
+		<!-- LISTAGEM DE CIDADES  -->
+		<p:panel header="Lista de cidades por estado">
+			<br></br>
+			<h:outputText value="Estado :"/>
+			<h:selectOneMenu value="#{cidadesBEAN.estadoSelecionado}" 
+							 converter="conversorEstado"
+							 valueChangeListener="#{cidadesBEAN.comboEstadoMudou}" 
+							 onchange="submit();">
+				<f:selectItems value="#{cidadesBEAN.estados}"/>
+			</h:selectOneMenu>
+			<br></br>
+			<br></br>
+			<p:dataTable value="#{cidadesBEAN.cidades}" var="item">
+				<p:column headerText="ID">
+					<h:outputText value="#{item.ID_CIDADE}"/>
+				</p:column>
+				<p:column headerText="NOME">
+					<h:outputText value="#{item.NOME_CIDADE}"/>
+				</p:column>
+				<p:column headerText="AÇÃO">
+					<h:commandLink value="Editar" action="#{cidadesBEAN.startEditarCidade}"/>
+				</p:column>
+			</p:dataTable>
+			
+			<!-- ADICIONAR CIDADE -->
+			<br></br>
+			<br></br>
+			<p:fieldset legend="Adicionar/Editar Cidade">
+					<p:panelGrid columns="2">
+						<h:outputText value="Nome: "/>
+						<h:inputText value="#{cidadesBEAN.cidadeSelecionada.NOME_CIDADE}"/>
+						<h:commandButton value="Salvar" action="#{cidadesBEAN.adicionarCidade}"/>
+					</p:panelGrid>		
 			</p:fieldset>
-		</h:form>
-		
-		<!-- FORM QUE APARECERÁ APENAS NA EDIÇÃO DE CIDADE -->
-		<h:form rendered="#{cidadesBEAN.editarCidade}">
-			<p:fieldset legend="Editar Cidade">
-				<h:outputText value="Teste de form renderizado 1 edição cidade"/>
-				<br></br>
-				<h:outputText value="Teste de form renderizado 2"/>
-			</p:fieldset>
-		</h:form>
-		<br></br>
-		<br></br>
-		
-		<!-- COMBO DE ESTADOS -->
-		<h:outputText value="Estados: "/>
-		<h:selectOneMenu value="#{cidadesBEAN.estadoSelecionado}" 
-						 converter="conversorEstado"
-						 valueChangeListener="#{cidadesBEAN.comboEstadoMudou}" 
-						 onchange="submit();">
-			<f:selectItems value="#{cidadesBEAN.estados}"/>
-		</h:selectOneMenu>
-		<br></br>
-		
-		<!-- DATATABLE QUE APRESENTA LISTA DE CIDADES -->
-		<p:dataTable value="#{cidadesBEAN.cidades}" var="item">
-			<p:column headerText="ID">
-				<h:outputText value="#{item.ID_CIDADE}"/>
-			</p:column>
-			<p:column headerText="ID">
-				<h:outputText value="#{item.NOME_CIDADE}"/>
-			</p:column>
-			<p:column headerText="AÇÃO">
-				<h:commandLink value="Editar" action="#{cidadesBEAN.startEditarCidade}"/>
-			</p:column>
-		</p:dataTable>
+		</p:panel>
 		
 	</h:form>
 	</ui:define>
