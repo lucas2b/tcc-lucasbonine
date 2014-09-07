@@ -97,10 +97,13 @@ public class EmpresasBEAN {
 	}
 		
 	public String acaoBotaoSalvar() throws ClassNotFoundException, SQLException{			
-		if(comboCidades.getValue() != null)
+		if(comboCidades.getValue() != null){
 			empresaDAO.adicionar(empresaSelecionada);
+			empresaSelecionada = new TB_EMPRESAS();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.FACES_MESSAGES,"Cadastro realizado!"));
+		}
 		else
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"", "Cidade não selecionada!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Cidade não selecionada!", "Cidade não selecionada!"));
 		
 		return "refresh";
 	}
