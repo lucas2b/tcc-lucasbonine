@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>  
+  		<link href="${request.contextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
+    </h:head> 
+	
+<h:body>
+<ui:composition template="../WEB-INF/templates/templateMain.xhtml">
+	<ui:define name="content">
+	<h:form>
+			<p:dataTable var="item" value="#{empresasBEAN.empresas}" paginator="true" rows="10">
+				<p:column sortBy="#{item.NOME_EMPRESA}">
+					<f:facet name="header">
+						<h:outputText value="Nome da Empresa"/>
+					</f:facet>
+					<h:outputText value="#{item.NOME_EMPRESA}"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Cidade"/>
+					</f:facet>
+					<h:outputText value="#{item.CIDADE.NOME_CIDADE}"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Telefone 1"/>
+					</f:facet>
+					<h:outputText value="#{item.TELEFONE1_EMPRESA}"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Telefone 2"/>
+					</f:facet>
+					<h:outputText value="#{item.TELEFONE2_EMPRESA}"/>
+				</p:column>
+				<p:column filterBy="#{item.NOME_DIRIGENTE}">
+					<f:facet name="header">
+						<h:outputText value="Dirigente"/>
+					</f:facet>
+					<h:outputText value="#{item.NOME_DIRIGENTE}"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Ações"/>
+					</f:facet>
+					<p:commandButton value="Detalhes" action="#{empresasBEAN.visualizarDetalhes}">
+						<f:setPropertyActionListener target="#{empresasBEAN.empresaSelecionadaDetalhes}" value="#{item}"/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+	</h:form>
+	</ui:define>
+</ui:composition>
+</h:body>
+</html>

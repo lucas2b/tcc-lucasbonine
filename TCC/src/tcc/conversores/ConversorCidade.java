@@ -37,7 +37,7 @@ public class ConversorCidade implements Converter {
 
 	@Override
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object arg2) {
-		TB_CIDADES cidade = new TB_CIDADES();
+		TB_CIDADES cidade = (TB_CIDADES)arg2;
 		return String.valueOf(cidade.getID_CIDADE());
 	}
 

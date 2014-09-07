@@ -49,8 +49,7 @@ public class EmpresasDAO extends DatabaseUtil implements InterfaceDAO<TB_EMPRESA
 				+ " TELEFONE2_DIRIGENTE,"
 				+ " EMAIL_DIRIGENTE,"
 				+ " IDADE_DIRIGENTE,"
-				+ " ESCOLARIDADE_DIRIGENTE,"
-				+ " ID_CLASSIFIC_ESPECIALISTA) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+				+ " ESCOLARIDADE_DIRIGENTE) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		ps.setString(1, parametro.getNOME_EMPRESA());
 		ps.setInt(2, parametro.getCIDADE().getID_CIDADE());
@@ -73,7 +72,6 @@ public class EmpresasDAO extends DatabaseUtil implements InterfaceDAO<TB_EMPRESA
 		ps.setString(19, parametro.getEMAIL_DIRIGENTE());
 		ps.setInt(20, parametro.getIDADE_DIRIGENTE());
 		ps.setString(21, parametro.getESCOLARIDADE_DIRIGENTE());
-		ps.setInt(22, parametro.getCLASSIFIC_ESPECIALISTA().getID_CLASSIFIC_ESPECIALISTA());
 		
 		return ps.execute();
 	}
