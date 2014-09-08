@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>  
+  		<link href="${request.contextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
+    </h:head> 
+	
+<h:body>
+<ui:composition template="../WEB-INF/templates/templateMain.xhtml">
+	<ui:define name="content">
+	<h:form>
+	<p:fieldset legend="Adicionar nova pergunta">
+		<p:panelGrid columns="2">
+			<h:outputText value="Pergunta #{perguntasBEAN.contadorPerguntaAtual}:" style="font-weight: bold;"/>
+			<h:inputTextarea value="#{perguntasBEAN.auxPerguntas.pergunta.PERGUNTA_TXT}" cols="50" rows="3"/>
+			
+			<h:outputText value="A pergunta permite seleção de mais de uma alternativa?" style="font-weight: bold;"/>
+			<h:selectBooleanCheckbox value="#{perguntasBEAN.auxPerguntas.pergunta.MULTI_SELECAO}"/>
+		</p:panelGrid>
+		<br></br>
+		<p:panel header="Alternativas">
+			<p:panelGrid columns="2">
+			<h:outputText value="Alternativa A: "/>
+			<h:inputText size="100" required="true" value="#{perguntasBEAN.auxPerguntas.alternativa[0]}"/>
+			
+			<h:outputText value="Alternativa B: "/>
+			<h:inputText size="100" required="true" value="#{perguntasBEAN.auxPerguntas.alternativa[1]}"/>
+			
+			<h:outputText value="Alternativa C: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[2]}"/>
+			
+			<h:outputText value="Alternativa D: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[3]}"/>
+			
+			<h:outputText value="Alternativa E: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[4]}"/>
+			
+			<h:outputText value="Alternativa F: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[5]}"/>
+			
+			<h:outputText value="Alternativa G: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[6]}"/>
+			
+			<h:outputText value="Alternativa H: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[7]}"/>
+			
+			<h:outputText value="Alternativa I: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[8]}"/>
+			
+			<h:outputText value="Alternativa J: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[9]}"/>
+			
+			<h:outputText value="Alternativa K: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[10]}"/>
+			
+			<h:outputText value="Alternativa L: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[11]}"/>
+			
+			<h:outputText value="Alternativa M: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[12]}"/>
+			
+			<h:outputText value="Alternativa N: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[13]}"/>
+			
+			<h:outputText value="Alternativa O: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[14]}"/>
+			
+			<h:outputText value="Alternativa P: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[15]}"/>
+			
+			<h:outputText value="Alternativa Q: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[16]}"/>
+			
+			<h:outputText value="Alternativa R: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[17]}"/>
+			
+			<h:outputText value="Alternativa S: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[18]}"/>
+			
+			<h:outputText value="Alternativa T: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[19]}"/>
+			
+			<h:outputText value="Alternativa U: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[20]}"/>
+			
+			<h:outputText value="Alternativa V: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[21]}"/>
+			
+			<h:outputText value="Alternativa X: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[22]}"/>
+			
+			<h:outputText value="Alternativa Z: "/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[23]}"/>
+			</p:panelGrid>
+		</p:panel>
+			<br></br>
+			<h:commandButton value="Cancelar"/>
+			<h:outputText value="  "/>
+			<h:commandButton value="Avançar" action="#{perguntasBEAN.acaoBotaoProximo2}"/>
+			<br></br>
+	</p:fieldset>
+	</h:form>
+	</ui:define>
+</ui:composition>
+</h:body>
+</html>
