@@ -15,91 +15,105 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-		<p:fieldset legend="Cadastrar nova empresa" id="fieldSetEmpresa">
-			<p:panelGrid columns="2" id="panelGridEmpresa">
+		<p:fieldset legend="Cadastrar nova empresa" >
+			<p:panelGrid columns="2" >
 				<f:facet name="header">
 					<h:outputText value="Dados da Empresa"/>
 				</f:facet>
 				
-				<h:outputText value="Nome: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.NOME_EMPRESA}"/>
+				<h:outputText value="Nome: " id="nome"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.NOME_EMPRESA}" />
 				
-				<h:outputText value="Estado: "/>
+				<h:outputText value="Estado: " />
 				<h:selectOneMenu converter="conversorEstado"
 								 value="#{empresasBEAN.estadoSelecionado}"
 							 	 valueChangeListener="#{empresasBEAN.comboEstadoMudou}" 
 							     onchange="submit();">
-					<f:selectItems value="#{empresasBEAN.estados}"/>
+					<f:selectItems value="#{empresasBEAN.estados}" />
 				</h:selectOneMenu>
 				
-				<h:outputText value="Cidade: "/>
+				
+				<h:outputText value="Cidade: " />
 				<h:selectOneMenu value="#{empresasBEAN.empresaSelecionada.CIDADE}"
 								 converter="conversorCidade"
 								 binding="#{empresasBEAN.comboCidades}">
-					<f:selectItems value="#{empresasBEAN.cidades}"/>
+					<f:selectItems value="#{empresasBEAN.cidades}" />
 				</h:selectOneMenu>
 				
-				<h:outputText value="CNPJ: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.CNPJ_EMPRESA}"/>
+				<h:outputText value=""/>
+				<h:commandButton value="Adicionar nova Cidade" action="gerenciarCidades" />
 				
-				<h:outputText value="Endereço: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.ENDERECO_EMPRESA}"/>
+				<h:outputText value="CNPJ: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.CNPJ_EMPRESA}" />
+
 				
-				<h:outputText value="Telefone 1: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE1_EMPRESA}"/>
+				<h:outputText value="Endereço: " id="endereco"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.ENDERECO_EMPRESA}" />
+
 				
-				<h:outputText value="Telefone 2: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE2_EMPRESA}"/>
+				<h:outputText value="Telefone 1: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE1_EMPRESA}" />
+
 				
-				<h:outputText value="Email: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMAIL_EMPRESA}"/>
+				<h:outputText value="Telefone 2: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE2_EMPRESA}" />
+
 				
-				<h:outputText value="Site: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.SITE_EMPRESA}"/>
+				<h:outputText value="Email: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMAIL_EMPRESA}" />
+
 				
-				<h:outputText value="Empregos Formais: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMPREGOS_FORMAIS}"/>
+				<h:outputText value="Site: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.SITE_EMPRESA}" />
+
 				
-				<h:outputText value="Valor Anual de vendas no mercado int: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.VLR_ANUAL_VENDAS_MERC_INT}"/>
+				<h:outputText value="Empregos Formais: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMPREGOS_FORMAIS}" />
+
 				
-				<h:outputText value="Valor Anual de vendas no mercado ext: "/>
+				<h:outputText value="Valor Anual de vendas no mercado int: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.VLR_ANUAL_VENDAS_MERC_INT}" />
+
+				
+				<h:outputText value="Valor Anual de vendas no mercado ext: " />
 				<h:inputText value="#{empresasBEAN.empresaSelecionada.VLR_ANUAL_VENDAS_MERC_EXT}"/>
 				
-				<h:outputText value="Descrição da Empresa: "/>
-				<h:inputTextarea value="#{empresasBEAN.empresaSelecionada.DESCRICAO_EMPRESA}"/>
+				
+				<h:outputText value="Descrição da Empresa: " />
+				<h:inputTextarea value="#{empresasBEAN.empresaSelecionada.DESCRICAO_EMPRESA}" />
+
 			</p:panelGrid>
 			<br></br>
-			<p:panelGrid columns="2" id="panelGridDirigente">
+			<p:panelGrid columns="2" >
 				<f:facet name="header">
-					<h:outputText value="Dados do Dirigente"/>
+					<h:outputText value="Dados do Dirigente" />
 				</f:facet>
 				
-				<h:outputText value="Nome: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.NOME_DIRIGENTE}"/>
+				<h:outputText value="Nome: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.NOME_DIRIGENTE}" />
 				
-				<h:outputText value="CPF: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.CPF_DIRIGENTE}"/>
+				<h:outputText value="CPF: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.CPF_DIRIGENTE}" />
 				
-				<h:outputText value="Telefone 1: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE1_DIRIGENTE}"/>
+				<h:outputText value="Telefone 1: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE1_DIRIGENTE}" />
 				
-				<h:outputText value="Telefone 2: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE2_DIRIGENTE}"/>
+				<h:outputText value="Telefone 2: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE2_DIRIGENTE}" />
 				
-				<h:outputText value="Email: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMAIL_DIRIGENTE}"/>
+				<h:outputText value="Email: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMAIL_DIRIGENTE}" />
 				
-				<h:outputText value="Idade: (em anos)"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.IDADE_DIRIGENTE}"/>
+				<h:outputText value="Idade: (em anos)" />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.IDADE_DIRIGENTE}" />
 				
-				<h:outputText value="Escolaridade: "/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.ESCOLARIDADE_DIRIGENTE}"/>
+				<h:outputText value="Escolaridade: " />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.ESCOLARIDADE_DIRIGENTE}" />
 			</p:panelGrid>
 				<br></br>
-				<h:commandButton value="Salvar" action="#{empresasBEAN.acaoBotaoSalvar}"/>
+				<h:commandButton value="Cancelar" action="#{empresasBEAN.acaoBotaoCancelarAdicaoEmpresa}" />								
 				<h:outputText value=" "/>
-				<h:commandButton value="Cancelar"/>								
+				<h:commandButton value="Salvar" action="#{empresasBEAN.acaoBotaoSalvar}" />
 		</p:fieldset>
 	</h:form>
 	</ui:define>

@@ -4,9 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.List;
 
 import tcc.bd.DatabaseUtil;
 import tcc.dtos.TB_ALTERNATIVAS;
+import tcc.dtos.TB_PERGUNTAS;
 
 public class AlternativasDAO extends DatabaseUtil implements InterfaceDAO<TB_ALTERNATIVAS>{
 
@@ -78,6 +80,20 @@ public class AlternativasDAO extends DatabaseUtil implements InterfaceDAO<TB_ALT
 			return popular(rs);
 		else
 			return null;
+	}
+	
+	public List<TB_ALTERNATIVAS> buscarAlternativasPorPergunta(TB_PERGUNTAS pergunta) throws ClassNotFoundException, SQLException{
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_ALTERNATIVAS WHERE ID_PERGUNTA="+pergunta.getID_PERGUNTA());
+		
+		LinkedList<TB_ALTERNATIVAS> retorno = new LinkedList<TB_ALTERNATIVAS>();
+		
+		while(rs.next()){
+			retorno.add(popular(rs));
+		}
+		
+		return retorno;
+		
+		
 	}
 
 }

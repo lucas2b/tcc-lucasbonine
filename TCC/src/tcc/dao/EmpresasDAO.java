@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.List;
 
 import tcc.bd.DatabaseUtil;
 import tcc.dtos.TB_EMPRESAS;
@@ -176,6 +177,39 @@ public class EmpresasDAO extends DatabaseUtil implements InterfaceDAO<TB_EMPRESA
 			return popular(rs);
 		else
 			return null;
+	}
+	
+	//------------------------------------ MÉTODOS ADICIONAIS --------------------------------------------
+	
+	public List<TB_EMPRESAS> listarEmpresasQueResponderamPesquisa() throws ClassNotFoundException, SQLException{
+		LinkedList<TB_EMPRESAS> retorno = new LinkedList<TB_EMPRESAS>();
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_EMPRESAS WHERE PESQUISA_RESPONDIDA = TRUE");
+		
+		while(rs.next()){
+			retorno.add(popular(rs));
+		}
+		
+		return retorno;
+	}
+	
+	public List<TB_EMPRESAS> listarEmpresasQueNaoResponderamPesquisa() throws ClassNotFoundException, SQLException{
+		LinkedList<TB_EMPRESAS> retorno = new LinkedList<TB_EMPRESAS>();
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_EMPRESAS WHERE PESQUISA_RESPONDIDA = FALSE");
+		
+		while(rs.next()){
+			retorno.add(popular(rs));
+		}
+		
+		return retorno;
+	}
+	
+	public boolean setarFlagDePesquisaRespondida(TB_EMPRESAS empresa) throws ClassNotFoundException, SQLException{
+		
+		PreparedStatement ps = getPreparedStatement("UPDATE TB_EMPRESAS SET PESQUISA_RESPONDIDA=? WHERE ID_EMPRESA=?");
+		ps.setBoolean(1, true);
+		ps.setInt(2, empresa.getID_EMPRESA());
+		
+		return ps.execute();
 	}
 
 }
