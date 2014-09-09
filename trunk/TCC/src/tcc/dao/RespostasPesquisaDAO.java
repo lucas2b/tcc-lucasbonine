@@ -81,5 +81,7 @@ public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<T
 		else
 			return null;
 	}
+	
+	//------------------------------------ MÉTODOS ADICIONAIS --------------------------------------------
 
 }

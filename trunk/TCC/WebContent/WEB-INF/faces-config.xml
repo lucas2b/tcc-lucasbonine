@@ -27,6 +27,11 @@
 		<managed-bean-class>tcc.beans.PerguntasBEAN</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>respostasBEAN</managed-bean-name>
+		<managed-bean-class>tcc.beans.RespostasBEAN</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>cadastros/gerenciarEmpresas.xhtml</display-name>
 		<from-view-id>/cadastros/gerenciarEmpresas.xhtml</from-view-id>
@@ -60,11 +65,98 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
+		<display-name>cadastros/gerenciarPerguntas.xhtml</display-name>
+		<from-view-id>/cadastros/gerenciarPerguntas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editarPergunta</from-outcome>
+			<to-view-id>/cadastros/editarPergunta.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/gerenciarEmpresas.xhtml</display-name>
+		<from-view-id>/cadastros/gerenciarEmpresas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>adicionarEmpresa</from-outcome>
+			<to-view-id>/cadastros/adicionarEmpresa.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/gerenciarEmpresas.xhtml</display-name>
+		<from-view-id>/cadastros/gerenciarEmpresas.xhtml</from-view-id>
+		<navigation-case>
+			<to-view-id>/cadastros/editarEmpresa.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/adicionarEmpresa.xhtml</display-name>
+		<from-view-id>/cadastros/adicionarEmpresa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresas</from-outcome>
+			<to-view-id>/cadastros/gerenciarEmpresas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/detalhesEmpresa.xhtml</display-name>
+		<from-view-id>/cadastros/detalhesEmpresa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresas</from-outcome>
+			<to-view-id>/cadastros/gerenciarEmpresas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/editarEmpresa.xhtml</display-name>
+		<from-view-id>/cadastros/editarEmpresa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresas</from-outcome>
+			<to-view-id>/cadastros/gerenciarEmpresas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
 		<display-name>cadastros/adicionarPerguntaPasso2.xhtml</display-name>
 		<from-view-id>/cadastros/adicionarPerguntaPasso2.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>fimPerguntas</from-outcome>
-			<to-view-id>/cadastros/fimPerguntas.xhtml</to-view-id>
+			<from-outcome>listarPerguntas</from-outcome>
+			<to-view-id>/cadastros/gerenciarPerguntas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/gerenciarPerguntas.xhtml</display-name>
+		<from-view-id>/cadastros/gerenciarPerguntas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>adicionarPergunta</from-outcome>
+			<to-view-id>/cadastros/adicionarPerguntaPasso1.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/editarPergunta.xhtml</display-name>
+		<from-view-id>/cadastros/editarPergunta.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarPerguntas</from-outcome>
+			<to-view-id>/cadastros/gerenciarPerguntas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/adicionarPerguntaPasso1.xhtml</display-name>
+		<from-view-id>/cadastros/adicionarPerguntaPasso1.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarPerguntas</from-outcome>
+			<to-view-id>/cadastros/gerenciarPerguntas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/adicionarEmpresa.xhtml</display-name>
+		<from-view-id>/cadastros/adicionarEmpresa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gerenciarCidades</from-outcome>
+			<to-view-id>/cadastros/gerenciarCidades.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>cadastros/gerenciarCidades.xhtml</display-name>
+		<from-view-id>/cadastros/gerenciarCidades.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>retornarAdicaoEmpresa</from-outcome>
+			<to-view-id>/cadastros/adicionarEmpresa.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

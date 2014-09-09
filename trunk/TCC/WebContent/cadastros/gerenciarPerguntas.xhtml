@@ -15,10 +15,24 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-		<h:outputText value="Empresa "/>
-		<h:outputText value="#{empresasBEAN.empresaSelecionadaDetalhes.NOME_EMPRESA}"/>
-		<br></br>
-		<h:commandButton value="Voltar" action="#{empresasBEAN.acaoBotaoVoltarDetalhes}"/>
+	<h:commandButton value="Adicionar Pergunta" action="adicionarPergunta" />
+	<p:dataTable value="#{perguntasBEAN.perguntas}" var="item">
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="ID"/>
+			</f:facet>
+			<p:commandLink value="#{item.ID_PERGUNTA}"/>
+		</p:column>
+		
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Perguntas"/>
+			</f:facet>
+			<p:commandLink value="#{item.PERGUNTA_TXT}" action="#{perguntasBEAN.startEditarPergunta}">
+				<f:setPropertyActionListener target="#{perguntasBEAN.perguntaSelecionada}" value="#{item}"/>
+			</p:commandLink>
+		</p:column>
+	</p:dataTable>
 	</h:form>
 	</ui:define>
 </ui:composition>

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14097568841630" configfile="/TCC/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarCidades.xhtml" x="346" y="166" id="pf14098703497490" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" path="/cadastros/gerenciarCidades.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarEmpresas.xhtml" x="466" y="520" id="pf14101024177520" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf14101024177521 pf14101101862562" inlinks="pf14101024177521" path="/cadastros/gerenciarEmpresas.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/detalhesEmpresa.xhtml" x="793" y="520" id="pf14101101862573" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14101101862562" path="/cadastros/detalhesEmpresa.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarPerguntaPasso1.xhtml" x="196" y="366" id="pf14101793244360" outlinks="pf14101793244361" path="/cadastros/adicionarPerguntaPasso1.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarPerguntaPasso2.xhtml" x="524" y="366" id="pf14101793244362" outlinks="pf14101815953733 pf14101846347024" inlinks="pf14101793244361 pf14101815953733" path="/cadastros/adicionarPerguntaPasso2.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/fimPerguntas.xhtml" x="840" y="366" id="pf14101846347025" inlinks="pf14101846347024" path="/cadastros/fimPerguntas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarEmpresas.xhtml" x="436" y="588" id="pf14101024177520" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf14101024177521 pf14101101862562 pf14102181716103 pf14102181716104" inlinks="pf14101024177521 pf14102181716106 pf14102181716107 pf14102181716108" path="/cadastros/gerenciarEmpresas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/detalhesEmpresa.xhtml" x="769" y="588" id="pf14101101862573" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf14102181716107" inlinks="pf14101101862562" path="/cadastros/detalhesEmpresa.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarPerguntaPasso1.xhtml" x="124" y="240" id="pf14101793244360" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf14101793244361 pf141021949719016" inlinks="pf141021817161110" path="/cadastros/adicionarPerguntaPasso1.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarPerguntaPasso2.xhtml" x="124" y="36" id="pf14101793244362" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf14101815953733 pf141021817161111" inlinks="pf14101793244361 pf14101815953733" path="/cadastros/adicionarPerguntaPasso2.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarPerguntas.xhtml" x="435" y="240" id="pf14102027183600" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" outlinks="pf14102027183601 pf141021817161110" inlinks="pf141021817161111 pf141021817161112 pf141021949719016" path="/cadastros/gerenciarPerguntas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/editarPergunta.xhtml" x="700" y="240" id="pf14102027183602" referenceLink="//@navigationRule.12/@fromViewId|" outlinks="pf141021817161112" inlinks="pf14102027183601" path="/cadastros/editarPergunta.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/editarEmpresa.xhtml" x="448" y="732" id="pf141021817161113" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf14102181716108" inlinks="pf14102181716104" path="/cadastros/editarEmpresa.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarEmpresa.xhtml" x="111" y="588" id="pf141021817161114" referenceLink="//@navigationRule.15/@navigationCase.0/@toViewId|" outlinks="pf14102181716106 pf141022232178617" inlinks="pf14102181716103 pf141022232178618" path="/cadastros/adicionarEmpresa.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarCidades.xhtml" x="112" y="797" id="pf141021817161115" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf141022232178618" inlinks="pf141022232178617" path="/cadastros/gerenciarCidades.xhtml"/>
   <links id="pf14101024177521" target="pf14101024177520" source="pf14101024177520" outcome="refresh">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -18,5 +21,28 @@
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf14101846347024" target="pf14101846347025" source="pf14101793244362" outcome="fimPerguntas"/>
+  <links id="pf14102027183601" target="pf14102027183602" source="pf14102027183600" outcome="editarPergunta"/>
+  <links id="pf14102181716103" target="pf141021817161114" source="pf14101024177520" outcome="adicionarEmpresa"/>
+  <links id="pf14102181716104" target="pf141021817161113" source="pf14101024177520"/>
+  <links id="pf14102181716106" target="pf14101024177520" source="pf141021817161114" outcome="listarEmpresas">
+    <bendPoints d1Width="-1" d1Height="-82" d2Width="-328" d2Height="-82"/>
+  </links>
+  <links id="pf14102181716107" target="pf14101024177520" source="pf14101101862573" outcome="listarEmpresas">
+    <bendPoints d1Height="-74" d2Width="328" d2Height="-74"/>
+  </links>
+  <links id="pf14102181716108" target="pf14101024177520" source="pf141021817161113" outcome="listarEmpresas">
+    <bendPoints d1Width="104" d1Height="1" d2Width="104" d2Height="145"/>
+  </links>
+  <links id="pf141021817161111" target="pf14102027183600" source="pf14101793244362" outcome="listarPerguntas"/>
+  <links id="pf141021817161110" target="pf14101793244360" source="pf14102027183600" outcome="adicionarPergunta"/>
+  <links id="pf141021817161112" target="pf14102027183600" source="pf14102027183602" outcome="listarPerguntas">
+    <bendPoints d1Height="-88" d2Width="252" d2Height="-88"/>
+  </links>
+  <links id="pf141021949719016" target="pf14102027183600" source="pf14101793244360" outcome="listarPerguntas">
+    <bendPoints d1Width="-1" d1Height="148" d2Width="-297" d2Height="148"/>
+  </links>
+  <links id="pf141022232178617" target="pf141021817161115" source="pf141021817161114" outcome="gerenciarCidades"/>
+  <links id="pf141022232178618" target="pf141021817161114" source="pf141021817161115" outcome="retornarAdicaoEmpresa">
+    <bendPoints d1Width="-165" d1Height="2" d2Width="-166" d2Height="211"/>
+  </links>
 </pageflow:Pageflow>

@@ -27,10 +27,10 @@
 		<p:panel header="Alternativas">
 			<p:panelGrid columns="2">
 			<h:outputText value="Alternativa A: "/>
-			<h:inputText size="100" required="true" value="#{perguntasBEAN.auxPerguntas.alternativa[0]}"/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[0]}"/>
 			
 			<h:outputText value="Alternativa B: "/>
-			<h:inputText size="100" required="true" value="#{perguntasBEAN.auxPerguntas.alternativa[1]}"/>
+			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[1]}"/>
 			
 			<h:outputText value="Alternativa C: "/>
 			<h:inputText size="100" value="#{perguntasBEAN.auxPerguntas.alternativa[2]}"/>
@@ -100,7 +100,7 @@
 			</p:panelGrid>
 		</p:panel>
 			<br></br>
-			<h:commandButton value="Cancelar"/>
+			<h:commandButton value="Cancelar" action="#{perguntasBEAN.acaoBotaoCancelar2}"/>
 			<h:outputText value="  "/>
 			<h:commandButton value="Avançar" action="#{perguntasBEAN.acaoBotaoProximo2}"/>
 			<br></br>

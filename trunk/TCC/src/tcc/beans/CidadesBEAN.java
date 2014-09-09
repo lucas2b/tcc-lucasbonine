@@ -29,14 +29,14 @@ public class CidadesBEAN {
 	
 	//Flags
 	private boolean novoRegistro = true;
-	private boolean cancelarEdicao = false;
+	private boolean cancelarEdicao = false; //cancelar edicao da cidade
 
 	//DAOs
 	private UfDAO ufDAO = new UfDAO();
 	private CidadesDAO cidadeDAO = new CidadesDAO();
 
 
-	//---------- GETTERS E SETTERS --------
+	//----------------------------- GETTERS E SETTERS --------------------------
 	
 	public boolean isCancelarEdicao() {
 		return cancelarEdicao;
@@ -71,7 +71,7 @@ public class CidadesBEAN {
 	}
 
 	
-	//---------- MÉTODOS -------------
+	//------------------------------- MÉTODOS -----------------------------
 	
 	//Combo de listagem dos estados
 	public List<SelectItem> getEstados() throws ClassNotFoundException, SQLException{

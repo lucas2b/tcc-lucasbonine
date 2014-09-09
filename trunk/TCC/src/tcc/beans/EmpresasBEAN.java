@@ -24,13 +24,11 @@ public class EmpresasBEAN {
 	private UfDAO ufDAO = new UfDAO();
 	private CidadesDAO cidadeDAO = new CidadesDAO();
 	private EmpresasDAO empresaDAO = new EmpresasDAO();
-	
-	
-	//================================ adicionarEmpresas.html ====================================
 
 	//Atributos de tela
 	private TB_UF estadoSelecionado;
 	private TB_EMPRESAS empresaSelecionada = new TB_EMPRESAS();
+	private TB_EMPRESAS empresaSelecionadaDetalhes = new TB_EMPRESAS();
 	
 	//Flags
 	private boolean flagEstadoSelecionado = false;
@@ -38,7 +36,7 @@ public class EmpresasBEAN {
 	//Componentes de tela
 	private HtmlSelectOneMenu comboCidades;
 
-	//GETTERS AND SETTERS
+	//------------------------------ GETTERS AND SETTERS --------------------------------
 	public HtmlSelectOneMenu getComboCidades() {
 		return comboCidades;
 	}
@@ -62,9 +60,18 @@ public class EmpresasBEAN {
 	public void setEstadoSelecionado(TB_UF estadoSelecionado) {
 		this.estadoSelecionado = estadoSelecionado;
 	}
-
 	
-	//Combo de listagem dos estados
+	public TB_EMPRESAS getEmpresaSelecionadaDetalhes() {
+		return empresaSelecionadaDetalhes;
+	}
+
+	public void setEmpresaSelecionadaDetalhes(TB_EMPRESAS empresaSelecionadaDetalhes) {
+		this.empresaSelecionadaDetalhes = empresaSelecionadaDetalhes;
+	}
+
+	//------------------------------ ADICIONAR EMPRESA ---------------------------------
+
+	//Combo de listagem dos estados que lista todos estados
 	public List<SelectItem> getEstados() throws ClassNotFoundException, SQLException{
 		List<SelectItem> retorno = new LinkedList<SelectItem>();
 	
@@ -79,6 +86,7 @@ public class EmpresasBEAN {
 		flagEstadoSelecionado = true;
 	}
 		
+	//Popula combo cidades de acordo com o estado selecionado
 	public List<SelectItem> getCidades() throws ClassNotFoundException, SQLException{
 		List<SelectItem> retorno = new LinkedList<SelectItem>();
 	
@@ -95,39 +103,41 @@ public class EmpresasBEAN {
 		
 		return retorno;
 	}
+	
+	public List<TB_EMPRESAS> getEmpresas() throws ClassNotFoundException, SQLException{
+		return empresaDAO.listarTodos();
+	}
 		
+	//------------------------------ BOTÕES TELA ADICIONAR ------------------------------
+	
 	public String acaoBotaoSalvar() throws ClassNotFoundException, SQLException{			
 		if(comboCidades.getValue() != null){
 			empresaDAO.adicionar(empresaSelecionada);
 			empresaSelecionada = new TB_EMPRESAS();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.FACES_MESSAGES,"Cadastro realizado!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Cadastro realizado!", "Cadastro realizado!"));
 		}
 		else
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Cidade não selecionada!", "Cidade não selecionada!"));
 		
-		return "refresh";
+		return "listarEmpresas";
 	}
-		
-	//-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-		
-	//================================ gerenciarEmpresas.html ======================================
 	
-	//Atributos de tela
-	private TB_EMPRESAS empresaSelecionadaDetalhes = new TB_EMPRESAS();
+	public String acaoBotaoCancelarAdicaoCidade(){
+		empresaSelecionada = new TB_EMPRESAS(); //zera novamente o campo responsável pela persistência para não dar pau
+		return "retornarAdicaoEmpresa";
+	}
 	
-	//GETTERS AND SETTERS
-	public TB_EMPRESAS getEmpresaSelecionadaDetalhes() {
-		return empresaSelecionadaDetalhes;
+	public String acaoBotaoCancelarAdicaoEmpresa(){
+		empresaSelecionada = new TB_EMPRESAS(); //zera novamente o campo responsável pela persistência para não dar pau
+		return "listarEmpresas";
 	}
-
-	public void setEmpresaSelecionadaDetalhes(TB_EMPRESAS empresaSelecionadaDetalhes) {
-		this.empresaSelecionadaDetalhes = empresaSelecionadaDetalhes;
+	
+	public String acaoBotaoVoltarDetalhes(){
+		empresaSelecionada = new TB_EMPRESAS(); //zera novamente o campo responsável pela persistência para não dar pau
+		return "listarEmpresas";
 	}
-
-	//Métodos
-	public List<TB_EMPRESAS> getEmpresas() throws ClassNotFoundException, SQLException{
-		return empresaDAO.listarTodos();
-	}
+	
+	//-------------------------- BOTÕES TELA LISTAR EMPRESAS -----------------------------
 	
 	public String visualizarDetalhes(){
 		return "paginaDetalhesEmpresa";

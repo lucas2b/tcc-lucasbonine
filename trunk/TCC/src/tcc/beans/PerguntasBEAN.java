@@ -11,21 +11,28 @@ import tcc.dtos.TB_PERGUNTAS;
 
 public class PerguntasBEAN {
 	
-	//DAO's
+	//-------------------------------- DAO's --------------------------------------
 	PerguntasDAO perguntasDAO = new PerguntasDAO();
 	AlternativasDAO alternativasDAO = new AlternativasDAO();
 	
-	//Elementos de tela
+	//--------------------- Elementos de tela usados na adição ---------------------
 	private TB_PERGUNTAS perguntaSelecionada;
 	private AuxPerguntas auxPerguntas = new AuxPerguntas();
 	private int numeroDePerguntas;
 	private int contadorPerguntaAtual = 0;
 	
-	//Auxiliares
+	//--------------------- Elementos de tela usados na edição --------------------
+	private List<TB_ALTERNATIVAS> listaDeAlternativas;
 	private List<AuxPerguntas> listaPerguntas = new LinkedList<PerguntasBEAN.AuxPerguntas>();
 	
-	//GETTERS AND SETTERS
 	
+	//--------------------------- GETTERS AND SETTERS ---------------------------
+	public List<TB_ALTERNATIVAS> getListaDeAlternativas() {
+		return listaDeAlternativas;
+	}
+	public void setListaDeAlternativas(List<TB_ALTERNATIVAS> listaDeAlternativas) {
+		this.listaDeAlternativas = listaDeAlternativas;
+	}
 	public int getContadorPerguntaAtual() {
 		return contadorPerguntaAtual;
 	}
@@ -53,11 +60,27 @@ public class PerguntasBEAN {
 		this.perguntaSelecionada = perguntaSelecionada;
 	}
 	
+	public List<TB_PERGUNTAS> getPerguntas() throws ClassNotFoundException, SQLException{
+		return perguntasDAO.listarTodos();
+	}
 	
-	//MÉTODOS
+	
+	//------------------------------- INSERIR PERGUNTA ----------------------------
 	public String acaoBotaoProximo1(){
 		contadorPerguntaAtual++;
 		return "avancaPasso2Perguntas";
+	}
+	
+	public String acaoBotaoCancelar1(){
+		contadorPerguntaAtual = 0;
+		return "listarPerguntas";
+	}
+	
+	public String acaoBotaoCancelar2(){
+		contadorPerguntaAtual = 0;
+		listaPerguntas = new LinkedList<PerguntasBEAN.AuxPerguntas>();
+		auxPerguntas = new AuxPerguntas();
+		return "listarPerguntas";
 	}
 	
 	public String acaoBotaoProximo2() throws ClassNotFoundException, SQLException{
@@ -76,10 +99,32 @@ public class PerguntasBEAN {
 			rotinaInserirPergunta();
 			auxPerguntas = new AuxPerguntas(); //limpa para nova leva
 			contadorPerguntaAtual = 0;
-			return "fimPerguntas";
+			return "listarPerguntas";
 		}
 	}
+	
 
+	
+	//-------------------------------- EDITAR PERGUNTA ------------------------------
+	public String startEditarPergunta() throws ClassNotFoundException, SQLException{
+		listaDeAlternativas = alternativasDAO.buscarAlternativasPorPergunta(perguntaSelecionada);
+		return "editarPergunta";
+	}
+	
+	public String finishEditarPergunta() throws ClassNotFoundException, SQLException{
+		for(TB_ALTERNATIVAS alternativa : listaDeAlternativas){
+			alternativasDAO.editar(alternativa);
+		}
+		return "listarPerguntas";
+	}
+	
+	public String cancelarEdicaoPergunta(){
+		listaDeAlternativas = null;
+		return "listarPerguntas";
+	}
+	
+	//------------------------------- ROTINAS E APOIOS -------------------------------------
+	
 	private void rotinaInserirPergunta() throws ClassNotFoundException, SQLException {
 	
 		for(AuxPerguntas pergunta :  listaPerguntas){
@@ -208,7 +253,7 @@ public class PerguntasBEAN {
 		}//Fim do For externo
 	}
 	
-	//Classe auxiliar
+	//--------------------------------------- CLASSE AUXILIAR ----------------------------------
 	public class AuxPerguntas{
 		private String[] alternativa = new String[24]; //de tamanho 24, indice variando de 0 a 23
 		private TB_PERGUNTAS pergunta = new TB_PERGUNTAS();
