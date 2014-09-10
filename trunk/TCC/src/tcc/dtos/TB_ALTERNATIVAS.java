@@ -7,6 +7,15 @@ public class TB_ALTERNATIVAS {
 	private String COD_ALTERNATIVA;
 	private String ALTERNATIVA_TXT;
 	
+	//CAMPO EXTRA, não consta no BD nem no DAO
+	private boolean MARCADA; 
+	
+	public boolean isMARCADA() {
+		return MARCADA;
+	}
+	public void setMARCADA(boolean mARCADA) {
+		MARCADA = mARCADA;
+	}
 	public int getID_ALTERNATIVA() {
 		return ID_ALTERNATIVA;
 	}

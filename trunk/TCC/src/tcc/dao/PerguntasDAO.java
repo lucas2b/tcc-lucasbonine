@@ -26,9 +26,9 @@ public class PerguntasDAO extends DatabaseUtil implements InterfaceDAO<TB_PERGUN
 	@Override
 	public boolean adicionar(TB_PERGUNTAS parametro)
 			throws ClassNotFoundException, SQLException {
-		PreparedStatement ps = getPreparedStatement("INSERT INTO TB_PERGUNTAS(PERGUNTA_TXT, MULTI_SELECAO) VALUES (?,?)");
+		PreparedStatement ps = getPreparedStatement("INSERT INTO TB_PERGUNTAS(PERGUNTA_TXT, SELECAO_UNICA) VALUES (?,?)");
 		ps.setString(1, parametro.getPERGUNTA_TXT());
-		ps.setBoolean(2, parametro.isMULTI_SELECAO());
+		ps.setBoolean(2, parametro.isSELECAO_UNICA());
 		
 		return ps.execute();
 	}
@@ -36,10 +36,10 @@ public class PerguntasDAO extends DatabaseUtil implements InterfaceDAO<TB_PERGUN
 	@Override
 	public boolean editar(TB_PERGUNTAS parametro)
 			throws ClassNotFoundException, SQLException {
-		PreparedStatement ps = getPreparedStatement("UPDATE TB_PERGUNTAS SET PERGUNTA_TXT=?, MULTI_SELECAO=? WHERE ID_PERGUNTA=?");
+		PreparedStatement ps = getPreparedStatement("UPDATE TB_PERGUNTAS SET PERGUNTA_TXT=?, SELECAO_UNICA=? WHERE ID_PERGUNTA=?");
 		ps.setString(1, parametro.getPERGUNTA_TXT());
 		ps.setInt(2, parametro.getID_PERGUNTA());
-		ps.setBoolean(3, parametro.isMULTI_SELECAO());
+		ps.setBoolean(3, parametro.isSELECAO_UNICA());
 		
 		return ps.execute();
 	}
@@ -59,7 +59,7 @@ public class PerguntasDAO extends DatabaseUtil implements InterfaceDAO<TB_PERGUN
 		TB_PERGUNTAS pergunta = new TB_PERGUNTAS();
 		pergunta.setID_PERGUNTA(rs.getInt("ID_PERGUNTA"));
 		pergunta.setPERGUNTA_TXT(rs.getString("PERGUNTA_TXT"));
-		pergunta.setMULTI_SELECAO(rs.getBoolean("MULTI_SELECAO"));
+		pergunta.setSELECAO_UNICA(rs.getBoolean("SELECAO_UNICA"));
 		
 		return pergunta;
 	}
@@ -75,6 +75,7 @@ public class PerguntasDAO extends DatabaseUtil implements InterfaceDAO<TB_PERGUN
 			return null;
 	}
 	
+	//--------------------------- METODOS ADICIONAIS ----------------------
 	public int retornarUltimoID() throws ClassNotFoundException, SQLException{
 		int retorno = 0;
 		ResultSet rs = getStatement().executeQuery("SELECT ID_PERGUNTA FROM TB_PERGUNTAS");

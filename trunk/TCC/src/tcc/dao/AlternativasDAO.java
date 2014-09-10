@@ -82,6 +82,8 @@ public class AlternativasDAO extends DatabaseUtil implements InterfaceDAO<TB_ALT
 			return null;
 	}
 	
+	//-------------------------------- MÉTODOS ADICIONAIS -------------------------------
+	
 	public List<TB_ALTERNATIVAS> buscarAlternativasPorPergunta(TB_PERGUNTAS pergunta) throws ClassNotFoundException, SQLException{
 		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_ALTERNATIVAS WHERE ID_PERGUNTA="+pergunta.getID_PERGUNTA());
 		
@@ -92,7 +94,29 @@ public class AlternativasDAO extends DatabaseUtil implements InterfaceDAO<TB_ALT
 		}
 		
 		return retorno;
+			
+	}
+	
+	//Retorna uma lista de listas contendo cada uma um pacote de alternativas
+	public List<List<TB_ALTERNATIVAS>> retonarPacotesDeAlternativas() throws ClassNotFoundException, SQLException{
 		
+		List<List<TB_ALTERNATIVAS>> retorno = new LinkedList<List<TB_ALTERNATIVAS>>();
+		
+		for(TB_PERGUNTAS pergunta : perguntasDAO.listarTodos()){
+			retorno.add(buscarAlternativasPorPergunta(pergunta));
+		}
+		
+		return retorno;
+		
+		/*
+		 * Retorna uma lista com várias listas internas.
+		 * Cada lista interna contém várias instâncias de TB_ALTERNATIVAS,
+		 * todas referentes a uma questão em particular.
+		 * A próxima lista contém as alternativas de outra questão em particular.
+		 * 
+		 * Para saber a qual questão cada pacote de alternativas se refere, basta
+		 * consultar a propriedade PERGUNTA.getIdPergunta() de alguma delas.
+		 */
 		
 	}
 
