@@ -83,8 +83,10 @@ public class PerguntasBEAN {
 		return "listarPerguntas";
 	}
 	
+	//Tela de preenchimento de alternativas
 	public String acaoBotaoProximo2() throws ClassNotFoundException, SQLException{
 		
+		//Adicionar na lista temporária e limpa a tela para novas alternativas
 		if(numeroDePerguntas > 0){
 			listaPerguntas.add(auxPerguntas);
 			auxPerguntas = new AuxPerguntas(); //limpa para nova leva

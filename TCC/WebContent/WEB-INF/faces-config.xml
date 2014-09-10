@@ -12,6 +12,10 @@
 		<converter-id>conversorCidade</converter-id>
 		<converter-class>tcc.conversores.ConversorCidade</converter-class>
 	</converter>
+	<converter>
+		<converter-id>conversorAlternativas</converter-id>
+		<converter-class>tcc.conversores.ConversorAlternativas</converter-class>
+	</converter>
 	<managed-bean>
 		<managed-bean-name>cidadesBEAN</managed-bean-name>
 		<managed-bean-class>tcc.beans.CidadesBEAN</managed-bean-class>
@@ -157,6 +161,38 @@
 		<navigation-case>
 			<from-outcome>retornarAdicaoEmpresa</from-outcome>
 			<to-view-id>/cadastros/adicionarEmpresa.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/empresasQueNaoResponderam.xhtml</display-name>
+		<from-view-id>/respostas/empresasQueNaoResponderam.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>avancaPerguntaProducao</from-outcome>
+			<to-view-id>/respostas/perguntaSobreProducao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/perguntaSobreProducao.xhtml</display-name>
+		<from-view-id>/respostas/perguntaSobreProducao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>avancaTelaAlternativas</from-outcome>
+			<to-view-id>/respostas/telaDeAlternativas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/telaDeAlternativas.xhtml</display-name>
+		<from-view-id>/respostas/telaDeAlternativas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>apresentaTelaAlternativas</from-outcome>
+			<to-view-id>/respostas/telaDeAlternativas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/telaDeAlternativas.xhtml</display-name>
+		<from-view-id>/respostas/telaDeAlternativas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>avancaPesquisaConcluida</from-outcome>
+			<to-view-id>/respostas/pesquisaConcluida.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

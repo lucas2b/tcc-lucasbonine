@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14097568841630" configfile="/TCC/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarEmpresas.xhtml" x="436" y="588" id="pf14101024177520" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf14101024177521 pf14101101862562 pf14102181716103 pf14102181716104" inlinks="pf14101024177521 pf14102181716106 pf14102181716107 pf14102181716108" path="/cadastros/gerenciarEmpresas.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/detalhesEmpresa.xhtml" x="769" y="588" id="pf14101101862573" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf14102181716107" inlinks="pf14101101862562" path="/cadastros/detalhesEmpresa.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarEmpresas.xhtml" x="436" y="528" id="pf14101024177520" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" outlinks="pf14101024177521 pf14101101862562 pf14102181716103 pf14102181716104" inlinks="pf14101024177521 pf14102181716106 pf14102181716107 pf14102181716108" path="/cadastros/gerenciarEmpresas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/detalhesEmpresa.xhtml" x="694" y="528" id="pf14101101862573" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf14102181716107" inlinks="pf14101101862562" path="/cadastros/detalhesEmpresa.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarPerguntaPasso1.xhtml" x="124" y="240" id="pf14101793244360" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf14101793244361 pf141021949719016" inlinks="pf141021817161110" path="/cadastros/adicionarPerguntaPasso1.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarPerguntaPasso2.xhtml" x="124" y="36" id="pf14101793244362" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf14101815953733 pf141021817161111" inlinks="pf14101793244361 pf14101815953733" path="/cadastros/adicionarPerguntaPasso2.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarPerguntas.xhtml" x="435" y="240" id="pf14102027183600" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" outlinks="pf14102027183601 pf141021817161110" inlinks="pf141021817161111 pf141021817161112 pf141021949719016" path="/cadastros/gerenciarPerguntas.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="cadastros/editarPergunta.xhtml" x="700" y="240" id="pf14102027183602" referenceLink="//@navigationRule.12/@fromViewId|" outlinks="pf141021817161112" inlinks="pf14102027183601" path="/cadastros/editarPergunta.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/editarEmpresa.xhtml" x="448" y="732" id="pf141021817161113" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf14102181716108" inlinks="pf14102181716104" path="/cadastros/editarEmpresa.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarEmpresa.xhtml" x="111" y="588" id="pf141021817161114" referenceLink="//@navigationRule.15/@navigationCase.0/@toViewId|" outlinks="pf14102181716106 pf141022232178617" inlinks="pf14102181716103 pf141022232178618" path="/cadastros/adicionarEmpresa.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarCidades.xhtml" x="112" y="797" id="pf141021817161115" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf141022232178618" inlinks="pf141022232178617" path="/cadastros/gerenciarCidades.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/editarEmpresa.xhtml" x="448" y="684" id="pf141021817161113" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf14102181716108" inlinks="pf14102181716104" path="/cadastros/editarEmpresa.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarEmpresa.xhtml" x="143" y="528" id="pf141021817161114" referenceLink="//@navigationRule.15/@navigationCase.0/@toViewId|" outlinks="pf14102181716106 pf141022232178617" inlinks="pf14102181716103 pf141022232178618" path="/cadastros/adicionarEmpresa.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarCidades.xhtml" x="144" y="684" id="pf141021817161115" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf141022232178618" inlinks="pf141022232178617" path="/cadastros/gerenciarCidades.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/empresasQueNaoResponderam.xhtml" x="948" y="72" id="pf14102844937350" referenceLink="//@navigationRule.16/@fromViewId|" outlinks="pf14102844937361" path="/respostas/empresasQueNaoResponderam.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/perguntaSobreProducao.xhtml" x="1236" y="72" id="pf14102844937362" referenceLink="//@navigationRule.17/@fromViewId|" outlinks="pf14102844937363" inlinks="pf14102844937361" path="/respostas/perguntaSobreProducao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/telaDeAlternativas.xhtml" x="1512" y="72" id="pf14102844937364" referenceLink="//@navigationRule.19/@fromViewId|" outlinks="pf14102850610309 pf141028506103010" inlinks="pf14102844937363 pf14102850610309" path="/respostas/telaDeAlternativas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/pesquisaConcluida.xhtml" x="1776" y="72" id="pf14102844937378" referenceLink="//@navigationRule.19/@navigationCase.0/@toViewId|" inlinks="pf141028506103010" path="/respostas/pesquisaConcluida.xhtml"/>
   <links id="pf14101024177521" target="pf14101024177520" source="pf14101024177520" outcome="refresh">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -25,10 +29,10 @@
   <links id="pf14102181716103" target="pf141021817161114" source="pf14101024177520" outcome="adicionarEmpresa"/>
   <links id="pf14102181716104" target="pf141021817161113" source="pf14101024177520"/>
   <links id="pf14102181716106" target="pf14101024177520" source="pf141021817161114" outcome="listarEmpresas">
-    <bendPoints d1Width="-1" d1Height="-82" d2Width="-328" d2Height="-82"/>
+    <bendPoints d1Width="-2" d1Height="-80" d2Width="-296" d2Height="-80"/>
   </links>
   <links id="pf14102181716107" target="pf14101024177520" source="pf14101101862573" outcome="listarEmpresas">
-    <bendPoints d1Height="-74" d2Width="328" d2Height="-74"/>
+    <bendPoints d1Width="-2" d1Height="-70" d2Width="252" d2Height="-70"/>
   </links>
   <links id="pf14102181716108" target="pf14101024177520" source="pf141021817161113" outcome="listarEmpresas">
     <bendPoints d1Width="104" d1Height="1" d2Width="104" d2Height="145"/>
@@ -43,6 +47,14 @@
   </links>
   <links id="pf141022232178617" target="pf141021817161115" source="pf141021817161114" outcome="gerenciarCidades"/>
   <links id="pf141022232178618" target="pf141021817161114" source="pf141021817161115" outcome="retornarAdicaoEmpresa">
-    <bendPoints d1Width="-165" d1Height="2" d2Width="-166" d2Height="211"/>
+    <bendPoints d1Width="-160" d1Height="12" d2Width="-162" d2Height="168"/>
   </links>
+  <links id="pf14102844937361" target="pf14102844937362" source="pf14102844937350" outcome="avancaPerguntaProducao"/>
+  <links id="pf14102844937363" target="pf14102844937364" source="pf14102844937362" outcome="avancaTelaAlternativas"/>
+  <links id="pf14102850610309" target="pf14102844937364" source="pf14102844937364" outcome="apresentaTelaAlternativas">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf141028506103010" target="pf14102844937378" source="pf14102844937364" outcome="avancaPesquisaConcluida"/>
 </pageflow:Pageflow>

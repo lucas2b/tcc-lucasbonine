@@ -142,6 +142,7 @@ public class EmpresasDAO extends DatabaseUtil implements InterfaceDAO<TB_EMPRESA
 	public TB_EMPRESAS popular(ResultSet rs) throws SQLException,
 			ClassNotFoundException {
 		TB_EMPRESAS empresa = new TB_EMPRESAS();
+		empresa.setID_EMPRESA(rs.getInt("ID_EMPRESA"));
 		empresa.setNOME_EMPRESA(rs.getString("NOME_EMPRESA"));
 		empresa.setCIDADE(cidadeDAO.buscarPorID(rs.getInt("ID_CIDADE")));
 		empresa.setCNPJ_EMPRESA(rs.getString("CNPJ_EMPRESA"));

@@ -4,13 +4,14 @@ public class TB_PERGUNTAS {
 	
 	private int ID_PERGUNTA;
 	private String PERGUNTA_TXT;
-	private boolean MULTI_SELECAO;
+	private boolean SELECAO_UNICA;
 	
-	public boolean isMULTI_SELECAO() {
-		return MULTI_SELECAO;
+	
+	public boolean isSELECAO_UNICA() {
+		return SELECAO_UNICA;
 	}
-	public void setMULTI_SELECAO(boolean mULTI_SELECAO) {
-		MULTI_SELECAO = mULTI_SELECAO;
+	public void setSELECAO_UNICA(boolean sELECAO_UNICA) {
+		SELECAO_UNICA = sELECAO_UNICA;
 	}
 	public int getID_PERGUNTA() {
 		return ID_PERGUNTA;

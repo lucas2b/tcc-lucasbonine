@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>  
+  		<link href="${request.contextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
+    </h:head> 
+	
+<h:body>
+<ui:composition template="../WEB-INF/templates/templateMain.xhtml">
+	<ui:define name="content">
+	<h:form>
+		<h:outputText value="PERGUNTA: "/>
+		<h:outputText value="#{respostasBEAN.pergunta}"/>
+		<br></br>
+		<h:outputText value="ATENÇÃO, ESSA PERGUNTA PERMITE SELECIONAR APENAS UMA ALTERNATIVA!" rendered="#{respostasBEAN.selecaoUnica}"/>
+		<br></br>
+		<h:dataTable value="#{respostasBEAN.listaDeAlternativasDaVez}" var="item" border="1">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="SELECIONAR"/>
+				</f:facet>
+				<h:selectBooleanCheckbox value="#{item.MARCADA}"/>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="ALTERNATIVA"/>
+				</f:facet>
+				<h:outputText value="#{item.COD_ALTERNATIVA}"/>
+				<h:outputText value=") "/>
+				<h:outputText value="#{item.ALTERNATIVA_TXT}"/>
+			</p:column>
+		</h:dataTable>
+		<br></br>
+		<h:commandButton value="Cancelar"/>
+		<h:outputText value=" "/>
+		<h:commandButton value="Proxima" action="#{respostasBEAN.acaoBotaoProximaPergunta}"/>
+		<br></br>
+		
+	</h:form>
+	</ui:define>
+</ui:composition>
+</h:body>
+</html>
