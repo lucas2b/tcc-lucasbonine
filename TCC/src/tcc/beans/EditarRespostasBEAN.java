@@ -136,7 +136,12 @@ public class EditarRespostasBEAN {
 	
 	public String acaoBotaoCancelar() throws ClassNotFoundException, SQLException{
 		listaEmpresasQueResponderam = empresasDAO.listarEmpresasQueResponderamPesquisa();
-		return null;
+		return "listarEmpresasQueResponderam";
+	}
+	
+	public String atualizarListagem() throws ClassNotFoundException, SQLException{
+		listaEmpresasQueResponderam = empresasDAO.listarEmpresasQueResponderamPesquisa();
+		return "relistarEmpresas2";
 	}
 	
 	//----------------------------- ROTINAS DE AUTOMAÇÃO ------------------------------

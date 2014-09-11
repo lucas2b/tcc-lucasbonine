@@ -42,7 +42,6 @@ public class AdicionarRespostasBEAN {
 	private List<TB_ALTERNATIVAS> 	  listaDeAlternativasDaVez;	  //Traz a lista de alternativas
 	private List<TB_PRODUCAO_EMPRESA> listaProducao 			  = new LinkedList<TB_PRODUCAO_EMPRESA>(); //acumula produção digitada na tela
 	private List<TB_EMPRESAS>  		  listaEmpresasNaoResponderam = empresasDAO.listarEmpresasQueNaoResponderamPesquisa();
-	private List<TB_EMPRESAS> 		  listaEmpresasQueResponderam = empresasDAO.listarEmpresasQueResponderamPesquisa();
 	private TB_EMPRESAS 			  empresaSelecionada;
 	private String					  pergunta;
 	private boolean					  selecaoUnica;
@@ -58,9 +57,7 @@ public class AdicionarRespostasBEAN {
 	public List<TB_EMPRESAS> getListaEmpresasNaoResponderam() {
 		return listaEmpresasNaoResponderam;
 	}
-	public List<TB_EMPRESAS> getListaEmpresasQueResponderam() {
-		return listaEmpresasQueResponderam;
-	}
+
 	public List<TB_PRODUCAO_EMPRESA> getListaProducao() {
 		return listaProducao;
 	}
@@ -172,6 +169,11 @@ public class AdicionarRespostasBEAN {
 	
 	public String acaoBotaoCancelar() throws ClassNotFoundException, SQLException{
 		return "listarEmpresasNaoResponderam";
+	}
+	
+	public String atualizarListagem() throws ClassNotFoundException, SQLException{
+		listaEmpresasNaoResponderam = empresasDAO.listarEmpresasQueNaoResponderamPesquisa();
+		return "relistarEmpresas1";
 	}
 	
 	//----------------------------- ROTINAS DE AUTOMAÇÃO ------------------------------
