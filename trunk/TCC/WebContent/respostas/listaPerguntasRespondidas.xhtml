@@ -34,11 +34,13 @@
 				<f:facet name="header">
 					<h:outputText value="AÇÃO"/>
 				</f:facet>
-				<h:commandLink value="Editar" action="#{editarRespostasBEAN.retificarResposta}">
+				<h:commandLink value="Editar resposta" action="#{editarRespostasBEAN.retificarResposta}">
 					<f:setPropertyActionListener target="#{editarRespostasBEAN.perguntaSelecionada}" value="#{item}"/>
 				</h:commandLink>
 			</p:column>
+			<br></br>
 		</h:dataTable>
+			<h:commandButton value="Voltar à listagem inicial" action="#{editarRespostasBEAN.acaoBotaoCancelar}"/>
 	</h:form>
 	</ui:define>
 </ui:composition>

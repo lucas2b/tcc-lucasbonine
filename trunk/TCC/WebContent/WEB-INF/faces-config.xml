@@ -264,5 +264,29 @@
 			<to-view-id>/respostas/listaPerguntasRespondidas.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/telaDeRetificacaoDeAlternativas.xhtml</display-name>
+		<from-view-id>/respostas/telaDeRetificacaoDeAlternativas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresasQueResponderam</from-outcome>
+			<to-view-id>/respostas/empresasQueResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/empresasQueNaoResponderam.xhtml</display-name>
+		<from-view-id>/respostas/empresasQueNaoResponderam.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>relistarEmpresas1</from-outcome>
+			<to-view-id>/respostas/empresasQueNaoResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/empresasQueResponderam.xhtml</display-name>
+		<from-view-id>/respostas/empresasQueResponderam.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>relistarEmpresas2</from-outcome>
+			<to-view-id>/respostas/empresasQueResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
