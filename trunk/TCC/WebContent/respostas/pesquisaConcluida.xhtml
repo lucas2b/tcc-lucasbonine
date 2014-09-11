@@ -14,9 +14,12 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
-
-	PESQUISA DA EMPRESA TAL CONCLUIDA
-
+	<h:form>
+	 	<p><h:outputText value="PESQUISA DA EMPRESA '#{adicionarRespostasBEAN.empresaSelecionada.NOME_EMPRESA}' CONCLUIDA!"/></p>
+	 	<br></br>
+	 	<br></br>
+	 	<h:commandButton value="Voltar" action="#{adicionarRespostasBEAN.acaoBotaoCancelar}"/> 
+	</h:form>
 	</ui:define>
 </ui:composition>
 </h:body>

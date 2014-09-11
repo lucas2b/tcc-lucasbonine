@@ -122,18 +122,20 @@ public class EmpresasBEAN {
 		return "listarEmpresas";
 	}
 	
+	public String startAdicionarEmpresa(){
+		empresaSelecionada = new TB_EMPRESAS(); //limpa para nova empresa
+		return "adicionarEmpresa";
+	}
+	
 	public String acaoBotaoCancelarAdicaoCidade(){
-		empresaSelecionada = new TB_EMPRESAS(); //zera novamente o campo responsável pela persistência para não dar pau
 		return "retornarAdicaoEmpresa";
 	}
 	
 	public String acaoBotaoCancelarAdicaoEmpresa(){
-		empresaSelecionada = new TB_EMPRESAS(); //zera novamente o campo responsável pela persistência para não dar pau
 		return "listarEmpresas";
 	}
 	
 	public String acaoBotaoVoltarDetalhes(){
-		empresaSelecionada = new TB_EMPRESAS(); //zera novamente o campo responsável pela persistência para não dar pau
 		return "listarEmpresas";
 	}
 	

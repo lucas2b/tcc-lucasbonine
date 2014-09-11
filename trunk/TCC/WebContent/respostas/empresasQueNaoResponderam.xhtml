@@ -15,7 +15,7 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-		<h:dataTable value="#{respostasBEAN.listaEmpresasNaoResponderam}" var="item" border="1">
+		<h:dataTable value="#{adicionarRespostasBEAN.listaEmpresasNaoResponderam}" var="item" border="1" >
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="ID"/>
@@ -26,8 +26,8 @@
 				<f:facet name="header">
 					<h:outputText value="NOME"/>
 				</f:facet>
-				<h:commandLink value="#{item.NOME_EMPRESA}" action="#{respostasBEAN.perguntaSobreProducao}">
-					<f:setPropertyActionListener target="#{respostasBEAN.empresaSelecionada}" value="#{item}"/>
+				<h:commandLink value="#{item.NOME_EMPRESA}" action="#{adicionarRespostasBEAN.perguntaSobreProducao}">
+					<f:setPropertyActionListener target="#{adicionarRespostasBEAN.empresaSelecionada}" value="#{item}"/>
 				</h:commandLink>
 			</p:column>
 		</h:dataTable>

@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import tcc.bd.DatabaseUtil;
+import tcc.dtos.TB_EMPRESAS;
+import tcc.dtos.TB_PERGUNTAS;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
 
 public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<TB_RESPOSTAS_PESQUISA>{
@@ -53,7 +55,7 @@ public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<T
 	@Override
 	public boolean excluir(TB_RESPOSTAS_PESQUISA parametro)
 			throws ClassNotFoundException, SQLException {
-		PreparedStatement ps = getPreparedStatement("DELETE FROM TB_RESPOSTAS_PESQUISA WHERE ID_REPOSTA=?");
+		PreparedStatement ps = getPreparedStatement("DELETE FROM TB_RESPOSTAS_PESQUISA WHERE ID_RESPOSTA=?");
 		ps.setInt(1, parametro.getID_RESPOSTA());
 		
 		return ps.execute();
@@ -84,4 +86,20 @@ public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<T
 	
 	//------------------------------------ MÉTODOS ADICIONAIS --------------------------------------------
 
+	//Excluir as alternativas de certa pergunta onde empresa se manifestou
+	public void excluirAlternativaPorChavePerguntaEmpresa(TB_EMPRESAS empresa, TB_PERGUNTAS pergunta)
+			throws ClassNotFoundException, SQLException {
+		
+		LinkedList<TB_RESPOSTAS_PESQUISA> listaChave = new LinkedList<TB_RESPOSTAS_PESQUISA>();
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_RESPOSTAS_PESQUISA WHERE ID_EMPRESA="+empresa.getID_EMPRESA()+" AND ID_PERGUNTA="+pergunta.getID_PERGUNTA());
+		
+		
+		while(rs.next()){
+			listaChave.add(popular(rs));
+		}
+		
+		for(TB_RESPOSTAS_PESQUISA deletar : listaChave){
+			excluir(deletar);
+		}
+	}
 }

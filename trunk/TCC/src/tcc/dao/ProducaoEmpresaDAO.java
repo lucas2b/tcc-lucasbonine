@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import tcc.bd.DatabaseUtil;
+import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PRODUCAO_EMPRESA;
 
 public class ProducaoEmpresaDAO extends DatabaseUtil implements InterfaceDAO<TB_PRODUCAO_EMPRESA>{
@@ -77,6 +78,19 @@ public class ProducaoEmpresaDAO extends DatabaseUtil implements InterfaceDAO<TB_
 			return popular(rs);
 		else
 			return null;
+	}
+	
+	//-------------------------- MÉTODOS ADICIONAIS ---------------------------------
+	
+	public LinkedList<TB_PRODUCAO_EMPRESA> retificarProducaoPorEmpresa(TB_EMPRESAS empresa) throws ClassNotFoundException, SQLException{
+		
+		LinkedList<TB_PRODUCAO_EMPRESA> retorno = new LinkedList<TB_PRODUCAO_EMPRESA>();
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_PRODUCAO_EMPRESA WHERE ID_EMPRESA="+empresa.getID_EMPRESA());
+		
+		while(rs.next()){
+			retorno.add(popular(rs));
+		}
+		return retorno;
 	}
 
 }

@@ -15,22 +15,24 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-		<h:dataTable value="#{editarRespostasBEAN.listaEmpresasQueResponderam}" var="item" border="1" >
+		<h:dataTable value="#{editarRespostasBEAN.listaProducao}" var="item" border="1">
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="ID"/>
+					<h:outputText value="Produto"/>
 				</f:facet>
-				<h:outputText value="#{item.ID_EMPRESA}"/>
+				<h:outputText value="#{item.PRODUTO.PRODUTO_DESC}"/>
 			</p:column>
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="NOME"/>
+					<h:outputText value="Produção"/>
 				</f:facet>
-				<h:commandLink value="#{item.NOME_EMPRESA}" action="#{editarRespostasBEAN.retificarProducao}">
-					<f:setPropertyActionListener target="#{editarRespostasBEAN.empresaSelecionada}" value="#{item}"/>
-				</h:commandLink>
+				<h:inputText value="#{item.PESO_PRODUCAO}"/>
 			</p:column>
 		</h:dataTable>
+		<br></br>
+		<h:commandButton value="Cancelar" action="#{editarRespostasBEAN.acaoBotaoCancelar}"/>
+		<h:outputText value=" "/>
+		<h:commandButton value="Avançar" action="#{editarRespostasBEAN.listarPerguntasRespondidas}"/>
 	</h:form>
 	</ui:define>
 </ui:composition>
