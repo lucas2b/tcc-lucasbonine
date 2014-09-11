@@ -14,7 +14,7 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
-	<h:form id="formPrincipal">
+	<h:form id="formPrincipal" prependId="false">
 		<p:fieldset legend="Cadastrar nova empresa" id="componente64">
 			<p:panelGrid columns="2" id="componente63">
 				<f:facet name="header">
@@ -37,7 +37,6 @@
 				<h:outputText value="Cidade: " id="componente5"/>
 				<h:selectOneMenu value="#{empresasBEAN.empresaSelecionada.CIDADE}"
 								 converter="conversorCidade"
-								 binding="#{empresasBEAN.comboCidades}"
 								 id="componente6">
 					<f:selectItems value="#{empresasBEAN.cidades}" id="componente64451"/>
 				</h:selectOneMenu>
@@ -118,7 +117,7 @@
 				<h:commandButton value="Salvar" action="#{empresasBEAN.acaoBotaoSalvar}" id="componente71"/>
 		</p:fieldset>
 	</h:form>
-	</ui:define>
+</ui:define>
 </ui:composition>
 </h:body>
 </html>

@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.component.html.HtmlSelectOneMenu;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
@@ -32,19 +31,8 @@ public class EmpresasBEAN {
 	
 	//Flags
 	private boolean flagEstadoSelecionado = false;
-	
-	//Componentes de tela
-	private HtmlSelectOneMenu comboCidades;
 
 	//------------------------------ GETTERS AND SETTERS --------------------------------
-	public HtmlSelectOneMenu getComboCidades() {
-		return comboCidades;
-	}
-
-	public void setComboCidades(HtmlSelectOneMenu comboCidades) {
-		this.comboCidades = comboCidades;
-	}
-
 	public TB_EMPRESAS getEmpresaSelecionada() {
 		return empresaSelecionada;
 	}
@@ -111,13 +99,15 @@ public class EmpresasBEAN {
 	//------------------------------ BOTÕES TELA ADICIONAR ------------------------------
 	
 	public String acaoBotaoSalvar() throws ClassNotFoundException, SQLException{			
-		if(comboCidades.getValue() != null){
+		if(empresaSelecionada.getCIDADE() != null && empresaSelecionada.getNOME_EMPRESA() != ""){
 			empresaDAO.adicionar(empresaSelecionada);
 			empresaSelecionada = new TB_EMPRESAS();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Cadastro realizado!", "Cadastro realizado!"));
 		}
-		else
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Cidade não selecionada!", "Cidade não selecionada!"));
+		else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Cidade não selecionada, ou nome vazio!", "Cidade não selecionada, ou nome vazio!"));
+			return "null";
+		}
 		
 		return "listarEmpresas";
 	}

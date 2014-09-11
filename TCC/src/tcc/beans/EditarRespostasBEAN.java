@@ -100,7 +100,8 @@ public class EditarRespostasBEAN {
 	}
 	
 	public String listarPerguntasRespondidas() throws ClassNotFoundException, SQLException{
-		//Perdurando a producao vinda da tela anterior
+		
+		//Perdurando no BD a producao vinda da tela anterior
 		for(TB_PRODUCAO_EMPRESA producaoEmpresa : listaProducao){
 			producaoEmpresaDAO.editar(producaoEmpresa);
 		} 
@@ -178,10 +179,6 @@ public class EditarRespostasBEAN {
 					
 					respostaPesquisaDAO.adicionar(resposta);		
 			}
-		}
-		
-		
-		//Perdurando produção
-		
+		}		
 	}
 }
