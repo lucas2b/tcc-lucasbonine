@@ -19,7 +19,7 @@ import tcc.dtos.TB_PRODUCAO_EMPRESA;
 import tcc.dtos.TB_PRODUTOS;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
 
-public class RespostasBEAN {
+public class AdicionarRespostasBEAN {
 	
 	
 	//-------------------------- DAO's -----------------------------------
@@ -36,11 +36,11 @@ public class RespostasBEAN {
 	
 	//------------------------- Flags de controle ----------------------------
 	private boolean flagPerguntaProducao = false;
-	private int iterador = 1;
+	private int iterador;
 	
 	//------------------------ COMPONENTES DE TELA ---------------------------
 	private List<TB_ALTERNATIVAS> 	  listaDeAlternativasDaVez;	  //Traz a lista de alternativas
-	private List<TB_PRODUCAO_EMPRESA> listaProducao 			  = new LinkedList<TB_PRODUCAO_EMPRESA>();
+	private List<TB_PRODUCAO_EMPRESA> listaProducao 			  = new LinkedList<TB_PRODUCAO_EMPRESA>(); //acumula produção digitada na tela
 	private List<TB_EMPRESAS>  		  listaEmpresasNaoResponderam = empresasDAO.listarEmpresasQueNaoResponderamPesquisa();
 	private List<TB_EMPRESAS> 		  listaEmpresasQueResponderam = empresasDAO.listarEmpresasQueResponderamPesquisa();
 	private TB_EMPRESAS 			  empresaSelecionada;
@@ -81,25 +81,31 @@ public class RespostasBEAN {
 		this.listaDeAlternativasDaVez = listaDeAlternativasDaVez;
 	}
 	
-	public RespostasBEAN() throws ClassNotFoundException, SQLException{
-		listaDeTodasAlternativas = alternativasDAO.retonarPacotesDeAlternativas();
+	public AdicionarRespostasBEAN() throws ClassNotFoundException, SQLException{
 	}
 	
 	//--------------------------- ADICIONAR RESPOSTA ------------------------------------
 	
 	//0 - Apresentação da pergunta sobre produção (vindo da listagem de empresas)
 	public String perguntaSobreProducao() throws ClassNotFoundException, SQLException{
+
+		//Trazendo novamente todas alternativas existentes à tela
+		listaDeTodasAlternativas = alternativasDAO.retonarPacotesDeAlternativas();
 		
-		//Populando componente de tela para inserir produção
+		//Limpando a lista acumuladora de produção
+		listaProducao.clear();
+		
+		//Preparando a TB_PRODUCAO_EMPRESA com todos produtos cadastrados
 		for(TB_PRODUTOS produto : produtosDAO.listarTodos()){
 			TB_PRODUCAO_EMPRESA producaoEmpresa = new TB_PRODUCAO_EMPRESA();
 			producaoEmpresa.setEMPRESA(empresaSelecionada);
 			producaoEmpresa.setPRODUTO(produto);
-			listaProducao.add(producaoEmpresa);
+			listaProducao.add(producaoEmpresa); //listaProducao é exibida na tela, basta entrar apenas o peso
 		}
 		
 		flagPerguntaProducao = true;
-		return "avancaPerguntaProducao"; //listaDeProducao pronta a ser exibida
+		iterador = 1;
+		return "avancaPerguntaProducao";
 	}
 	
 	public String acaoBotaoProximaPergunta() throws ClassNotFoundException, SQLException{
@@ -162,6 +168,10 @@ public class RespostasBEAN {
 			//Finaliza com sucesso a adição da pesquisa
 			return "avancaPesquisaConcluida";
 		}//Fim de 3
+	}
+	
+	public String acaoBotaoCancelar() throws ClassNotFoundException, SQLException{
+		return "listarEmpresasNaoResponderam";
 	}
 	
 	//----------------------------- ROTINAS DE AUTOMAÇÃO ------------------------------

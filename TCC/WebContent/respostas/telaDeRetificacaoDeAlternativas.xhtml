@@ -16,11 +16,11 @@
 	<ui:define name="content">
 	<h:form>
 		<h:outputText value="PERGUNTA: "/>
-		<h:outputText value="#{adicionarRespostasBEAN.pergunta}"/>
+		<h:outputText value="#{editarRespostasBEAN.pergunta}"/>
 		<br></br>
-		<h:outputText value="ATENÇÃO, ESSA PERGUNTA PERMITE SELECIONAR APENAS UMA ALTERNATIVA!" rendered="#{adicionarRespostasBEAN.selecaoUnica}"/>
+		<h:outputText value="ATENÇÃO, ESSA PERGUNTA PERMITE SELECIONAR APENAS UMA ALTERNATIVA!" rendered="#{editarRespostasBEAN.selecaoUnica}"/>
 		<br></br>
-		<h:dataTable value="#{adicionarRespostasBEAN.listaDeAlternativasDaVez}" var="item" border="1">
+		<h:dataTable value="#{editarRespostasBEAN.listaDeAlternativasDaVez}" var="item" border="1">
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="SELECIONAR"/>
@@ -37,9 +37,9 @@
 			</p:column>
 		</h:dataTable>
 		<br></br>
-		<h:commandButton value="Cancelar" action="#{adicionarRespostasBEAN.acaoBotaoCancelar}"/>
+		<h:commandButton value="Cancelar" action="#{editarRespostasBEAN.acaoBotaoCancelar}"/>
 		<h:outputText value=" "/>
-		<h:commandButton value="Proxima" action="#{adicionarRespostasBEAN.acaoBotaoProximaPergunta}"/>
+		<h:commandButton value="Proxima" action="#{editarRespostasBEAN.finalizarEdicao}"/>
 		<br></br>
 		
 	</h:form>

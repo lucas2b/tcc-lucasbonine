@@ -32,18 +32,15 @@
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>respostasBEAN</managed-bean-name>
-		<managed-bean-class>tcc.beans.RespostasBEAN</managed-bean-class>
+		<managed-bean-name>adicionarRespostasBEAN</managed-bean-name>
+		<managed-bean-class>tcc.beans.AdicionarRespostasBEAN</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
-	<navigation-rule>
-		<display-name>cadastros/gerenciarEmpresas.xhtml</display-name>
-		<from-view-id>/cadastros/gerenciarEmpresas.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>refresh</from-outcome>
-			<to-view-id>/cadastros/gerenciarEmpresas.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+	<managed-bean>
+		<managed-bean-name>editarRespostasBEAN</managed-bean-name>
+		<managed-bean-class>tcc.beans.EditarRespostasBEAN</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>cadastros/gerenciarEmpresas.xhtml</display-name>
 		<from-view-id>/cadastros/gerenciarEmpresas.xhtml</from-view-id>
@@ -193,6 +190,78 @@
 		<navigation-case>
 			<from-outcome>avancaPesquisaConcluida</from-outcome>
 			<to-view-id>/respostas/pesquisaConcluida.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/perguntaSobreProducao.xhtml</display-name>
+		<from-view-id>/respostas/perguntaSobreProducao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresasNaoResponderam</from-outcome>
+			<to-view-id>/respostas/empresasQueNaoResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/telaDeAlternativas.xhtml</display-name>
+		<from-view-id>/respostas/telaDeAlternativas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresasNaoResponderam</from-outcome>
+			<to-view-id>/respostas/empresasQueNaoResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/pesquisaConcluida.xhtml</display-name>
+		<from-view-id>/respostas/pesquisaConcluida.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresasNaoResponderam</from-outcome>
+			<to-view-id>/respostas/empresasQueNaoResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/listaPerguntasRespondidas.xhtml</display-name>
+		<from-view-id>/respostas/listaPerguntasRespondidas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresasQueResponderam</from-outcome>
+			<to-view-id>/respostas/empresasQueResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/empresasQueResponderam.xhtml</display-name>
+		<from-view-id>/respostas/empresasQueResponderam.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>retificarProducao</from-outcome>
+			<to-view-id>/respostas/telaDeRetificacaoDaProducao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/telaDeRetificacaoDaProducao.xhtml</display-name>
+		<from-view-id>/respostas/telaDeRetificacaoDaProducao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarPerguntasRespondidas</from-outcome>
+			<to-view-id>/respostas/listaPerguntasRespondidas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/listaPerguntasRespondidas.xhtml</display-name>
+		<from-view-id>/respostas/listaPerguntasRespondidas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>retificarResposta</from-outcome>
+			<to-view-id>/respostas/telaDeRetificacaoDeAlternativas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/telaDeRetificacaoDaProducao.xhtml</display-name>
+		<from-view-id>/respostas/telaDeRetificacaoDaProducao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarEmpresasQueResponderam</from-outcome>
+			<to-view-id>/respostas/empresasQueResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/telaDeRetificacaoDeAlternativas.xhtml</display-name>
+		<from-view-id>/respostas/telaDeRetificacaoDeAlternativas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltarATelaDePerguntas</from-outcome>
+			<to-view-id>/respostas/listaPerguntasRespondidas.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

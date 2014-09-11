@@ -15,19 +15,27 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-		<h:dataTable value="#{editarRespostasBEAN.listaEmpresasQueResponderam}" var="item" border="1" >
+		<h:outputText value="As perguntas respondidas pela empresa selecionada foram"/>
+		<br></br>
+		<h:dataTable value="#{editarRespostasBEAN.listaDePerguntasRespondidas}" var="item" border="1">
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="ID"/>
 				</f:facet>
-				<h:outputText value="#{item.ID_EMPRESA}"/>
+				<h:outputText value="#{item.ID_PERGUNTA}"/>
 			</p:column>
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="NOME"/>
+					<h:outputText value="PERGUNTA"/>
 				</f:facet>
-				<h:commandLink value="#{item.NOME_EMPRESA}" action="#{editarRespostasBEAN.retificarProducao}">
-					<f:setPropertyActionListener target="#{editarRespostasBEAN.empresaSelecionada}" value="#{item}"/>
+				<h:outputText value="#{item.PERGUNTA_TXT}"/>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="AÇÃO"/>
+				</f:facet>
+				<h:commandLink value="Editar" action="#{editarRespostasBEAN.retificarResposta}">
+					<f:setPropertyActionListener target="#{editarRespostasBEAN.perguntaSelecionada}" value="#{item}"/>
 				</h:commandLink>
 			</p:column>
 		</h:dataTable>
