@@ -17,7 +17,11 @@
 	<h:form>
 	<h:commandButton value="Adicionar Empresa" action="adicionarEmpresa"/>
 	<br></br>
+	<br></br>
 			<p:dataTable var="item" value="#{empresasBEAN.empresas}" paginator="true" rows="10">
+				<f:facet name="header">
+					<h:outputText value="Empresas cadastradas: "/>
+				</f:facet>
 				<p:column sortBy="#{item.NOME_EMPRESA}">
 					<f:facet name="header">
 						<h:outputText value="Nome da Empresa"/>
@@ -42,7 +46,7 @@
 					</f:facet>
 					<h:outputText value="#{item.TELEFONE2_EMPRESA}"/>
 				</p:column>
-				<p:column filterBy="#{item.NOME_DIRIGENTE}">
+				<p:column>
 					<f:facet name="header">
 						<h:outputText value="Dirigente"/>
 					</f:facet>
@@ -52,9 +56,9 @@
 					<f:facet name="header">
 						<h:outputText value="Ações"/>
 					</f:facet>
-					<p:commandButton value="Detalhes" action="#{empresasBEAN.visualizarDetalhes}">
+					<p:commandLink value="Detalhes" action="#{empresasBEAN.visualizarDetalhes}">
 						<f:setPropertyActionListener target="#{empresasBEAN.empresaSelecionadaDetalhes}" value="#{item}"/>
-					</p:commandButton>
+					</p:commandLink>
 				</p:column>
 			</p:dataTable>
 	</h:form>

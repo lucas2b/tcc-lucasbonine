@@ -15,13 +15,15 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
+	<p:panelGrid columns="2">
+	<h:outputText value="Selecione a Empresa: "/>
 	<h:selectOneMenu value="#{visualizarRespostasBEAN.empresaSelecionada}" converter="conversorEmpresa">
 		<f:selectItems value="#{visualizarRespostasBEAN.empresasQueResponderam}"/>
 	</h:selectOneMenu>
-	<br></br>
 	<h:commandButton value="Listar Respostas" action="#{visualizarRespostasBEAN.atualizar}"/>
+	</p:panelGrid>
 	<br></br>
-	<h:dataTable value="#{visualizarRespostasBEAN.exibicao}" var="item" border="1">
+	<p:dataTable value="#{visualizarRespostasBEAN.exibicao}" var="item" border="1">
 		<p:column>
 			<f:facet name="header">
 				<h:outputText value="PERGUNTA"/>
@@ -32,15 +34,13 @@
 			<f:facet name="header">
 				<h:outputText value="Alternativas Selecionadas"/>
 			</f:facet>
-			<h:dataTable value="#{item.respostas}" var="item2">
+			<h:dataTable value="#{item.respostas}" var="item2" border="1">
 				<p:column>
 					<h:outputText value="#{item2.ALTERNATIVA.ALTERNATIVA_TXT}"/>
 				</p:column>
 			</h:dataTable>
 		</p:column>
-	
-	</h:dataTable>
-	
+	</p:dataTable>
 	</h:form>
 	</ui:define>
 </ui:composition>

@@ -15,15 +15,11 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-	<br></br>
-	<p:panel header="Editar pergunta">
-	<br></br>
-	<h:outputText value="Editando a pergunta: '#{perguntasBEAN.perguntaSelecionada.PERGUNTA_TXT}'" style="font-weight: bold;"/>
-	<br></br>
+	<p:panel header="Editar alternativas: ">
 		<p:dataTable value="#{perguntasBEAN.listaDeAlternativas}" var="item" border="1">
 			<p:column>
 				<f:facet name="header">
-					<h:outputText value="ALTERNATIVAS"/>
+					<h:outputText value="#{perguntasBEAN.perguntaSelecionada.PERGUNTA_TXT}"/>
 				</f:facet>
 				<h:outputText value="#{item.COD_ALTERNATIVA}) "/>
 				<h:inputText size="100" value="#{item.ALTERNATIVA_TXT}"/>

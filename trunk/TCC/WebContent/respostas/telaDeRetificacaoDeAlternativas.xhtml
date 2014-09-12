@@ -15,12 +15,11 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-		<h:outputText value="PERGUNTA: "/>
-		<h:outputText value="#{editarRespostasBEAN.pergunta}"/>
-		<br></br>
 		<h:outputText value="ATENÇÃO, ESSA PERGUNTA PERMITE SELECIONAR APENAS UMA ALTERNATIVA!" rendered="#{editarRespostasBEAN.selecaoUnica}"/>
-		<br></br>
-		<h:dataTable value="#{editarRespostasBEAN.listaDeAlternativasDaVez}" var="item" border="1">
+		<p:dataTable value="#{editarRespostasBEAN.listaDeAlternativasDaVez}" var="item" border="1">
+			<f:facet name="header">
+				<h:outputText value="#{editarRespostasBEAN.pergunta}"/>
+			</f:facet>
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="SELECIONAR"/>
@@ -35,7 +34,7 @@
 				<h:outputText value=") "/>
 				<h:outputText value="#{item.ALTERNATIVA_TXT}"/>
 			</p:column>
-		</h:dataTable>
+		</p:dataTable>
 		<br></br>
 		<h:commandButton value="Cancelar" action="#{editarRespostasBEAN.acaoBotaoCancelar}"/>
 		<h:outputText value=" "/>
