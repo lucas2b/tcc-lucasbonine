@@ -15,9 +15,10 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-		<h:outputText value="As perguntas respondidas pela empresa selecionada foram"/>
-		<br></br>
-		<h:dataTable value="#{editarRespostasBEAN.listaDePerguntasRespondidas}" var="item" border="1">
+		<p:dataTable value="#{editarRespostasBEAN.listaDePerguntasRespondidas}" var="item" border="1" paginator="true" rows="10">
+			<f:facet name="header">
+				<h:outputText value="Lista de perguntas respondidas:"/>	
+			</f:facet>
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="ID"/>
@@ -34,13 +35,14 @@
 				<f:facet name="header">
 					<h:outputText value="AÇÃO"/>
 				</f:facet>
-				<h:commandLink value="Editar resposta" action="#{editarRespostasBEAN.retificarResposta}">
+				<h:commandLink value="Retificar resposta" action="#{editarRespostasBEAN.retificarResposta}">
 					<f:setPropertyActionListener target="#{editarRespostasBEAN.perguntaSelecionada}" value="#{item}"/>
 				</h:commandLink>
 			</p:column>
 			<br></br>
-		</h:dataTable>
-			<h:commandButton value="Voltar à listagem inicial" action="#{editarRespostasBEAN.acaoBotaoCancelar}"/>
+		</p:dataTable>
+		<br></br>
+		<h:commandButton value="Voltar à listagem inicial" action="#{editarRespostasBEAN.acaoBotaoCancelar}"/>
 	</h:form>
 	</ui:define>
 </ui:composition>

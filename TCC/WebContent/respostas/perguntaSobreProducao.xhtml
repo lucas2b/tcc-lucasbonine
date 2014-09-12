@@ -15,7 +15,7 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
-		<h:dataTable value="#{adicionarRespostasBEAN.listaProducao}" var="item" border="1">
+		<p:dataTable value="#{adicionarRespostasBEAN.listaProducao}" var="item" border="1">
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="Produto"/>
@@ -28,7 +28,7 @@
 				</f:facet>
 				<h:inputText value="#{item.PESO_PRODUCAO}"/>
 			</p:column>
-		</h:dataTable>
+		</p:dataTable>
 		<br></br>
 		<h:commandButton value="Cancelar" action="#{adicionarRespostasBEAN.acaoBotaoCancelar}"/>
 		<h:outputText value=" "/>
