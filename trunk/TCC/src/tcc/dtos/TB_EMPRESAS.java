@@ -175,5 +175,25 @@ public class TB_EMPRESAS {
 			TB_CLASSIFIC_ESPECIALISTA cLASSIFIC_ESPECIALISTA) {
 		CLASSIFIC_ESPECIALISTA = cLASSIFIC_ESPECIALISTA;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ID_EMPRESA;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TB_EMPRESAS other = (TB_EMPRESAS) obj;
+		if (ID_EMPRESA != other.ID_EMPRESA)
+			return false;
+		return true;
+	}
 	
 }

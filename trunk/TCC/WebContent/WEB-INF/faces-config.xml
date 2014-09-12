@@ -16,6 +16,10 @@
 		<converter-id>conversorAlternativas</converter-id>
 		<converter-class>tcc.conversores.ConversorAlternativas</converter-class>
 	</converter>
+	<converter>
+		<converter-id>conversorEmpresa</converter-id>
+		<converter-class>tcc.conversores.ConversorEmpresa</converter-class>
+	</converter>
 	<managed-bean>
 		<managed-bean-name>cidadesBEAN</managed-bean-name>
 		<managed-bean-class>tcc.beans.CidadesBEAN</managed-bean-class>
@@ -39,6 +43,11 @@
 	<managed-bean>
 		<managed-bean-name>editarRespostasBEAN</managed-bean-name>
 		<managed-bean-class>tcc.beans.EditarRespostasBEAN</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>visualizarRespostasBEAN</managed-bean-name>
+		<managed-bean-class>tcc.beans.VisualizarRespostasBEAN</managed-bean-class>
 		<managed-bean-scope>application</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
@@ -286,6 +295,14 @@
 		<navigation-case>
 			<from-outcome>relistarEmpresas2</from-outcome>
 			<to-view-id>/respostas/empresasQueResponderam.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/visualizarRespostas.xhtml</display-name>
+		<from-view-id>/respostas/visualizarRespostas.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>refreshVisualizarRespostas</from-outcome>
+			<to-view-id>/respostas/visualizarRespostas.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
