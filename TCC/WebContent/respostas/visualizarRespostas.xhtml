@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>  
+  		<link href="${request.contextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
+    </h:head> 
+	
+<h:body>
+<ui:composition template="../WEB-INF/templates/templateMain.xhtml">
+	<ui:define name="content">
+	<h:form>
+	<h:selectOneMenu value="#{visualizarRespostasBEAN.empresaSelecionada}" converter="conversorEmpresa">
+		<f:selectItems value="#{visualizarRespostasBEAN.empresasQueResponderam}"/>
+	</h:selectOneMenu>
+	<br></br>
+	<h:commandButton value="Listar Respostas" action="#{visualizarRespostasBEAN.atualizar}"/>
+	<br></br>
+	<h:dataTable value="#{visualizarRespostasBEAN.exibicao}" var="item" border="1">
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="PERGUNTA"/>
+			</f:facet>
+			<h:outputText value="#{item.pergunta.PERGUNTA_TXT}"/>
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Alternativas Selecionadas"/>
+			</f:facet>
+			<h:dataTable value="#{item.respostas}" var="item2">
+				<p:column>
+					<h:outputText value="#{item2.ALTERNATIVA.ALTERNATIVA_TXT}"/>
+				</p:column>
+			</h:dataTable>
+		</p:column>
+	
+	</h:dataTable>
+	
+	</h:form>
+	</ui:define>
+</ui:composition>
+</h:body>
+</html>

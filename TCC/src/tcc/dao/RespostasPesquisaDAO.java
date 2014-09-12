@@ -102,4 +102,16 @@ public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<T
 			excluir(deletar);
 		}
 	}
+	
+	public LinkedList<TB_RESPOSTAS_PESQUISA> listarRespostasPorPerguntaEEmpresa(TB_PERGUNTAS pergunta, TB_EMPRESAS empresa) throws ClassNotFoundException, SQLException{
+		
+		LinkedList<TB_RESPOSTAS_PESQUISA> listaChave = new LinkedList<TB_RESPOSTAS_PESQUISA>();
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_RESPOSTAS_PESQUISA WHERE ID_PERGUNTA="+pergunta.getID_PERGUNTA()+" AND ID_EMPRESA="+empresa.getID_EMPRESA());
+		
+		while(rs.next()){
+			listaChave.add(popular(rs));
+		}
+		
+		return listaChave;
+	}
 }
