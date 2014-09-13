@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import tcc.bd.DatabaseUtil;
+import tcc.dtos.TB_ALTERNATIVAS;
 import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PERGUNTAS;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
@@ -114,4 +115,5 @@ public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<T
 		
 		return listaChave;
 	}
+	
 }
