@@ -4,15 +4,16 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
 import tcc.dao.EmpresasDAO;
 import tcc.dao.PerguntasDAO;
 import tcc.dao.RespostasPesquisaDAO;
+import tcc.dtos.TB_ALTERNATIVAS;
 import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PERGUNTAS;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
+import tcc.mineradores.ColetorDeInstancias;
 
 public class VisualizarRespostasBEAN {
 			
@@ -38,22 +39,50 @@ public class VisualizarRespostasBEAN {
 		this.empresaSelecionada = empresaSelecionada;
 	}
 
-
+	//--------------------------- MÉTODOS ---------------------------------
 	
+	ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
+	
+	//Metodo para testas as instancias de mineração
+	public String imprimeInstancias() throws ClassNotFoundException, SQLException{
+		coletorDeInstancias.imprimeInstancias();
+		return "null";
+	}
+	
+	//Ação do botão que monta a table com as repostas de acordo com a empresaSelecionada
 	public String atualizar() throws ClassNotFoundException, SQLException{
 		exibicao.clear();
-		List<TB_PERGUNTAS> listaPerguntas = perguntasDAO.listarPerguntasRespondidasPorEmpresa(empresaSelecionada);
 		
+		//Lista todas as perguntas
+		List<TB_PERGUNTAS> listaPerguntas = perguntasDAO.listarTodos();
+		
+		//Varre pergunta por pergunta
 		for(TB_PERGUNTAS pergunta : listaPerguntas){
 			ClasseAuxiliar temp = new ClasseAuxiliar();
 			temp.setPergunta(pergunta);
-			temp.setRespostas(respostasDAO.listarRespostasPorPerguntaEEmpresa(pergunta, empresaSelecionada));
-			exibicao.add(temp);
+			
+			//Caso a empresa não tenha respondido a pergunta, monta uma instância falsa da ClasseAuxiliar com alternativa "NAO RESPONDEU"
+			if(respostasDAO.listarRespostasPorPerguntaEEmpresa(pergunta, empresaSelecionada).size() == 0){
+				TB_RESPOSTAS_PESQUISA respostaFalsa = new TB_RESPOSTAS_PESQUISA();
+				
+				TB_ALTERNATIVAS alternativaFalsa = new TB_ALTERNATIVAS();
+				alternativaFalsa.setALTERNATIVA_TXT("NÃO RESPONDEU");
+				respostaFalsa.setALTERNATIVA(alternativaFalsa);
+				
+				LinkedList<TB_RESPOSTAS_PESQUISA> listaDeRespostasFalsas = new LinkedList<TB_RESPOSTAS_PESQUISA>();
+				listaDeRespostasFalsas.add(respostaFalsa);
+				
+				temp.setRespostas(listaDeRespostasFalsas);
+				exibicao.add(temp);
+			}else{
+				temp.setRespostas(respostasDAO.listarRespostasPorPerguntaEEmpresa(pergunta, empresaSelecionada));
+				exibicao.add(temp);				
+			}
 		}
 		return "refreshVisualizarRespostas";
 	}
 	
-	//Métodos
+	//Combo das empresas que responderam a pesquisa
 	public List<SelectItem> getEmpresasQueResponderam() throws ClassNotFoundException, SQLException{
 		List<TB_EMPRESAS> empresasQueResponderam = empresasDAO.listarEmpresasQueResponderamPesquisa();
 		List<SelectItem> retorno = new LinkedList<SelectItem>();
@@ -65,6 +94,8 @@ public class VisualizarRespostasBEAN {
 		return retorno;
 	}
 	
+
+	//Classe que monta os atributos para visualização na tela
 	public class ClasseAuxiliar{
 		private TB_PERGUNTAS pergunta;
 		public TB_PERGUNTAS getPergunta() {
