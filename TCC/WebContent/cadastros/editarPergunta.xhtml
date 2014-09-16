@@ -11,10 +11,10 @@
   		<link href="${request.contextPath}/css/estilo.css" rel="stylesheet" type="text/css" />
     </h:head> 
 	
-<h:body>
+<h:body >
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
-	<h:form>
+	<h:form acceptcharset="ISO-8859-1">
 	<p:panel header="Editar alternativas: ">
 	<h:messages/>
 		<p:dataTable value="#{perguntasBEAN.listaDeAlternativas}" var="item" border="1">

@@ -14,7 +14,7 @@ public class DatabaseUtil {
 	public Connection getConnection() throws ClassNotFoundException, SQLException{
 		if(conn == null){
 			 Class.forName("com.mysql.jdbc.Driver");
-             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tcc_lucasbonine", "root", "root");
+             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tcc_lucasbonine_pesquisaapl", "root", "root");
 		}
 		return conn;
 	}
