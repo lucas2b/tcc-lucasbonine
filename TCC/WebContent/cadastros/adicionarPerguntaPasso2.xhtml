@@ -16,6 +16,7 @@
 	<ui:define name="content">
 	<h:form>
 	<p:fieldset legend="Adicionar nova pergunta">
+	<h:messages/>
 		<p:panelGrid columns="2">
 			<h:outputText value="Pergunta #{perguntasBEAN.contadorPerguntaAtual}:" style="font-weight: bold;"/>
 			<h:inputTextarea value="#{perguntasBEAN.auxPerguntas.pergunta.PERGUNTA_TXT}" cols="50" rows="3"/>
