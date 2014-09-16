@@ -14,7 +14,7 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
-	<h:form id="formPrincipal" prependId="false">
+	<h:form id="formPrincipal" prependId="false" acceptcharset="ISO-8859-1">
 		<p:fieldset legend="Cadastrar nova empresa" id="componente64">
 			<h:messages/>
 			<p:panelGrid columns="2" id="componente63">
@@ -23,7 +23,7 @@
 				</f:facet>
 				
 				<h:outputText value="Nome: " id="componente1"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.NOME_EMPRESA}" id="componente2" maxlength="255"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.NOME_EMPRESA}" id="componente2" maxlength="255" size="100"/>
 				
 				<h:outputText value="Estado: " id="componente3"/>
 				<h:selectOneMenu converter="conversorEstado"
@@ -46,43 +46,43 @@
 				<h:commandButton value="Adicionar nova Cidade" action="gerenciarCidades" id="componente8"/>
 				
 				<h:outputText value="CNPJ: " id="componente9"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.CNPJ_EMPRESA}" id="componente10" maxlength="18"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.CNPJ_EMPRESA}" id="componente10" maxlength="18" size="20"/>
 
 				
 				<h:outputText value="Endereço: " id="componente11"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.ENDERECO_EMPRESA}" id="componente12" maxlength="255"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.ENDERECO_EMPRESA}" id="componente12" maxlength="255" size="100"/>
 
 				
 				<h:outputText value="Telefone 1: " id="componente13"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE1_EMPRESA}" id="componente14" maxlength="20"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE1_EMPRESA}" id="componente14" maxlength="20" size="20"/>
 
 				
 				<h:outputText value="Telefone 2: " id="componente15"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE2_EMPRESA}" id="componente16" maxlength="20"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE2_EMPRESA}" id="componente16" maxlength="20" size="20"/>
 
 				
 				<h:outputText value="Email: " id="componente17"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMAIL_EMPRESA}" id="componente18" maxlength="100"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMAIL_EMPRESA}" id="componente18" maxlength="100" size="50"/>
 
 				
 				<h:outputText value="Site: " id="componente19"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.SITE_EMPRESA}" id="componente20" maxlength="100"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.SITE_EMPRESA}" id="componente20" maxlength="100" size="50"/>
 
 				
 				<h:outputText value="Empregos Formais: " id="componente21"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMPREGOS_FORMAIS}" id="componente22" />
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMPREGOS_FORMAIS}" id="componente22" size="10"/>
 
 				
 				<h:outputText value="Valor Anual de vendas no mercado int: " id="componente23"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.VLR_ANUAL_VENDAS_MERC_INT}" id="componente24"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.VLR_ANUAL_VENDAS_MERC_INT}" id="componente24" size="10"/>
 
 				
 				<h:outputText value="Valor Anual de vendas no mercado ext: " id="componente25"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.VLR_ANUAL_VENDAS_MERC_EXT}" id="componente26"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.VLR_ANUAL_VENDAS_MERC_EXT}" id="componente26" size="10"/>
 				
 				
 				<h:outputText value="Descrição da Empresa: " id="componente27"/>
-				<h:inputTextarea value="#{empresasBEAN.empresaSelecionada.DESCRICAO_EMPRESA}" id="componente28"/>
+				<h:inputTextarea value="#{empresasBEAN.empresaSelecionada.DESCRICAO_EMPRESA}" id="componente28" cols="60" rows="5"/>
 
 			</p:panelGrid>
 			<br></br>
@@ -92,25 +92,25 @@
 				</f:facet>
 				
 				<h:outputText value="Nome: " id="componente29"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.NOME_DIRIGENTE}" id="componente30" maxlength="255"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.NOME_DIRIGENTE}" id="componente30" maxlength="255" size="50"/>
 				
 				<h:outputText value="CPF: " id="componente31"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.CPF_DIRIGENTE}" id="componente32" maxlength="20"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.CPF_DIRIGENTE}" id="componente32" maxlength="20" size="20"/>
 				
 				<h:outputText value="Telefone 1: " id="componente33"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE1_DIRIGENTE}" id="componente34" maxlength="20"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE1_DIRIGENTE}" id="componente34" maxlength="20" size="20"/>
 				
 				<h:outputText value="Telefone 2: " id="componente35"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE2_DIRIGENTE}" id="componente36" maxlength="20"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.TELEFONE2_DIRIGENTE}" id="componente36" maxlength="20" size="20"/>
 				
 				<h:outputText value="Email: " id="componente37"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMAIL_DIRIGENTE}" id="componente38" maxlength="100"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.EMAIL_DIRIGENTE}" id="componente38" maxlength="100" size="50"/>
 				
 				<h:outputText value="Idade: (em anos)" id="componente39"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.IDADE_DIRIGENTE}" id="componente40"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.IDADE_DIRIGENTE}" id="componente40" size="2"/>
 				
 				<h:outputText value="Escolaridade: " id="componente41"/>
-				<h:inputText value="#{empresasBEAN.empresaSelecionada.ESCOLARIDADE_DIRIGENTE}" id="componente42" maxlength="50"/>
+				<h:inputText value="#{empresasBEAN.empresaSelecionada.ESCOLARIDADE_DIRIGENTE}" id="componente42" maxlength="50" size="30"/>
 			</p:panelGrid>
 				<br></br>
 				<h:commandButton value="Cancelar" action="#{empresasBEAN.acaoBotaoCancelarAdicaoEmpresa}" id="componente69"/>								

@@ -146,8 +146,8 @@ public class AdicionarRespostasBEAN {
 			listaDeAlternativasDaVez = listaDeTodasAlternativas.get(iterador);
 			
 			//Para elementos de exibição na tela
-			pergunta = listaDeAlternativasDaVez.get(iterador).getPERGUNTA().getPERGUNTA_TXT();
-			selecaoUnica = listaDeAlternativasDaVez.get(iterador).getPERGUNTA().isSELECAO_UNICA();
+			pergunta = listaDeAlternativasDaVez.get(0).getPERGUNTA().getPERGUNTA_TXT();
+			selecaoUnica = listaDeAlternativasDaVez.get(0).getPERGUNTA().isSELECAO_UNICA();
 			
 			//Incrementa o iterador para recuperar nova leva de alternativas
 			iterador++;
