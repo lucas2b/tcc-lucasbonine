@@ -17,6 +17,7 @@
 	<h:form>	
 		<!-- LISTAGEM DE CIDADES  -->
 		<p:panel header="Lista de cidades por estado">
+		<h:messages/>
 			<br></br>
 			<h:outputText value="Estado :"/>
 			<h:selectOneMenu value="#{cidadesBEAN.cidadeSelecionada.UF}" 
@@ -48,7 +49,7 @@
 			<p:fieldset legend="Adicionar/Editar Cidade">
 					<p:panelGrid columns="2">
 						<h:outputText value="Nome: "/>
-						<h:inputText value="#{cidadesBEAN.cidadeSelecionada.NOME_CIDADE}" binding="#{cidadesBEAN.txtNomeCidade}"/>
+						<h:inputText value="#{cidadesBEAN.cidadeSelecionada.NOME_CIDADE}" binding="#{cidadesBEAN.txtNomeCidade}" maxlength="50"/>
 						<h:commandButton value="Salvar" action="#{cidadesBEAN.acaoBotaoSalvar}"/>
 						<h:commandButton value="Cancelar Edição" action="#{cidadesBEAN.botaoCancelarEdicao}" rendered="#{cidadesBEAN.cancelarEdicao}"/>
 					</p:panelGrid>		
