@@ -9,16 +9,14 @@
   <nodes xsi:type="pageflow:PFPage" name="cadastros/editarEmpresa.xhtml" x="96" y="875" id="pf141021817161113" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf14102181716108" inlinks="pf14102181716104" path="/cadastros/editarEmpresa.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="cadastros/adicionarEmpresa.xhtml" x="324" y="691" id="pf141021817161114" referenceLink="//@navigationRule.14/@navigationCase.0/@toViewId|" outlinks="pf14102181716106 pf141022232178617" inlinks="pf14102181716103 pf141022232178618" path="/cadastros/adicionarEmpresa.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="cadastros/gerenciarCidades.xhtml" x="540" y="691" id="pf141021817161115" referenceLink="//@navigationRule.14/@fromViewId|" outlinks="pf141022232178618" inlinks="pf141022232178617" path="/cadastros/gerenciarCidades.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="respostas/empresasQueNaoResponderam.xhtml" x="936" y="336" id="pf14102844937350" referenceLink="//@navigationRule.29/@navigationCase.0/@toViewId|" outlinks="pf14102844937361 pf14104570445501" inlinks="pf14103850544580 pf14103850544581 pf14103850544582 pf14104570445501" path="/respostas/empresasQueNaoResponderam.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="respostas/perguntaSobreProducao.xhtml" x="1254" y="324" id="pf14102844937362" referenceLink="//@navigationRule.19/@fromViewId|" outlinks="pf14102844937363 pf14103850544580" inlinks="pf14102844937361" path="/respostas/perguntaSobreProducao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="respostas/telaDeAlternativas.xhtml" x="1512" y="324" id="pf14102844937364" referenceLink="//@navigationRule.20/@fromViewId|" outlinks="pf14102850610309 pf141028506103010 pf14103850544581" inlinks="pf14102844937363 pf14102850610309" path="/respostas/telaDeAlternativas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/empresasQueNaoResponderam.xhtml" x="936" y="336" id="pf14102844937350" referenceLink="//@navigationRule.29/@navigationCase.0/@toViewId|" outlinks="pf14104570445501 pf14109242821120" inlinks="pf14103850544581 pf14103850544582 pf14104570445501" path="/respostas/empresasQueNaoResponderam.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/telaDeAlternativas.xhtml" x="1512" y="324" id="pf14102844937364" referenceLink="//@navigationRule.20/@fromViewId|" outlinks="pf14102850610309 pf141028506103010 pf14103850544581" inlinks="pf14102850610309 pf14109242821120" path="/respostas/telaDeAlternativas.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="respostas/pesquisaConcluida.xhtml" x="1768" y="324" id="pf14102844937378" referenceLink="//@navigationRule.21/@fromViewId|" outlinks="pf14103850544582" inlinks="pf141028506103010" path="/respostas/pesquisaConcluida.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="respostas/empresasQueResponderam.xhtml" x="951" y="571" id="pf14103850544594" referenceLink="//@navigationRule.30/@navigationCase.0/@toViewId|" outlinks="pf141040182480625 pf14104570445502" inlinks="pf141039998537222 pf141040182480627 pf14104561551300 pf14104570445502" path="/respostas/empresasQueResponderam.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/empresasQueResponderam.xhtml" x="951" y="571" id="pf14103850544594" referenceLink="//@navigationRule.30/@navigationCase.0/@toViewId|" outlinks="pf14104570445502 pf14109242821141" inlinks="pf141039998537222 pf14104561551300 pf14104570445502" path="/respostas/empresasQueResponderam.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="respostas/listaPerguntasRespondidas.xhtml" x="122" y="2726" id="pf141039450840715" referenceLink="//@navigationRule.20/@navigationCase.0/@toViewId|" path="/respostas/listaAlternativasRespondidas.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="respostas/listaPerguntasRespondidas.xhtml" x="1512" y="571" id="pf141039586456220" referenceLink="//@navigationRule.27/@navigationCase.0/@toViewId|" outlinks="pf141039998537222 pf141040182480628" inlinks="pf141040182480629 pf141040379972932" path="/respostas/listaPerguntasRespondidas.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="respostas/telaDeRetificacaoDaProducao.xhtml" x="1240" y="571" id="pf141040182480630" referenceLink="//@navigationRule.26/@fromViewId|" outlinks="pf141040182480629 pf141040182480627" inlinks="pf141040182480625" path="/respostas/telaDeRetificacaoDaProducao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/listaPerguntasRespondidas.xhtml" x="1512" y="571" id="pf141039586456220" referenceLink="//@navigationRule.27/@navigationCase.0/@toViewId|" outlinks="pf141039998537222 pf141040182480628" inlinks="pf141040379972932 pf14109242821141" path="/respostas/listaPerguntasRespondidas.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="respostas/telaDeRetificacaoDeAlternativas.xhtml" x="1752" y="571" id="pf141040182480731" referenceLink="//@navigationRule.28/@fromViewId|" outlinks="pf141040379972932 pf14104561551300" inlinks="pf141040182480628" path="/respostas/telaDeRetificacaoDeAlternativas.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="respostas/visualizarRespostas.xhtml" x="1056" y="940" id="pf14104667163590" outlinks="pf14104667163601" inlinks="pf14104667163601" path="/respostas/visualizarRespostas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/visualizarRespostas.xhtml" x="1056" y="940" id="pf14104667163590" referenceLink="//@navigationRule.31/@navigationCase.0/@toViewId|" outlinks="pf14104667163601" inlinks="pf14104667163601" path="/respostas/visualizarRespostas.xhtml"/>
   <links id="pf14101101862562" target="pf14101101862573" source="pf14101024177520" outcome="paginaDetalhesEmpresa"/>
   <links id="pf14101793244361" target="pf14101793244362" source="pf14101793244360" outcome="avancaPasso2Perguntas"/>
   <links id="pf14102027183601" target="pf14102027183602" source="pf14102027183600" outcome="editarPergunta"/>
@@ -48,13 +46,7 @@
   <links id="pf141022232178618" target="pf141021817161114" source="pf141021817161115" outcome="retornarAdicaoEmpresa">
     <bendPoints d1Width="-1" d1Height="-79" d2Width="213" d2Height="-79"/>
   </links>
-  <links id="pf14102844937361" target="pf14102844937362" source="pf14102844937350" outcome="avancaPerguntaProducao"/>
-  <links id="pf14102844937363" target="pf14102844937364" source="pf14102844937362" outcome="avancaTelaAlternativas"/>
   <links id="pf141028506103010" target="pf14102844937378" source="pf14102844937364" outcome="avancaPesquisaConcluida"/>
-  <links id="pf14103850544580" target="pf14102844937350" source="pf14102844937362" outcome="listarEmpresasNaoResponderam">
-    <bendPoints d1Width="2" d1Height="110" d2Width="296" d2Height="98"/>
-    <bendPoints d1Width="-298" d1Height="110" d2Width="1" d2Height="98"/>
-  </links>
   <links id="pf14103850544581" target="pf14102844937350" source="pf14102844937364" outcome="listarEmpresasNaoResponderam">
     <bendPoints d1Width="-3" d1Height="-95" d2Width="537" d2Height="-107"/>
     <bendPoints d1Width="-530" d1Height="-95" d2Width="10" d2Height="-107"/>
@@ -77,13 +69,7 @@
     <bendPoints d1Height="109" d2Width="559" d2Height="109"/>
     <bendPoints d1Width="-537" d1Height="110" d2Width="22" d2Height="110"/>
   </links>
-  <links id="pf141040182480625" target="pf141040182480630" source="pf14103850544594" outcome="retificarProducao"/>
-  <links id="pf141040182480629" target="pf141039586456220" source="pf141040182480630" outcome="listarPerguntasRespondidas"/>
   <links id="pf141040182480628" target="pf141040182480731" source="pf141039586456220" outcome="retificarResposta"/>
-  <links id="pf141040182480627" target="pf14103850544594" source="pf141040182480630" outcome="listarEmpresasQueResponderam">
-    <bendPoints d1Width="-35" d1Height="-76" d2Width="259" d2Height="-76"/>
-    <bendPoints d1Width="-250" d1Height="-73" d2Width="44" d2Height="-73"/>
-  </links>
   <links id="pf141040379972932" target="pf141039586456220" source="pf141040182480731" outcome="voltarATelaDePerguntas">
     <bendPoints d1Width="2" d1Height="-65" d2Width="255" d2Height="-65"/>
     <bendPoints d1Width="-253" d1Height="-64" d2Height="-64"/>
@@ -108,4 +94,6 @@
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
+  <links id="pf14109242821120" target="pf14102844937364" source="pf14102844937350" outcome="avancaTelaAlternativas"/>
+  <links id="pf14109242821141" target="pf141039586456220" source="pf14103850544594" outcome="listarPerguntasRespondidas"/>
 </pageflow:Pageflow>

@@ -35,7 +35,7 @@
 				<f:facet name="header">
 					<h:outputText value="AÇÃO"/>
 				</f:facet>
-				<h:commandLink value="Retificar resposta" action="#{editarRespostasBEAN.retificarProducao}">
+				<h:commandLink value="Retificar resposta" action="#{editarRespostasBEAN.listarPerguntasRespondidas}">
 					<f:setPropertyActionListener target="#{editarRespostasBEAN.empresaSelecionada}" value="#{item}"/>
 				</h:commandLink>
 			</p:column>

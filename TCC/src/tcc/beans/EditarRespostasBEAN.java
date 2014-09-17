@@ -1,7 +1,6 @@
 package tcc.beans;
 
 import java.sql.SQLException;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -10,12 +9,10 @@ import javax.faces.context.FacesContext;
 import tcc.dao.AlternativasDAO;
 import tcc.dao.EmpresasDAO;
 import tcc.dao.PerguntasDAO;
-import tcc.dao.ProducaoEmpresaDAO;
 import tcc.dao.RespostasPesquisaDAO;
 import tcc.dtos.TB_ALTERNATIVAS;
 import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PERGUNTAS;
-import tcc.dtos.TB_PRODUCAO_EMPRESA;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
 
 public class EditarRespostasBEAN {
@@ -23,7 +20,6 @@ public class EditarRespostasBEAN {
 	
 	//-------------------------- DAO's -----------------------------------
 	private AlternativasDAO      alternativasDAO     = new AlternativasDAO();
-	private ProducaoEmpresaDAO   producaoEmpresaDAO  = new ProducaoEmpresaDAO();
 	private EmpresasDAO 	   	 empresasDAO 		 = new EmpresasDAO();
 	private RespostasPesquisaDAO respostaPesquisaDAO = new RespostasPesquisaDAO();
 	private PerguntasDAO 		 perguntasDAO 		 = new PerguntasDAO();
@@ -31,7 +27,6 @@ public class EditarRespostasBEAN {
 	
 	//------------------------ COMPONENTES DE TELA ---------------------------
 	private List<TB_ALTERNATIVAS> 	  listaDeAlternativasDaVez;	  //Traz a lista de alternativas
-	private List<TB_PRODUCAO_EMPRESA> listaProducao 			  = new LinkedList<TB_PRODUCAO_EMPRESA>();
 	private List<TB_EMPRESAS> 		  listaEmpresasQueResponderam = empresasDAO.listarEmpresasQueResponderamPesquisa();
 	private TB_EMPRESAS 			  empresaSelecionada;
 	private String					  pergunta;
@@ -66,12 +61,7 @@ public class EditarRespostasBEAN {
 	public List<TB_EMPRESAS> getListaEmpresasQueResponderam() {
 		return listaEmpresasQueResponderam;
 	}
-	public List<TB_PRODUCAO_EMPRESA> getListaProducao() {
-		return listaProducao;
-	}
-	public void setListaProducao(List<TB_PRODUCAO_EMPRESA> listaProducao) {
-		this.listaProducao = listaProducao;
-	}
+	
 	public TB_EMPRESAS getEmpresaSelecionada() {
 		return empresaSelecionada;
 	}
@@ -94,18 +84,8 @@ public class EditarRespostasBEAN {
 	//--------------------------- EDITAR RESPOSTA ------------------------------------
 	
 
-	public String retificarProducao() throws ClassNotFoundException, SQLException{
-		listaProducao = producaoEmpresaDAO.retificarProducaoPorEmpresa(empresaSelecionada);
-		return "retificarProducao";
-	}
 	
 	public String listarPerguntasRespondidas() throws ClassNotFoundException, SQLException{
-		
-		//Perdurando no BD a producao vinda da tela anterior
-		for(TB_PRODUCAO_EMPRESA producaoEmpresa : listaProducao){
-			producaoEmpresaDAO.editar(producaoEmpresa);
-		} 
-		
 		//Montando a exibição de perguntas já respondidas pela empresa
 		listaDePerguntasRespondidas = perguntasDAO.listarPerguntasRespondidasPorEmpresa(empresaSelecionada);
 		return "listarPerguntasRespondidas";
