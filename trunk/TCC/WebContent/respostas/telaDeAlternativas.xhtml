@@ -14,7 +14,7 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
-	<h:form>
+	<h:form acceptcharset="ISO-8859-1">
 		<h:outputText value="ATENÇÃO!! Essa pergunta permite apenas uma alternativa." rendered="#{adicionarRespostasBEAN.selecaoUnica}"/>
 		<p:dataTable value="#{adicionarRespostasBEAN.listaDeAlternativasDaVez}" var="item" border="1">
 			<f:facet name="header">

@@ -9,14 +9,10 @@ import javax.faces.context.FacesContext;
 
 import tcc.dao.AlternativasDAO;
 import tcc.dao.EmpresasDAO;
-import tcc.dao.ProducaoEmpresaDAO;
-import tcc.dao.ProdutosDAO;
 import tcc.dao.RespostasPesquisaDAO;
 import tcc.dtos.TB_ALTERNATIVAS;
 import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PERGUNTAS;
-import tcc.dtos.TB_PRODUCAO_EMPRESA;
-import tcc.dtos.TB_PRODUTOS;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
 
 public class AdicionarRespostasBEAN {
@@ -24,8 +20,6 @@ public class AdicionarRespostasBEAN {
 	
 	//-------------------------- DAO's -----------------------------------
 	private AlternativasDAO      alternativasDAO     = new AlternativasDAO();
-	private ProdutosDAO 	     produtosDAO         = new ProdutosDAO();
-	private ProducaoEmpresaDAO   producaoEmpresaDAO  = new ProducaoEmpresaDAO();
 	private EmpresasDAO 	   	 empresasDAO 		 = new EmpresasDAO();
 	private RespostasPesquisaDAO respostaPesquisaDAO = new RespostasPesquisaDAO();
 	
@@ -35,12 +29,11 @@ public class AdicionarRespostasBEAN {
 	private List<List<TB_ALTERNATIVAS>> listaDeRespostas = new LinkedList<List<TB_ALTERNATIVAS>>();
 	
 	//------------------------- Flags de controle ----------------------------
-	private boolean flagPerguntaProducao = false;
+	private boolean flagPrimeiraVez = true;
 	private int iterador;
 	
 	//------------------------ COMPONENTES DE TELA ---------------------------
 	private List<TB_ALTERNATIVAS> 	  listaDeAlternativasDaVez;	  //Traz a lista de alternativas
-	private List<TB_PRODUCAO_EMPRESA> listaProducao 			  = new LinkedList<TB_PRODUCAO_EMPRESA>(); //acumula produção digitada na tela
 	private List<TB_EMPRESAS>  		  listaEmpresasNaoResponderam = empresasDAO.listarEmpresasQueNaoResponderamPesquisa();
 	private TB_EMPRESAS 			  empresaSelecionada;
 	private String					  pergunta;
@@ -58,12 +51,6 @@ public class AdicionarRespostasBEAN {
 		return listaEmpresasNaoResponderam;
 	}
 
-	public List<TB_PRODUCAO_EMPRESA> getListaProducao() {
-		return listaProducao;
-	}
-	public void setListaProducao(List<TB_PRODUCAO_EMPRESA> listaProducao) {
-		this.listaProducao = listaProducao;
-	}
 	public TB_EMPRESAS getEmpresaSelecionada() {
 		return empresaSelecionada;
 	}
@@ -82,33 +69,14 @@ public class AdicionarRespostasBEAN {
 	}
 	
 	//--------------------------- ADICIONAR RESPOSTA ------------------------------------
-	
-	//0 - Apresentação da pergunta sobre produção (vindo da listagem de empresas)
-	public String perguntaSobreProducao() throws ClassNotFoundException, SQLException{
-
-		//Trazendo novamente todas alternativas existentes à tela
-		listaDeTodasAlternativas = alternativasDAO.retonarPacotesDeAlternativas();
 		
-		//Limpando a lista acumuladora de produção
-		listaProducao.clear();
-		
-		//Preparando a TB_PRODUCAO_EMPRESA com todos produtos cadastrados
-		for(TB_PRODUTOS produto : produtosDAO.listarTodos()){
-			TB_PRODUCAO_EMPRESA producaoEmpresa = new TB_PRODUCAO_EMPRESA();
-			producaoEmpresa.setEMPRESA(empresaSelecionada);
-			producaoEmpresa.setPRODUTO(produto);
-			listaProducao.add(producaoEmpresa); //listaProducao é exibida na tela, basta entrar apenas o peso
-		}
-		
-		flagPerguntaProducao = true;
-		iterador = 1;
-		return "avancaPerguntaProducao";
-	}
-	
 	public String acaoBotaoProximaPergunta() throws ClassNotFoundException, SQLException{
 		
 		//1 - Chegando da pergunta de produção (primeira transição para tela de alternativas)
-		if(flagPerguntaProducao == true){
+		if(flagPrimeiraVez == true){
+			
+			//Trazendo novamente todas alternativas existentes à tela
+			listaDeTodasAlternativas = alternativasDAO.retonarPacotesDeAlternativas();
 			
 			//Prepara para apresentar alternativas pela primeira vez
 			listaDeAlternativasDaVez = listaDeTodasAlternativas.get(0);
@@ -118,7 +86,10 @@ public class AdicionarRespostasBEAN {
 			selecaoUnica = listaDeAlternativasDaVez.get(0).getPERGUNTA().isSELECAO_UNICA();
 			
 			//Desativa a entrada no If
-			flagPerguntaProducao = false;
+			flagPrimeiraVez = false;
+			
+			//proxima
+			iterador = 1;
 			
 			//Apresenta a tela de alternativas
 			return "avancaTelaAlternativas";
@@ -152,7 +123,7 @@ public class AdicionarRespostasBEAN {
 			//Incrementa o iterador para recuperar nova leva de alternativas
 			iterador++;
 			
-			return "avancaTelaAlternativas";
+			return "apresentaTelaAlternativas";
 			
 		}else{
 			
@@ -168,6 +139,8 @@ public class AdicionarRespostasBEAN {
 	}
 	
 	public String acaoBotaoCancelar() throws ClassNotFoundException, SQLException{
+		flagPrimeiraVez = true;
+		iterador = 1;
 		return "listarEmpresasNaoResponderam";
 	}
 	
@@ -216,13 +189,7 @@ public class AdicionarRespostasBEAN {
 				}
 			}
 		}
-		
-		
-		//Perdurando produção
-		for(TB_PRODUCAO_EMPRESA producaoEmpresa : listaProducao){
-			producaoEmpresaDAO.adicionar(producaoEmpresa);
-		} 
-		
+				
 		//Setando empresa que já respondeu
 		empresasDAO.setarFlagDePesquisaRespondida(empresaSelecionada);
 	}
