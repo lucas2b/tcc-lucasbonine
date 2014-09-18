@@ -23,9 +23,9 @@
 		    	<p:menuitem value="Página Inicial" url="/index.faces"/>
 		    	
 		    	<p:submenu label="Cadastros" icon="ui-icon-document">  
-		  			<p:menuitem value="Cadastrar Empresas" url="/cadastros/gerenciarEmpresas.faces" />
+		  			<p:menuitem value="Empresas" url="/cadastros/gerenciarEmpresas.faces" />
 		            <p:separator />
-		            <p:menuitem value="Cadastrar Perguntas" url="/cadastros/gerenciarPerguntas.faces" />		       
+		            <p:menuitem value="Perguntas" url="/cadastros/gerenciarPerguntas.faces" />		       
 		            <p:separator />
 		            <p:menuitem value="Usuários do sistema"/>
 		        </p:submenu>
@@ -34,28 +34,18 @@
 		  			<p:menuitem value="Inserir Respostas" url="/respostas/empresasQueNaoResponderam.faces" />
 		            <p:separator />
 		            <p:menuitem value="Retificar Resposta" url="/respostas/empresasQueResponderam.faces" />
-		            <p:separator />
-		            <p:menuitem value="Visualizar Respostas" url="/respostas/visualizarRespostas.faces" />		       
 		        </p:submenu>
 		        
-		        <p:submenu label="Extrair conhecimento" icon="ui-icon-document">  
-		  			<p:menuitem value="Agrupamentos" url="/ManutencaoDoSistema/CadastroDeConvenios/convenios.xhtml" />
-		            <p:separator />
-		            <p:menuitem value="Associações" url="/ManutencaoDoSistema/CadastroDeLaboratorios/cadastrarNovoLaboratorio.xhtml" />
-		            <p:separator />
-		            <p:menuitem value="Classificações" url="/ManutencaoDoSistema/CadastroDeExames/cadastrarNovoExame.xhtml" />
-		            <p:separator />
-		        </p:submenu>
-		        
+		        <p:menuitem value="Visualizar Respostas" url="/respostas/visualizarRespostas.faces" />		       
+		        		        
 		        <p:submenu label="Relatórios" icon="ui-icon-document">
 		    		<p:menuitem value="Empresas cadastradas"/>
 		    	</p:submenu>
 		          
-		        <p:menuitem value="Sair" action="#{loginBean.deslogar}" ajax="false"/> 
+		        <p:menuitem value="Sair"/>
 		   </p:menubar>
 
 	</p:panel>
 </h:form>  
-
 </h:body>
 </html>
