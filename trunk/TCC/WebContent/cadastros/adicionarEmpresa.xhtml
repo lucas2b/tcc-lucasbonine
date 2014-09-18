@@ -12,9 +12,9 @@
     </h:head> 
 	
 <h:body>
-<ui:composition template="../WEB-INF/templates/templateMain.xhtml">
+<ui:composition template="../WEB-INF/templates/templateMain.xhtml">  
 	<ui:define name="content">
-	<h:form id="formPrincipal" prependId="false" acceptcharset="ISO-8859-1">
+	<h:form id="formPrincipal">
 		<p:fieldset legend="Cadastrar nova empresa" id="componente64">
 			<h:messages/>
 			<p:panelGrid columns="2" id="componente63">
@@ -113,7 +113,7 @@
 				<h:inputText value="#{empresasBEAN.empresaSelecionada.ESCOLARIDADE_DIRIGENTE}" id="componente42" maxlength="50" size="30"/>
 			</p:panelGrid>
 				<br></br>
-				<h:commandButton value="Cancelar" action="#{empresasBEAN.acaoBotaoCancelarAdicaoEmpresa}" id="componente69"/>								
+				<h:commandButton value="Cancelar" action="#{empresasBEAN.acaoBotaoCancelarAdicaoEmpresa}" id="componente69"/>							
 				<h:outputText value=" " id="componente70"/>
 				<h:commandButton value="Salvar" action="#{empresasBEAN.acaoBotaoSalvar}" id="componente71"/>
 		</p:fieldset>
