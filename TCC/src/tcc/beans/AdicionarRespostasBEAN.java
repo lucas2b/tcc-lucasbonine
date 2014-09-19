@@ -141,7 +141,7 @@ public class AdicionarRespostasBEAN {
 	public String acaoBotaoCancelar() throws ClassNotFoundException, SQLException{
 		listaDeRespostas.clear();
 		flagPrimeiraVez = true;
-		iterador = 1;
+		
 		return "listarEmpresasNaoResponderam";
 	}
 	
@@ -193,6 +193,9 @@ public class AdicionarRespostasBEAN {
 		
 		//limpando a lista de respostas
 		listaDeRespostas.clear();
+	
+		//setando para voltar para primeira vez
+		flagPrimeiraVez = true;
 				
 		//Setando empresa que já respondeu
 		empresasDAO.setarFlagDePesquisaRespondida(empresaSelecionada);
