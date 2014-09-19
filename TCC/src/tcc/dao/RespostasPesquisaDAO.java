@@ -116,4 +116,13 @@ public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<T
 		return listaChave;
 	}
 	
+	public boolean verificarSeAlternativaFoiRespondidaPorEmpresa(TB_EMPRESAS empresa, TB_ALTERNATIVAS alternativa) throws ClassNotFoundException, SQLException{
+		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_RESPOSTAS_PESQUISA WHERE ID_EMPRESA="+empresa.getID_EMPRESA()+" AND ID_ALTERNATIVA="+alternativa.getID_ALTERNATIVA());
+		
+		if(rs.next())
+			return true;
+		else
+			return false;
+	}
+	
 }
