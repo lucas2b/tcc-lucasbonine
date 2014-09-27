@@ -45,7 +45,7 @@ public class VisualizarRespostasBEAN {
 	
 	//Metodo para testas as instancias de mineração
 	public String imprimeInstancias() throws ClassNotFoundException, SQLException{
-		coletorDeInstancias.definicaoAtributos();
+		coletorDeInstancias.imprimeInstanciasVersao3();
 		return "null";
 	}
 	
