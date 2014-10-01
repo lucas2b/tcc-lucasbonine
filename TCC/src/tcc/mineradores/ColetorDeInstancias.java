@@ -100,9 +100,8 @@ public class ColetorDeInstancias extends DatabaseUtil{
 		}
 	}//Fim_versão2
 	
-	//Escreve na tela as respostas por alternativa de todas as perguntas
+	//Formato WEKA
 	public void imprimeInstanciasVersao3() throws ClassNotFoundException, SQLException{
-		int count = 0;
 		
 		//Imprimindo relation
 		System.out.println("@relation pesquisa");
