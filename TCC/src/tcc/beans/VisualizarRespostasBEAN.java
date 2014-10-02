@@ -19,26 +19,10 @@ import tcc.dtos.TB_RESPOSTAS_PESQUISA;
 import tcc.mineradores.Association;
 import tcc.mineradores.Classification;
 import tcc.mineradores.Clustering;
+import tcc.mineradores.ColetorDeInstancias;
 import weka.core.converters.ConverterUtils;
 
 public class VisualizarRespostasBEAN {
-	
-	
-	ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-	InputStream input = externalContext.getResourceAsStream("/WEB-INF/weka/weather.arff");
-	
-	
-	//ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
-	Classification testeWeka = new Classification();
-	Clustering clustering = new Clustering();
-	Association association = new Association();
-	//Metodo para testas as instancias de mineração
-		public String imprimeInstancias() throws Exception{
-			
-			ConverterUtils.DataSource convert = new ConverterUtils.DataSource(input);
-			testeWeka.classificar(0, convert);
-			return "null";
-		}
 			
 	private EmpresasDAO empresasDAO = new EmpresasDAO();
 	private PerguntasDAO perguntasDAO = new PerguntasDAO();
