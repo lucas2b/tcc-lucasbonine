@@ -1,9 +1,12 @@
 package tcc.beans;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import tcc.dao.EmpresasDAO;
@@ -16,8 +19,14 @@ import tcc.dtos.TB_RESPOSTAS_PESQUISA;
 import tcc.mineradores.Association;
 import tcc.mineradores.Classification;
 import tcc.mineradores.Clustering;
+import weka.core.converters.ConverterUtils;
 
 public class VisualizarRespostasBEAN {
+	
+	
+	ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+	InputStream input = externalContext.getResourceAsStream("/WEB-INF/weka/weather.arff");
+	
 	
 	//ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
 	Classification testeWeka = new Classification();
@@ -25,7 +34,9 @@ public class VisualizarRespostasBEAN {
 	Association association = new Association();
 	//Metodo para testas as instancias de mineração
 		public String imprimeInstancias() throws Exception{
-			association.associar();
+			
+			ConverterUtils.DataSource convert = new ConverterUtils.DataSource(input);
+			testeWeka.classificar(0, convert);
 			return "null";
 		}
 			
