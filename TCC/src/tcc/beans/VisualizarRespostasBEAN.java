@@ -13,9 +13,17 @@ import tcc.dtos.TB_ALTERNATIVAS;
 import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PERGUNTAS;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
-import tcc.mineradores.ColetorDeInstancias;
+import tcc.mineradores.Classification;
 
 public class VisualizarRespostasBEAN {
+	
+	//ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
+	Classification testeWeka = new Classification();
+	//Metodo para testas as instancias de mineração
+		public String imprimeInstancias() throws Exception{
+			testeWeka.classificar(0);
+			return "null";
+		}
 			
 	private EmpresasDAO empresasDAO = new EmpresasDAO();
 	private PerguntasDAO perguntasDAO = new PerguntasDAO();
@@ -40,14 +48,6 @@ public class VisualizarRespostasBEAN {
 	}
 
 	//--------------------------- MÉTODOS ---------------------------------
-	
-	ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
-	
-	//Metodo para testas as instancias de mineração
-	public String imprimeInstancias() throws ClassNotFoundException, SQLException{
-		coletorDeInstancias.imprimeInstanciasVersao3();
-		return "null";
-	}
 	
 	//Ação do botão que monta a table com as repostas de acordo com a empresaSelecionada
 	public String atualizar() throws ClassNotFoundException, SQLException{
