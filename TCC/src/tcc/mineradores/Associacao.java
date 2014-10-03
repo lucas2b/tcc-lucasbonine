@@ -1,7 +1,5 @@
 package tcc.mineradores;
 
-import java.util.List;
-
 import weka.associations.FPGrowth;
 import weka.associations.FilteredAssociator;
 import weka.core.Instances;
@@ -10,11 +8,8 @@ import weka.filters.unsupervised.attribute.Remove;
 
 public class Associacao {
 	
-	public void associar() throws Exception{
-		DataSource arquivo = new DataSource("/weather.arff");
+	public void associar(String[] remover, DataSource arquivo) throws Exception{
 		Instances instancias = arquivo.getDataSet();
-		
-
 		
 		String[] options = new String[16];
 		options[0] = "-P";
@@ -37,19 +32,9 @@ public class Associacao {
 		FPGrowth fpGrowth = new FPGrowth();
 		fpGrowth.setOptions(options);
 		
-		// filter
+		// filtro de remoção
 		 Remove rm = new Remove();
 		 rm.setAttributeIndices("84,85,86,87,88,89,90,91,168,169,216,217,218");
-//		 rm.setAttributeIndices("86");
-//		 rm.setAttributeIndices("87");
-//		 rm.setAttributeIndices("88");
-//		 rm.setAttributeIndices("89");
-//		 rm.setAttributeIndices("90");
-//		 rm.setAttributeIndices("91");
-//		 rm.setAttributeIndices("92");
-//		 rm.setAttributeIndices("210");
-//		 rm.setAttributeIndices("211");
-//		 
 		
 		FilteredAssociator filteredAssociator = new FilteredAssociator();
 		filteredAssociator.setFilter(rm);
@@ -57,8 +42,6 @@ public class Associacao {
 		filteredAssociator.buildAssociations(instancias);
 		
 		System.out.println(filteredAssociator);
-		
-		
 		
 //		List<AssociationRule> listaDeAssociacoes = fpGrowth.getAssociationRules();
 //		

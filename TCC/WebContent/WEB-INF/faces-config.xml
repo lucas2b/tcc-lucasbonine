@@ -286,5 +286,21 @@
 			<to-view-id>/conhecimento/classificacao.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>conhecimento/associacao.xhtml</display-name>
+		<from-view-id>/conhecimento/associacao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>refreshAssociacoes</from-outcome>
+			<to-view-id>/conhecimento/associacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>conhecimento/agrupamento.xhtml</display-name>
+		<from-view-id>/conhecimento/agrupamento.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>refreshAgrupamentos</from-outcome>
+			<to-view-id>/conhecimento/agrupamento.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>

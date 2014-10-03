@@ -2,8 +2,10 @@ package tcc.mineradores;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
+
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
@@ -27,6 +29,7 @@ public class Classificacao{
     	j48.setOptions(options);
     	j48.buildClassifier(instancias);
     	
+    	    	
     	TreeVisualizer tv = new TreeVisualizer(null, j48.graph(), new PlaceNode1());        
     	tv.setSize(800, 600);
     	tv.fitToScreen();
@@ -54,9 +57,7 @@ public class Classificacao{
 		
 		//Criando novo arquivo
 		File arquivoImagem = new File(caminhoDeEscrita+"/classific.jpg");
-        //File arquivoImagem = new File("C:\\teste\\classific.jpg");
 		
-		arquivoImagem.delete();
 		arquivoImagem = new File(caminhoDeEscrita+"/classific.jpg");
 		
 		if(ImageIO.write(imagem, "jpg", arquivoImagem))

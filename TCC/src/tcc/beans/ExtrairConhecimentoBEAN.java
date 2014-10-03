@@ -10,8 +10,6 @@ import tcc.mineradores.ColetorDeInstancias;
 import weka.core.converters.ConverterUtils.DataSource;
 
 public class ExtrairConhecimentoBEAN {
-	
-	
 	private int idAlternativa;
 	
 	public int getIdAlternativa() {
@@ -22,23 +20,41 @@ public class ExtrairConhecimentoBEAN {
 		this.idAlternativa = idAlternativa;
 	}
 
+	//Achadores de caminho para o arquivo
 	ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+	DataSource arquivo;
 	
+	//Montador do arquivo
 	ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
-	Classificacao classificacao = new Classificacao();
-	Agrupamento agrupamento = new Agrupamento();
-	Associacao associacao = new Associacao();
+	
+	//Classses de mineração
+	Classificacao 		classificacao = new Classificacao();
+	Agrupamento 		agrupamento = new Agrupamento();
+	Associacao 			associacao = new Associacao();
 
 	//Metodo para testas as instancias de mineração	
 	public String escreveArquivo() throws Exception{
 			coletorDeInstancias.escreveArquivoArff();
+			
 			return "null";
 	}
 	
 	public String realizarClassificacao() throws Exception{
-		DataSource arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
+		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
 		classificacao.classificar(idAlternativa, arquivo);
 		return "refreshClassific";
+	}
+	
+	public String realizarAssociacoes() throws Exception{
+		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
+		associacao.associar(null, arquivo);
+		return "refreshAssociacoes"; 
+	}
+	
+	public String realizarAgrupamentos() throws Exception{
+		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
+		agrupamento.agrupar(0, arquivo);
+		return "refreshAgrupamentos"; 
 	}
 
 }
