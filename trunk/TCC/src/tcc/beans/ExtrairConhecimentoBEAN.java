@@ -5,10 +5,11 @@ import java.io.InputStream;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import tcc.mineradores.Association;
-import tcc.mineradores.Classification;
-import tcc.mineradores.Clustering;
+import tcc.mineradores.Associacao;
+import tcc.mineradores.Classificacao;
+import tcc.mineradores.Agrupamento;
 import tcc.mineradores.ColetorDeInstancias;
+import weka.core.converters.ConverterUtils.DataSource;
 
 public class ExtrairConhecimentoBEAN {
 	
@@ -19,9 +20,9 @@ public class ExtrairConhecimentoBEAN {
 	
 	
 	ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
-	Classification testeWeka = new Classification();
-	Clustering clustering = new Clustering();
-	Association association = new Association();
+	Classificacao classificacao = new Classificacao();
+	Agrupamento agrupamento = new Agrupamento();
+	Associacao associacao = new Associacao();
 
 	//Metodo para testas as instancias de mineração	
 	public String escreveArquivo() throws Exception{
@@ -29,6 +30,12 @@ public class ExtrairConhecimentoBEAN {
 	//		ConverterUtils.DataSource convert = new ConverterUtils.DataSource(input);
 	//		testeWeka.classificar(0, convert);
 			return "null";
+	}
+	
+	public String realizarClassificacao() throws Exception{
+		DataSource arquivo = new DataSource(input);
+		classificacao.classificar(0, arquivo);
+		return null;
 	}
 
 }

@@ -1,11 +1,17 @@
 package tcc.mineradores;
 
 import java.awt.BorderLayout;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
 
+import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
@@ -13,11 +19,9 @@ import weka.core.converters.ConverterUtils.DataSource;
 import weka.gui.treevisualizer.PlaceNode2;
 import weka.gui.treevisualizer.TreeVisualizer;
 
-public class Classification{
+public class Classificacao{
  
     public boolean classificar(int index, DataSource arquivo) throws Exception{
-    	
-    	//DataSource arquivo = new DataSource("/weather.arff");
     	Instances instancias = arquivo.getDataSet();
     	instancias.setClassIndex(index);
     	
@@ -37,28 +41,36 @@ public class Classification{
     	j48.buildClassifier(instancias);
     	
     	//Mostrando janelinha
-        final javax.swing.JFrame jf = 
-          new javax.swing.JFrame("Weka Classifier Tree Visualizer: J48");
-        jf.setSize(500,400);
-        jf.getContentPane().setLayout(new BorderLayout());
+//        final javax.swing.JFrame jf = 
+//          new javax.swing.JFrame("Weka Classifier Tree Visualizer: J48");
+//        jf.setSize(800,600);
+//        jf.getContentPane().setLayout(new BorderLayout());
         
         TreeVisualizer tv = new TreeVisualizer(null, j48.graph(), new PlaceNode2());
         tv.setSize(800,600);
-        jf.getContentPane().add(tv, BorderLayout.CENTER);
-        jf.addWindowListener(new java.awt.event.WindowAdapter() {
-          public void windowClosing(java.awt.event.WindowEvent e) {
-            jf.dispose();
-          }
-        });
+        
+//        jf.getContentPane().add(tv, BorderLayout.CENTER);
+//        jf.addWindowListener(new java.awt.event.WindowAdapter() {
+//          public void windowClosing(java.awt.event.WindowEvent e) {
+//            jf.dispose();
+//          }
+//        });
     
-        jf.setVisible(true);
-        tv.fitToScreen();
+        //jf.setVisible(true);
+        //tv.fitToScreen();
         
         //Escrevendo imagem em arquivo
         BufferedImage imagem = ScreenImage.createImage(tv);
-        File outputfile = new File("C:\\teste\\out.jpg");
         
-        if(ImageIO.write(imagem, "jpg", outputfile))
+        //Caminho de escrita
+        String caminhoDeEscrita = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/conhecimento");
+		
+		//Criando novo arquivo
+		//File arquivoImagem = new File(caminhoDeEscrita+"\\classificacao.jpg");
+        File arquivoImagem = new File("C:\\teste\\classificacao.jpg");
+		
+		
+		if(ImageIO.write(imagem, "jpg", arquivoImagem))
         	return true;
         else
         	return false;
