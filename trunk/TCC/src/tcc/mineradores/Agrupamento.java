@@ -7,10 +7,7 @@ import weka.core.converters.ConverterUtils.DataSource;
 
 public class Agrupamento {
 	
-	public void agrupar() throws Exception{
-		
-	
-		DataSource arquivo = new DataSource("/weather.arff");
+	public void agrupar(int numeroDeGrupos, DataSource arquivo) throws Exception{
 		Instances instancias = arquivo.getDataSet();
 		
 		String[] options = new String[9];
@@ -30,8 +27,8 @@ public class Agrupamento {
 
 		Instances instanciasCalculadas = simpleKMeans.getClusterCentroids();
 		
-		System.out.println("Grupo1: " + instanciasCalculadas.instance(0).stringValue(0));
-		//System.out.println("Grupo2: " + instanciasCalculadas.instance(1));
+		System.out.println("Grupo1: " + instanciasCalculadas.instance(0));
+		System.out.println("Grupo2: " + instanciasCalculadas.instance(1));
 		
 		
 //		for ( int i = 0; i < instanciasCalculadas.numInstances(); i++ ) {
