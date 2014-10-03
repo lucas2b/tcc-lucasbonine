@@ -16,7 +16,8 @@
   <nodes xsi:type="pageflow:PFPage" name="respostas/listaPerguntasRespondidas.xhtml" x="122" y="2726" id="pf141039450840715" referenceLink="//@navigationRule.20/@navigationCase.0/@toViewId|" path="/respostas/listaAlternativasRespondidas.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="respostas/listaPerguntasRespondidas.xhtml" x="1512" y="571" id="pf141039586456220" referenceLink="//@navigationRule.27/@navigationCase.0/@toViewId|" outlinks="pf141039998537222 pf141040182480628" inlinks="pf141040379972932 pf14109242821141" path="/respostas/listaPerguntasRespondidas.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="respostas/telaDeRetificacaoDeAlternativas.xhtml" x="1752" y="571" id="pf141040182480731" referenceLink="//@navigationRule.22/@fromViewId|" outlinks="pf141040379972932 pf14104561551300" inlinks="pf141040182480628" path="/respostas/telaDeRetificacaoDeAlternativas.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="respostas/visualizarRespostas.xhtml" x="1056" y="940" id="pf14104667163590" referenceLink="//@navigationRule.25/@navigationCase.0/@toViewId|" outlinks="pf14104667163601" inlinks="pf14104667163601" path="/respostas/visualizarRespostas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="respostas/visualizarRespostas.xhtml" x="73" y="1032" id="pf14104667163590" referenceLink="//@navigationRule.25/@navigationCase.0/@toViewId|" outlinks="pf14104667163601" inlinks="pf14104667163601" path="/respostas/visualizarRespostas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conhecimento/classificacao.xhtml" x="349" y="1020" id="pf14123138046450" outlinks="pf14123138046451" inlinks="pf14123138046451" path="/conhecimento/classificacao.xhtml"/>
   <links id="pf14101101862562" target="pf14101101862573" source="pf14101024177520" outcome="paginaDetalhesEmpresa"/>
   <links id="pf14101793244361" target="pf14101793244362" source="pf14101793244360" outcome="avancaPasso2Perguntas"/>
   <links id="pf14102027183601" target="pf14102027183602" source="pf14102027183600" outcome="editarPergunta"/>
@@ -96,4 +97,9 @@
   </links>
   <links id="pf14109242821120" target="pf14102844937364" source="pf14102844937350" outcome="avancaTelaAlternativas"/>
   <links id="pf14109242821141" target="pf141039586456220" source="pf14103850544594" outcome="listarPerguntasRespondidas"/>
+  <links id="pf14123138046451" target="pf14123138046450" source="pf14123138046450" outcome="refreshClassific">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
 </pageflow:Pageflow>

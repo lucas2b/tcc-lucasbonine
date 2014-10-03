@@ -14,7 +14,7 @@ public class Classificacao{
  
 	public boolean classificar(int index, DataSource arquivo) throws Exception{
     	Instances instancias = arquivo.getDataSet();
-    	instancias.setClassIndex(55);
+    	instancias.setClassIndex(index);
     	
     	String[] options = new String[4];
     	options[0] = "-C";
@@ -53,9 +53,11 @@ public class Classificacao{
         String caminhoDeEscrita = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/conhecimento");
 		
 		//Criando novo arquivo
-		//File arquivoImagem = new File(caminhoDeEscrita+"/classific.jpg");
-        File arquivoImagem = new File("C:\\teste\\classific.jpg");
+		File arquivoImagem = new File(caminhoDeEscrita+"/classific.jpg");
+        //File arquivoImagem = new File("C:\\teste\\classific.jpg");
 		
+		arquivoImagem.delete();
+		arquivoImagem = new File(caminhoDeEscrita+"/classific.jpg");
 		
 		if(ImageIO.write(imagem, "jpg", arquivoImagem))
         	return true;
