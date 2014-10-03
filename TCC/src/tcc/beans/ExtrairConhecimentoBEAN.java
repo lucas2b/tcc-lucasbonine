@@ -11,19 +11,18 @@ import weka.core.converters.ConverterUtils.DataSource;
 
 public class ExtrairConhecimentoBEAN {
 	
-	private String caminho;
 	
-	public String getCaminho() {
-		return caminho;
+	private int idAlternativa;
+	
+	public int getIdAlternativa() {
+		return idAlternativa;
 	}
 
-	public void setCaminho(String caminho) {
-		this.caminho = caminho;
+	public void setIdAlternativa(int idAlternativa) {
+		this.idAlternativa = idAlternativa;
 	}
 
 	ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-	//InputStream input = externalContext.getResourceAsStream("\\conhecimento\\pesquisa.arff");
-	
 	
 	ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
 	Classificacao classificacao = new Classificacao();
@@ -37,10 +36,9 @@ public class ExtrairConhecimentoBEAN {
 	}
 	
 	public String realizarClassificacao() throws Exception{
-		caminho = externalContext.getRealPath("/conhecimento/pesquisa.arff");		
-		DataSource arquivo = new DataSource(caminho);
-		classificacao.classificar(0, arquivo);
-		return "null";
+		DataSource arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
+		classificacao.classificar(idAlternativa, arquivo);
+		return "refreshClassific";
 	}
 
 }

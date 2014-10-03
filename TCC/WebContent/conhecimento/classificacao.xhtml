@@ -18,10 +18,16 @@
 		<h:commandButton value="Imprimir todas instancias" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
 		<br></br>
+		<h:outputText value="Entre com o ID da alternativa: "/>
+		<h:inputText value="#{extrairConhecimentoBEAN.idAlternativa}"/>
+		<br></br>
+		<br></br>
 		<h:commandButton value="Realizar Classificacao" action="#{extrairConhecimentoBEAN.realizarClassificacao}"/>
 		<br></br>
 		<br></br>
-		<h:outputText value="#{extrairConhecimentoBEAN.caminho}"/>
+		<h:outputText value="Imagem da classificação"/>
+		<br></br>
+		<h:graphicImage url="http://localhost:8080/TCC/conhecimento/classific.jpg"></h:graphicImage>
 	</h:form>
 	</ui:define>
 </ui:composition>
