@@ -3,7 +3,6 @@ package tcc.mineradores;
 import java.util.List;
 
 import weka.associations.FPGrowth;
-import weka.associations.FPGrowth.AssociationRule;
 import weka.associations.FilteredAssociator;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
