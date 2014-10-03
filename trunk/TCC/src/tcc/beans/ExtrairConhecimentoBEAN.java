@@ -13,10 +13,18 @@ import weka.core.converters.ConverterUtils.DataSource;
 
 public class ExtrairConhecimentoBEAN {
 	
+	private String caminho;
 	
-	
+	public String getCaminho() {
+		return caminho;
+	}
+
+	public void setCaminho(String caminho) {
+		this.caminho = caminho;
+	}
+
 	ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-	InputStream input = externalContext.getResourceAsStream("/conhecimento/pesquisa.arff");
+	//InputStream input = externalContext.getResourceAsStream("\\conhecimento\\pesquisa.arff");
 	
 	
 	ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
@@ -26,16 +34,15 @@ public class ExtrairConhecimentoBEAN {
 
 	//Metodo para testas as instancias de mineração	
 	public String escreveArquivo() throws Exception{
-			coletorDeInstancias.escreveArquivoArff();	
-	//		ConverterUtils.DataSource convert = new ConverterUtils.DataSource(input);
-	//		testeWeka.classificar(0, convert);
+			coletorDeInstancias.escreveArquivoArff();
 			return "null";
 	}
 	
 	public String realizarClassificacao() throws Exception{
-		DataSource arquivo = new DataSource(input);
+		caminho = externalContext.getRealPath("/conhecimento/pesquisa.arff");		
+		DataSource arquivo = new DataSource(caminho);
 		classificacao.classificar(0, arquivo);
-		return null;
+		return "null";
 	}
 
 }

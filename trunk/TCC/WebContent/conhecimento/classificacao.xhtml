@@ -17,7 +17,11 @@
 	<h:form>	
 		<h:commandButton value="Imprimir todas instancias" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
+		<br></br>
 		<h:commandButton value="Realizar Classificacao" action="#{extrairConhecimentoBEAN.realizarClassificacao}"/>
+		<br></br>
+		<br></br>
+		<h:outputText value="#{extrairConhecimentoBEAN.caminho}"/>
 	</h:form>
 	</ui:define>
 </ui:composition>

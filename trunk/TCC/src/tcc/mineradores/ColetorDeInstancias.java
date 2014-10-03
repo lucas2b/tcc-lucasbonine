@@ -29,8 +29,10 @@ public class ColetorDeInstancias extends DatabaseUtil{
 		
 		String caminhoDeEscrita = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/conhecimento");
 		
+		
+		
 		//Criando arquivo no caminho
-		File arquivo = new File(caminhoDeEscrita+"\\pesquisa.arff");
+		File arquivo = new File(caminhoDeEscrita+"/pesquisa.arff");
 		arquivo.createNewFile();
 		
 		//Escritor do arquivo
