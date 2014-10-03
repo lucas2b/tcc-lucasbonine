@@ -1,7 +1,5 @@
 package tcc.beans;
 
-import java.io.InputStream;
-
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
