@@ -9,7 +9,7 @@ import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.unsupervised.attribute.Remove;
 
-public class Association {
+public class Associacao {
 	
 	public void associar() throws Exception{
 		DataSource arquivo = new DataSource("/weather.arff");

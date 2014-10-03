@@ -5,7 +5,7 @@ import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 
-public class Clustering {
+public class Agrupamento {
 	
 	public void agrupar() throws Exception{
 		

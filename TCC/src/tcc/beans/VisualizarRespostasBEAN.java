@@ -1,12 +1,9 @@
 package tcc.beans;
 
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 import tcc.dao.EmpresasDAO;
@@ -16,11 +13,7 @@ import tcc.dtos.TB_ALTERNATIVAS;
 import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PERGUNTAS;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
-import tcc.mineradores.Association;
-import tcc.mineradores.Classification;
-import tcc.mineradores.Clustering;
-import tcc.mineradores.ColetorDeInstancias;
-import weka.core.converters.ConverterUtils;
+
 
 public class VisualizarRespostasBEAN {
 			
@@ -113,5 +106,4 @@ public class VisualizarRespostasBEAN {
 		}
 	
 	}
-
 }
