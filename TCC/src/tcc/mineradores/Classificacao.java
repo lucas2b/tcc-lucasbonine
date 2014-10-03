@@ -25,15 +25,11 @@ public class Classificacao{
     	Instances instancias = arquivo.getDataSet();
     	instancias.setClassIndex(index);
     	
-    	//são 255 alternativas, então a seleção vai de 0 a 254
-    	System.out.println("Numero de atributos: " + instancias.numAttributes());
-    	
     	String[] options = new String[4];
     	options[0] = "-C";
     	options[1] = "0.25";
     	options[2] = "-M";
-    	options[3] = "2";
-    	
+    	options[3] = "2"; 	
     	
     	J48 j48 = new J48();
     	j48.setUnpruned(false);
@@ -66,7 +62,7 @@ public class Classificacao{
         String caminhoDeEscrita = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/conhecimento");
 		
 		//Criando novo arquivo
-		//File arquivoImagem = new File(caminhoDeEscrita+"\\classificacao.jpg");
+		//File arquivoImagem = new File(caminhoDeEscrita+"/classificacao.jpg");
         File arquivoImagem = new File("C:\\teste\\classificacao.jpg");
 		
 		
