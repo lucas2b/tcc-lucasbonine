@@ -14,21 +14,22 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
-	<h:form>	
+	<p:panel header="Tarefa de Classoficação">
+		<h:form>	
 		<h:commandButton value="Gerar arquivo" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
 		<br></br>
 		<h:outputText value="Entre com o ID da alternativa: "/>
-		<h:inputText value="#{extrairConhecimentoBEAN.idAlternativa}"/>
-		<br></br>
-		<br></br>
+		<h:inputText value="#{extrairConhecimentoBEAN.idAlternativa}" size="1"/>
+		<h:outputText value=" "/>
 		<h:commandButton value="Realizar Classificacao" action="#{extrairConhecimentoBEAN.realizarClassificacao}"/>
 		<br></br>
 		<br></br>
-		<h:outputText value="Imagem da classificação"/>
+		<h:outputText value="Imagem da classificação: "/>
 		<br></br>
 		<h:graphicImage url="http://localhost:8080/TCC/conhecimento/classific.jpg"></h:graphicImage>
-	</h:form>
+		</h:form>
+	</p:panel>
 	</ui:define>
 </ui:composition>
 </h:body>

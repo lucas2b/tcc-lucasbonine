@@ -11,7 +11,16 @@ import weka.core.converters.ConverterUtils.DataSource;
 
 public class ExtrairConhecimentoBEAN {
 	private int idAlternativa;
+	private String alternativasARemover;
 	
+	public String getAlternativasARemover() {
+		return alternativasARemover;
+	}
+
+	public void setAlternativasARemover(String alternativasARemover) {
+		this.alternativasARemover = alternativasARemover;
+	}
+
 	public int getIdAlternativa() {
 		return idAlternativa;
 	}
