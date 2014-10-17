@@ -16,10 +16,11 @@
 	<ui:define name="content">
 	<p:panel header="Tarefa de Associação">
 		<h:form>
-		<h:commandButton value="Gerar arquivo" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
+		<h:commandButton value="Gerar Novo arquivo Weka" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
 		<br></br>
-		<h:outputText value="Excluir da Associação os seguintes números das alternativas: (separado por virgula) "/>
+		<h:outputText value="Excluir das regras os seguintes números das alternativas: (separado por virgula)"/>
+		<br></br>
 		<h:inputText value="#{extrairConhecimentoBEAN.alternativasARemover}" size="70" />
 		<br></br>
 		<br></br>
@@ -28,7 +29,20 @@
 		<br></br>
 		<h:outputText value="Regras: "/>
 		<br></br>
-		<h:inputTextarea rows="30" cols="70" value="#{extrairConhecimentoBEAN.regrasDeAssociacao}"/>
+		<p:dataTable value="#{extrairConhecimentoBEAN.regrasDeAssociacao}" var="item" border="1">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Regras"/>
+				</f:facet>
+				<h:outputText value="#{item.regra}"/>
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Confiabilidade"/>
+				</f:facet>
+				<h:outputText value="#{item.confiabilidade}"/>
+			</p:column>
+		</p:dataTable>
 		</h:form>
 	</p:panel>
 

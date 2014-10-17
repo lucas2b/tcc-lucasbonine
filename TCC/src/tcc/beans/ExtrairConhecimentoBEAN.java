@@ -11,6 +11,7 @@ import org.primefaces.model.chart.PieChartModel;
 
 import tcc.mineradores.Agrupamento.Grupo;
 import tcc.mineradores.Associacao;
+import tcc.mineradores.Associacao.Regras;
 import tcc.mineradores.Classificacao;
 import tcc.mineradores.Agrupamento;
 import tcc.mineradores.ColetorDeInstancias;
@@ -19,9 +20,17 @@ import weka.core.converters.ConverterUtils.DataSource;
 public class ExtrairConhecimentoBEAN{
 	private int idAlternativa;
 	private String alternativasARemover;
-	private String regrasDeAssociacao;
+	private LinkedList<Regras> regrasDeAssociacao;
 	private int gruposDesejados=2;
 	private PieChartModel modeloPizza;
+
+	public LinkedList<Regras> getRegrasDeAssociacao() {
+		return regrasDeAssociacao;
+	}
+
+	public void setRegrasDeAssociacao(LinkedList<Regras> regrasDeAssociacao) {
+		this.regrasDeAssociacao = regrasDeAssociacao;
+	}
 
 	public PieChartModel getModeloPizza() {
 		return modeloPizza;
@@ -39,13 +48,7 @@ public class ExtrairConhecimentoBEAN{
 		this.gruposDesejados = gruposDesejados;
 	}
 
-	public String getRegrasDeAssociacao() {
-		return regrasDeAssociacao;
-	}
 
-	public void setRegrasDeAssociacao(String regrasDeAssociacao) {
-		this.regrasDeAssociacao = regrasDeAssociacao;
-	}
 
 	public String getAlternativasARemover() {
 		return alternativasARemover;
