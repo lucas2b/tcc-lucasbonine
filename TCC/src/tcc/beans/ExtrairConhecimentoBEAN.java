@@ -1,17 +1,13 @@
 package tcc.beans;
 
-import java.io.Serializable;
+
 import java.util.LinkedList;
 
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.chart.PieChartModel;
-
-import com.sun.org.apache.xml.internal.security.Init;
 
 import tcc.mineradores.Agrupamento.Grupo;
 import tcc.mineradores.Associacao;
@@ -24,17 +20,8 @@ public class ExtrairConhecimentoBEAN{
 	private int idAlternativa;
 	private String alternativasARemover;
 	private String regrasDeAssociacao;
-	private int gruposDesejados;
+	private int gruposDesejados=2;
 	private PieChartModel modeloPizza;
-	private boolean renderPizza = false;
-	
-	public boolean isRenderPizza() {
-		return renderPizza;
-	}
-
-	public void setRenderPizza(boolean renderPizza) {
-		this.renderPizza = renderPizza;
-	}
 
 	public PieChartModel getModeloPizza() {
 		return modeloPizza;
@@ -76,6 +63,13 @@ public class ExtrairConhecimentoBEAN{
 		this.idAlternativa = idAlternativa;
 	}
 	
+	 //------------------------------------- MÉTODOS -----------------------------------------
+	
+	 public ExtrairConhecimentoBEAN() throws Exception{
+		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
+		LinkedList<Agrupamento.Grupo> grupos = agrupamento.agrupar(String.valueOf(gruposDesejados), arquivo);
+		criarModeloPizza(grupos);
+	 }
 
 	//Achadores de caminho para o arquivo
 	ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -107,21 +101,13 @@ public class ExtrairConhecimentoBEAN{
 		return "refreshAssociacoes"; 
 	}
 	
+	
+	static LinkedList<Agrupamento.Grupo> grupos;
 	public String realizarAgrupamentos() throws Exception{
 		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
-		LinkedList<Agrupamento.Grupo> grupos = agrupamento.agrupar(String.valueOf(gruposDesejados), arquivo);
-		renderPizza = true;
+		ExtrairConhecimentoBEAN.grupos = agrupamento.agrupar(String.valueOf(gruposDesejados), arquivo);
 		criarModeloPizza(grupos);
 		
-//		for(Grupo grupo : grupos){
-//			System.out.println("Percentual deste grupo: " + grupo.getPercentualNesteGrupo() + "%");
-//			
-//			System.out.println("Alternativas que compoem este perfil:");
-//			for(String alternativa : grupo.getListaAlternativas()){
-//				System.out.print(alternativa+" ");
-//			}
-//			System.out.println();
-//		}
 		return "refreshAgrupamentos"; 
 	}
 	
@@ -136,15 +122,15 @@ public class ExtrairConhecimentoBEAN{
 		}
 		
 		modeloPizza.setShowDataLabels(true);
-        modeloPizza.setTitle("Agrupamentos de perfis");
+        modeloPizza.setTitle("Agrupamento por perfis. Exibindo: "+gruposDesejados+" grupos.");
         modeloPizza.setLegendPosition("w");
     }
 	
-	public void itemSelecionado(ItemSelectEvent event) {
-		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
-                "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex());
- 
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+	public void itemSelecionado(ItemSelectEvent event) throws Exception{
+		for(String alternativa : ExtrairConhecimentoBEAN.grupos.get(event.getItemIndex()).getListaAlternativas()){
+			System.out.print(alternativa+" ");
+		}
+		System.out.println();
     }
 
 }

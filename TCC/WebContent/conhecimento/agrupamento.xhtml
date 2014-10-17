@@ -16,6 +16,7 @@
 	<ui:define name="content">
 	<p:panel header="Tarefa de Agrupamento">
 		<h:form>
+		<p:growl id="growl" showDetail="true" />
 		<h:commandButton value="Gerar arquivo" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
 		<br></br>
@@ -25,10 +26,12 @@
 		<br></br>
 		<h:commandButton value="Realizar agrupamentos" action="#{extrairConhecimentoBEAN.realizarAgrupamentos}"/>
 		<br></br>
-		<p:growl id="growl" showDetail="true" />
-		<p:chart type="pie" model="#{extrairConhecimentoBEAN.modeloPizza}" style="width:640px;height:480px" rendered="#{extrairConhecimentoBEAN.renderPizza}">
+		<br></br>
+		<p:panelGrid columns="1">
+		<p:chart type="pie" model="#{extrairConhecimentoBEAN.modeloPizza}" style="width:640px;height:480px">
 		        <p:ajax event="itemSelect" listener="#{extrairConhecimentoBEAN.itemSelecionado}" update="growl"/>
 		</p:chart>
+		</p:panelGrid>
 		
 		</h:form>
 	</p:panel>

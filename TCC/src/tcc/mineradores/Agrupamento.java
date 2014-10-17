@@ -42,6 +42,7 @@ public class Agrupamento {
 		return listaDeGrupos;
 	}
 	
+	
 	public class Grupo{
 		private LinkedList<String> listaAlternativas = new LinkedList<String>();
 		private int percentualNesteGrupo;
