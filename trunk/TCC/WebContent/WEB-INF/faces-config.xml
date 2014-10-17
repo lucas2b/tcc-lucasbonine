@@ -55,11 +55,6 @@
 		<managed-bean-class>tcc.beans.ExtrairConhecimentoBEAN</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>chartView</managed-bean-name>
-		<managed-bean-class>tcc.beans.ChartView</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>
 	<navigation-rule>
 		<display-name>cadastros/gerenciarEmpresas.xhtml</display-name>
 		<from-view-id>/cadastros/gerenciarEmpresas.xhtml</from-view-id>

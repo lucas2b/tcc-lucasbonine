@@ -1,5 +1,6 @@
 package tcc.mineradores;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import weka.associations.FPGrowth;
@@ -11,7 +12,7 @@ import weka.filters.unsupervised.attribute.Remove;
 
 public class Associacao {
 	
-	public String associar(String remover, DataSource arquivo) throws Exception{
+	public LinkedList<Regras> associar(String remover, DataSource arquivo) throws Exception{
 		Instances instancias = arquivo.getDataSet();
 		
 		String[] options = new String[16];
@@ -53,15 +54,42 @@ public class Associacao {
 		
 		List<AssociationRule> listaDeAssociacoes = fpGrowth.getAssociationRules();
 		
-		String retorno="";
+		LinkedList<Regras> listaDeRegras = new LinkedList<Associacao.Regras>();
+		
 		for(AssociationRule regra : listaDeAssociacoes){
-			retorno += "Se: " +regra.getPremise().toString();
-			retorno += " Então: "+regra.getConsequence().toString();
-			retorno += " / Confiabilidade: "+ (int)(regra.getMetricValue()*100)+"%\n"; 
+			
+			String retorno="";			
+			retorno += "Se "+regra.getPremise().toString();
+			retorno += " => Então "+regra.getConsequence().toString();
+			
+			Regras regraInterna = new Regras();
+			regraInterna.setRegra(retorno);
+
+			String confiabilidade = String.valueOf(((int)(regra.getMetricValue()*100)))+"%"; 
+			regraInterna.setConfiabilidade(confiabilidade);
+			
+			listaDeRegras.add(regraInterna);
 		}
 		
 		//System.out.println(retorno);
-		return retorno;
+		return listaDeRegras;
+	}
+	
+	public class Regras{
+		private String regra;
+		public String getRegra() {
+			return regra;
+		}
+		public void setRegra(String regra) {
+			this.regra = regra;
+		}
+		public String getConfiabilidade() {
+			return confiabilidade;
+		}
+		public void setConfiabilidade(String confiabilidade) {
+			this.confiabilidade = confiabilidade;
+		}
+		private String confiabilidade;
 	}
 
 }
