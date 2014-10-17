@@ -19,11 +19,17 @@
 		<h:commandButton value="Gerar arquivo" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
 		<br></br>
-		<h:outputText value="Número de grupos desejados: "/><h:inputText size="1"/>
+		<h:outputText value="Número de grupos desejados: "/><h:inputText value="#{extrairConhecimentoBEAN.gruposDesejados}" size="1"/>
 		<h:outputText value=" "/>
 		<br></br>
 		<br></br>
 		<h:commandButton value="Realizar agrupamentos" action="#{extrairConhecimentoBEAN.realizarAgrupamentos}"/>
+		<br></br>
+		<p:growl id="growl" showDetail="true" />
+		<p:chart type="pie" model="#{extrairConhecimentoBEAN.modeloPizza}" style="width:640px;height:480px" rendered="#{extrairConhecimentoBEAN.renderPizza}">
+		        <p:ajax event="itemSelect" listener="#{extrairConhecimentoBEAN.itemSelecionado}" update="growl"/>
+		</p:chart>
+		
 		</h:form>
 	</p:panel>
 

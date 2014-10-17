@@ -19,11 +19,16 @@
 		<h:commandButton value="Gerar arquivo" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
 		<br></br>
-		<h:outputText value="Excluir da Associação os seguintes ID's de alternativas: "/>
-		<h:inputText value="#{extrairConhecimentoBEAN.alternativasARemover}" size="10"/>
+		<h:outputText value="Excluir da Associação os seguintes números das alternativas: (separado por virgula) "/>
+		<h:inputText value="#{extrairConhecimentoBEAN.alternativasARemover}" size="70" />
 		<br></br>
 		<br></br>
 		<h:commandButton value="Realizar Associações" action="#{extrairConhecimentoBEAN.realizarAssociacoes}"/>
+		<br></br>
+		<br></br>
+		<h:outputText value="Regras: "/>
+		<br></br>
+		<h:inputTextarea rows="30" cols="70" value="#{extrairConhecimentoBEAN.regrasDeAssociacao}"/>
 		</h:form>
 	</p:panel>
 

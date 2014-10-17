@@ -1,6 +1,9 @@
 package tcc.mineradores;
 
+import java.util.List;
+
 import weka.associations.FPGrowth;
+import weka.associations.FPGrowth.AssociationRule;
 import weka.associations.FilteredAssociator;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
@@ -8,7 +11,7 @@ import weka.filters.unsupervised.attribute.Remove;
 
 public class Associacao {
 	
-	public void associar(String[] remover, DataSource arquivo) throws Exception{
+	public String associar(String remover, DataSource arquivo) throws Exception{
 		Instances instancias = arquivo.getDataSet();
 		
 		String[] options = new String[16];
@@ -32,24 +35,33 @@ public class Associacao {
 		FPGrowth fpGrowth = new FPGrowth();
 		fpGrowth.setOptions(options);
 		
-		// filtro de remoção
-		 Remove rm = new Remove();
-		 rm.setAttributeIndices("84,85,86,87,88,89,90,91,168,169,216,217,218");
-		
 		FilteredAssociator filteredAssociator = new FilteredAssociator();
-		filteredAssociator.setFilter(rm);
+		
+		// filtro de remoção
+		if(remover != null){			
+			System.out.println(remover);
+			Remove rm = new Remove();
+			rm.setAttributeIndices(remover);
+			filteredAssociator.setFilter(rm);
+		}
+		
 		filteredAssociator.setAssociator(fpGrowth);
 		filteredAssociator.buildAssociations(instancias);
 		
-		System.out.println(filteredAssociator);
+		//Deixar para debugar isso aqui pois exibe mais coisas
+		//System.out.println(fpGrowth);
 		
-//		List<AssociationRule> listaDeAssociacoes = fpGrowth.getAssociationRules();
-//		
-//		for(AssociationRule regra : listaDeAssociacoes){
-//			System.out.print(regra.getPremise().toString());
-//			System.out.print(regra.getConsequence().toString());
-//			System.out.println();
-//		}
+		List<AssociationRule> listaDeAssociacoes = fpGrowth.getAssociationRules();
+		
+		String retorno="";
+		for(AssociationRule regra : listaDeAssociacoes){
+			retorno += "Se: " +regra.getPremise().toString();
+			retorno += " Então: "+regra.getConsequence().toString();
+			retorno += " / Confiabilidade: "+ (int)(regra.getMetricValue()*100)+"%\n"; 
+		}
+		
+		//System.out.println(retorno);
+		return retorno;
 	}
 
 }
