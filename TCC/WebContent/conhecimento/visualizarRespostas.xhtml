@@ -15,6 +15,9 @@
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
 	<h:form>
+	<h:commandButton value="Voltar" action="retornarAgrupamentos"/>
+	<br></br>
+	<br></br>
 	<p:dataTable value="#{extrairConhecimentoBEAN.valoresExibicao}" var="item" border="1">
 		<p:column>
 			<f:facet name="header">
