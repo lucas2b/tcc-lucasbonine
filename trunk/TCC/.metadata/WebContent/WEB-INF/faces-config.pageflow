@@ -19,8 +19,8 @@
   <nodes xsi:type="pageflow:PFPage" name="respostas/visualizarRespostas.xhtml" x="73" y="1020" id="pf14104667163590" referenceLink="//@navigationRule.25/@navigationCase.0/@toViewId|" outlinks="pf14104667163601" inlinks="pf14104667163601" path="/respostas/visualizarRespostas.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="conhecimento/classificacao.xhtml" x="349" y="1020" id="pf14123138046450" referenceLink="//@navigationRule.28/@navigationCase.0/@toViewId|" outlinks="pf14123138046451" inlinks="pf14123138046451" path="/conhecimento/classificacao.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="conhecimento/associacao.xhtml" x="81" y="1176" id="pf14123428886880" referenceLink="//@navigationRule.29/@navigationCase.0/@toViewId|" outlinks="pf14123428886881" inlinks="pf14123428886881" path="/conhecimento/associacao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="conhecimento/agrupamento.xhtml" x="346" y="1176" id="pf14123428886882" referenceLink="//@navigationRule.30/@navigationCase.0/@toViewId|" outlinks="pf14123428886883 pf14135863251840" inlinks="pf14123428886883" path="/conhecimento/agrupamento.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="conhecimento/visualizarRespostas.xhtml" x="588" y="1176" id="pf14135863251841" inlinks="pf14135863251840" path="/conhecimento/visualizarRespostas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conhecimento/agrupamento.xhtml" x="346" y="1176" id="pf14123428886882" referenceLink="//@navigationRule.32/@navigationCase.0/@toViewId|" outlinks="pf14123428886883 pf14135863251840" inlinks="pf14123428886883 pf14136591498120" path="/conhecimento/agrupamento.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conhecimento/visualizarRespostas.xhtml" x="588" y="1176" id="pf14135863251841" referenceLink="//@navigationRule.32/@fromViewId|" outlinks="pf14136591498120" inlinks="pf14135863251840" path="/conhecimento/visualizarRespostas.xhtml"/>
   <links id="pf14101101862562" target="pf14101101862573" source="pf14101024177520" outcome="paginaDetalhesEmpresa"/>
   <links id="pf14101793244361" target="pf14101793244362" source="pf14101793244360" outcome="avancaPasso2Perguntas"/>
   <links id="pf14102027183601" target="pf14102027183602" source="pf14102027183600" outcome="editarPergunta"/>
@@ -79,9 +79,9 @@
     <bendPoints d1Width="-253" d1Height="-64" d2Height="-64"/>
   </links>
   <links id="pf14104561551300" target="pf14103850544594" source="pf141040182480731" outcome="listarEmpresasQueResponderam">
-    <bendPoints d1Width="-34" d1Height="238" d2Width="778" d2Height="238"/>
-    <bendPoints d1Width="-397" d1Height="247" d2Width="415" d2Height="247"/>
-    <bendPoints d1Width="-818" d1Height="245" d2Width="-6" d2Height="245"/>
+    <bendPoints d1Width="-1" d1Height="229" d2Width="811" d2Height="229"/>
+    <bendPoints d1Width="-397" d1Height="231" d2Width="415" d2Height="231"/>
+    <bendPoints d1Width="-811" d1Height="229" d2Width="1" d2Height="229"/>
   </links>
   <links id="pf14104570445501" target="pf14102844937350" source="pf14102844937350" outcome="relistarEmpresas1">
     <bendPoints d1Height="-36" d2Height="-36"/>
@@ -116,4 +116,7 @@
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
   <links id="pf14135863251840" target="pf14135863251841" source="pf14123428886882" outcome="visualizarAgrupamentos"/>
+  <links id="pf14136591498120" target="pf14123428886882" source="pf14135863251841" outcome="retornarAgrupamentos">
+    <bendPoints d1Width="1" d1Height="137" d2Width="257" d2Height="137"/>
+  </links>
 </pageflow:Pageflow>

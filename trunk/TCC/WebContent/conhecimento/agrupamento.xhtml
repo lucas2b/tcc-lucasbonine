@@ -18,11 +18,8 @@
 	<p:panel header="Tarefa de Agrupamento">
 		
 	<h:form>
-	<p:dialog id="basicDialog" widgetVar="dlg" header="Visualizar Agrupamento" >
+	<p:dialog id="basicDialog" widgetVar="dlg" header="Visualizar Agrupamento" draggable="false" resizable="false" closeOnEscape="true" modal="true">
 		<h:commandButton value="Visualizar agrupamento" action="#{extrairConhecimentoBEAN.prosseguirVisualizar}"/>
-		<br></br>
-		<br></br>
-		<h:commandButton value="Cancelar" onclick="PF('dlg').close();" style="display:block; margin-left:auto; margin-right:auto;"/>
 	</p:dialog>
 	</h:form>
 	<h:form>

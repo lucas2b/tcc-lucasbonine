@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.faces.component.html.HtmlGraphicImage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -31,14 +32,23 @@ public class ExtrairConhecimentoBEAN{
 	private LinkedList<Regras> regrasDeAssociacao;
 	private int gruposDesejados=2;
 	private PieChartModel modeloPizza;
-
+	private HtmlGraphicImage imagemClassificacao;
+	static LinkedList<Agrupamento.Grupo> grupos;
+	
 
 	//------------------------------DAO'S---------------------------------
 	private PerguntasDAO 		 perguntasDAO		  = new PerguntasDAO(); 
 	private AlternativasDAO		 alternativasDAO 	  = new AlternativasDAO();
 
 	//--------------------- GETTERS AND SETTERS ---------------------------
-	
+	public HtmlGraphicImage getImagemClassificacao() {
+		return imagemClassificacao;
+	}
+
+	public void setImagemClassificacao(HtmlGraphicImage imagemClassificacao) {
+		this.imagemClassificacao = imagemClassificacao;
+	}
+
 	public LinkedList<ClasseAuxiliar> getValoresExibicao(){
 		return ExtrairConhecimentoBEAN.listaClasseAuxiliar;
 	}
@@ -86,7 +96,7 @@ public class ExtrairConhecimentoBEAN{
 	 //--------------------------- CONSTRUTOR ----------------------------------
 	 public ExtrairConhecimentoBEAN() throws Exception{
 		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
-		LinkedList<Agrupamento.Grupo> grupos = agrupamento.agrupar(String.valueOf(gruposDesejados), arquivo);
+		ExtrairConhecimentoBEAN.grupos = agrupamento.agrupar(String.valueOf(gruposDesejados), arquivo);
 		criarModeloPizza(grupos);
 	 }
 
@@ -111,6 +121,7 @@ public class ExtrairConhecimentoBEAN{
 	public String realizarClassificacao() throws Exception{
 		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
 		classificacao.classificar(idAlternativa, arquivo);
+		imagemClassificacao.setUrl(externalContext.getRealPath("/conhecimento/classific.jpg"));
 		return "refreshClassific";
 	}
 	
@@ -120,7 +131,7 @@ public class ExtrairConhecimentoBEAN{
 		return "refreshAssociacoes"; 
 	}
 	
-	static LinkedList<Agrupamento.Grupo> grupos;
+	
 	public String realizarAgrupamentos() throws Exception{
 		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
 		ExtrairConhecimentoBEAN.grupos = agrupamento.agrupar(String.valueOf(gruposDesejados), arquivo);
