@@ -14,9 +14,18 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
+	
 	<p:panel header="Tarefa de Agrupamento">
-		<h:form>
-		<p:growl id="growl" showDetail="true" />
+		
+	<h:form>
+	<p:dialog id="basicDialog" widgetVar="dlg" header="Visualizar Agrupamento" >
+		<h:commandButton value="Visualizar agrupamento" action="#{extrairConhecimentoBEAN.prosseguirVisualizar}"/>
+		<br></br>
+		<br></br>
+		<h:commandButton value="Cancelar" onclick="PF('dlg').close();" style="display:block; margin-left:auto; margin-right:auto;"/>
+	</p:dialog>
+	</h:form>
+	<h:form>
 		<h:commandButton value="Gerar Novo arquivo Weka" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
 		<br></br>
@@ -29,11 +38,10 @@
 		<br></br>
 		<p:panelGrid columns="1">
 		<p:chart type="pie" model="#{extrairConhecimentoBEAN.modeloPizza}" style="width:640px;height:480px">
-		        <p:ajax event="itemSelect" listener="#{extrairConhecimentoBEAN.itemSelecionado}" update="growl"/>
+		        <p:ajax event="itemSelect" listener="#{extrairConhecimentoBEAN.itemSelecionado}" oncomplete="PF('dlg').show();"/>
 		</p:chart>
-		</p:panelGrid>
-		
-		</h:form>
+		</p:panelGrid>	
+	</h:form>
 	</p:panel>
 
 	</ui:define>

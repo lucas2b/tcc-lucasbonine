@@ -14,18 +14,19 @@
 <h:body>
 <ui:composition template="../WEB-INF/templates/templateMain.xhtml">
 	<ui:define name="content">
-	<p:panel header="Tarefa de Classoficação">
+	<p:panel header="Tarefa de Classificação">
 		<h:form>	
 		<h:commandButton value="Gerar Novo arquivo Weka" action="#{extrairConhecimentoBEAN.escreveArquivo}"/>
 		<br></br>
 		<br></br>
-		<h:outputText value="Entre com o número da alternativa a ser rastreada: (seguindo codificação) "/>
+		<h:outputText value="Entre com o número da alternativa a ser classificada: (seguir codificação)"/>
 		<h:inputText value="#{extrairConhecimentoBEAN.idAlternativa}" size="1"/>
 		<h:outputText value=" "/>
 		<h:commandButton value="Realizar Classificacao" action="#{extrairConhecimentoBEAN.realizarClassificacao}"/>
 		<br></br>
 		<br></br>
-		<h:outputText value="Imagem da classificação: "/>
+		<br></br>
+		<h:outputText value="Árvore de classificação segundo alternativa selecionada: " style="margin-left:230px"/>
 		<br></br>
 		<h:graphicImage url="http://localhost:8080/TCC/conhecimento/classific.jpg"></h:graphicImage>
 		</h:form>

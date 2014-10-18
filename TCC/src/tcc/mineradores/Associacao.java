@@ -56,19 +56,26 @@ public class Associacao {
 		
 		LinkedList<Regras> listaDeRegras = new LinkedList<Associacao.Regras>();
 		
+		int numeroDaRegra=1;
 		for(AssociationRule regra : listaDeAssociacoes){
 			
+			//Construindo a parte textual da regra
 			String retorno="";			
 			retorno += "Se "+regra.getPremise().toString();
 			retorno += " => Então "+regra.getConsequence().toString();
+
+			//Construindo a confiabilidade associada da regra
+			String confiabilidade = String.valueOf(((int)(regra.getMetricValue()*100)))+"%"; 
 			
+			//Criando pequeno objeto de transferência para o Bean
 			Regras regraInterna = new Regras();
 			regraInterna.setRegra(retorno);
-
-			String confiabilidade = String.valueOf(((int)(regra.getMetricValue()*100)))+"%"; 
+			regraInterna.setNumeroDaRegra(numeroDaRegra);
 			regraInterna.setConfiabilidade(confiabilidade);
 			
+			//Adicionando à lista de regras
 			listaDeRegras.add(regraInterna);
+			numeroDaRegra++;
 		}
 		
 		//System.out.println(retorno);
@@ -76,6 +83,13 @@ public class Associacao {
 	}
 	
 	public class Regras{
+		private int numeroDaRegra;
+		public int getNumeroDaRegra() {
+			return numeroDaRegra;
+		}
+		public void setNumeroDaRegra(int numeroDaRegra) {
+			this.numeroDaRegra = numeroDaRegra;
+		}
 		private String regra;
 		public String getRegra() {
 			return regra;

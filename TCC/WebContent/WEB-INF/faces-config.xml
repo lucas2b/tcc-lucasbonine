@@ -302,5 +302,13 @@
 			<to-view-id>/conhecimento/agrupamento.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>conhecimento/agrupamento.xhtml</display-name>
+		<from-view-id>/conhecimento/agrupamento.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizarAgrupamentos</from-outcome>
+			<to-view-id>/conhecimento/visualizarRespostas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
