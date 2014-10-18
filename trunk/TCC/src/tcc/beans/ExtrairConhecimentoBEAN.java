@@ -1,7 +1,9 @@
 package tcc.beans;
 
 
+import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -9,6 +11,10 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.chart.PieChartModel;
 
+import tcc.dao.AlternativasDAO;
+import tcc.dao.PerguntasDAO;
+import tcc.dtos.TB_ALTERNATIVAS;
+import tcc.dtos.TB_PERGUNTAS;
 import tcc.mineradores.Agrupamento.Grupo;
 import tcc.mineradores.Associacao;
 import tcc.mineradores.Associacao.Regras;
@@ -18,12 +24,25 @@ import tcc.mineradores.ColetorDeInstancias;
 import weka.core.converters.ConverterUtils.DataSource;
 
 public class ExtrairConhecimentoBEAN{
+	
+	//---------------------- Atributos do objeto -------------------------
 	private int idAlternativa;
 	private String alternativasARemover;
 	private LinkedList<Regras> regrasDeAssociacao;
 	private int gruposDesejados=2;
 	private PieChartModel modeloPizza;
 
+
+	//------------------------------DAO'S---------------------------------
+	private PerguntasDAO 		 perguntasDAO		  = new PerguntasDAO(); 
+	private AlternativasDAO		 alternativasDAO 	  = new AlternativasDAO();
+
+	//--------------------- GETTERS AND SETTERS ---------------------------
+	
+	public LinkedList<ClasseAuxiliar> getValoresExibicao(){
+		return ExtrairConhecimentoBEAN.listaClasseAuxiliar;
+	}
+	
 	public LinkedList<Regras> getRegrasDeAssociacao() {
 		return regrasDeAssociacao;
 	}
@@ -48,8 +67,6 @@ public class ExtrairConhecimentoBEAN{
 		this.gruposDesejados = gruposDesejados;
 	}
 
-
-
 	public String getAlternativasARemover() {
 		return alternativasARemover;
 	}
@@ -66,27 +83,26 @@ public class ExtrairConhecimentoBEAN{
 		this.idAlternativa = idAlternativa;
 	}
 	
-	 //------------------------------------- MÉTODOS -----------------------------------------
-	
+	 //--------------------------- CONSTRUTOR ----------------------------------
 	 public ExtrairConhecimentoBEAN() throws Exception{
 		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
 		LinkedList<Agrupamento.Grupo> grupos = agrupamento.agrupar(String.valueOf(gruposDesejados), arquivo);
 		criarModeloPizza(grupos);
 	 }
 
-	//Achadores de caminho para o arquivo
+	//----------------- Achadores de caminho para o arquivo --------------------
 	ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 	DataSource arquivo;
 	
-	//Montador do arquivo
+	//------------------------- Montador do arquivo ----------------------------
 	ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
 	
-	//Classses de mineração
+	//------------------------- Métodos de mineração ---------------------------
 	Classificacao 		classificacao = new Classificacao();
 	Agrupamento 		agrupamento = new Agrupamento();
 	Associacao 			associacao = new Associacao();
 
-	//Metodo para testas as instancias de mineração	
+	//----------------------- Dispara Escrita do arquivo -----------------------	
 	public String escreveArquivo() throws Exception{
 			coletorDeInstancias.escreveArquivoArff();
 			return "null";
@@ -103,7 +119,6 @@ public class ExtrairConhecimentoBEAN{
 		regrasDeAssociacao = associacao.associar(alternativasARemover, arquivo);
 		return "refreshAssociacoes"; 
 	}
-	
 	
 	static LinkedList<Agrupamento.Grupo> grupos;
 	public String realizarAgrupamentos() throws Exception{
@@ -125,15 +140,66 @@ public class ExtrairConhecimentoBEAN{
 		}
 		
 		modeloPizza.setShowDataLabels(true);
-        modeloPizza.setTitle("Agrupamento por perfis. Exibindo: "+gruposDesejados+" grupos.");
+        modeloPizza.setTitle("Agrupamento por perfis. Exibindo: "+gruposDesejados+" perfis.");
         modeloPizza.setLegendPosition("w");
     }
 	
-	public void itemSelecionado(ItemSelectEvent event) throws Exception{
-		for(String alternativa : ExtrairConhecimentoBEAN.grupos.get(event.getItemIndex()).getListaAlternativas()){
-			System.out.print(alternativa+" ");
+
+	private static LinkedList<ClasseAuxiliar> listaClasseAuxiliar;
+	public void itemSelecionado(ItemSelectEvent event) throws ClassNotFoundException, SQLException{
+		LinkedList<String> alternativasMineradas = ExtrairConhecimentoBEAN.grupos.get(event.getItemIndex()).getListaAlternativas();
+		listaClasseAuxiliar= new LinkedList<ExtrairConhecimentoBEAN.ClasseAuxiliar>();
+		
+		int i=0;
+		for(TB_PERGUNTAS pergunta : perguntasDAO.listarTodos()){
+			ClasseAuxiliar classeAuxiliar = new ClasseAuxiliar();
+			boolean flag=false;
+			
+			LinkedList<TB_ALTERNATIVAS> listaAlternativas = new LinkedList<TB_ALTERNATIVAS>();
+			for(TB_ALTERNATIVAS alternativa : alternativasDAO.buscarAlternativasPorPergunta(pergunta)){
+
+					//Se a alternativa selecionada for SIM, então é essa que está passando	
+					if(alternativasMineradas.get(i).equals("SIM")){
+						flag=true;
+						classeAuxiliar.setPergunta(pergunta);
+						listaAlternativas.add(alternativa);
+					}
+					i++;
+			}
+			classeAuxiliar.setAlternativas(listaAlternativas);
+			
+			//Flag para verificar se existe ao menos uma alternativa SIM e adicionar na lista
+			if(flag){
+				listaClasseAuxiliar.add(classeAuxiliar);
+			}
 		}
-		System.out.println();
     }
+	
+	
+	//--------------------- BOTÃO DE PROSSEGUIR VISUALIZAÇÃO ------------------
+	public String prosseguirVisualizar(){
+		return "visualizarAgrupamentos";
+	}
+	
+	//------------ Classe que monta os atributos para visualização na tela -------
+		public class ClasseAuxiliar{
+			private TB_PERGUNTAS pergunta;
+			public TB_PERGUNTAS getPergunta() {
+				return pergunta;
+			}
+			public void setPergunta(TB_PERGUNTAS pergunta) {
+				this.pergunta = pergunta;
+			}
+			
+			private List<TB_ALTERNATIVAS> alternativas;
+			public List<TB_ALTERNATIVAS> getAlternativas() {
+				return alternativas;
+			}
+			public void setAlternativas(List<TB_ALTERNATIVAS> alternativas) {
+				this.alternativas = alternativas;
+			}
+			
+		
+		}
 
 }
