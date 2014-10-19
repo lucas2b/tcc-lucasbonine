@@ -20,6 +20,10 @@
 		<converter-id>conversorEmpresa</converter-id>
 		<converter-class>tcc.conversores.ConversorEmpresa</converter-class>
 	</converter>
+	<converter>
+		<converter-id>conversorPergunta</converter-id>
+		<converter-class>tcc.conversores.ConversorPergunta</converter-class>
+	</converter>
 	<managed-bean>
 		<managed-bean-name>cidadesBEAN</managed-bean-name>
 		<managed-bean-class>tcc.beans.CidadesBEAN</managed-bean-class>
@@ -316,6 +320,14 @@
 		<navigation-case>
 			<from-outcome>retornarAgrupamentos</from-outcome>
 			<to-view-id>/conhecimento/agrupamento.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>respostas/visualizarRespostasPorPergunta.xhtml</display-name>
+		<from-view-id>/respostas/visualizarRespostasPorPergunta.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>refreshVisualizarRespostasPorPergunta</from-outcome>
+			<to-view-id>/respostas/visualizarRespostasPorPergunta.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

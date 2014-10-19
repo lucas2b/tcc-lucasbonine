@@ -25,6 +25,26 @@ public class TB_PERGUNTAS {
 	public void setPERGUNTA_TXT(String pERGUNTA_TXT) {
 		PERGUNTA_TXT = pERGUNTA_TXT;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ID_PERGUNTA;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TB_PERGUNTAS other = (TB_PERGUNTAS) obj;
+		if (ID_PERGUNTA != other.ID_PERGUNTA)
+			return false;
+		return true;
+	}
 	
 	
 

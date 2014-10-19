@@ -116,6 +116,48 @@ public class RespostasPesquisaDAO extends DatabaseUtil implements InterfaceDAO<T
 		return listaChave;
 	}
 	
+	public LinkedList<Auxiliar> listarRespostasPorPergunta(TB_PERGUNTAS pergunta) throws ClassNotFoundException, SQLException{
+		LinkedList<TB_ALTERNATIVAS> listaAlternativasPorPergunta = (LinkedList<TB_ALTERNATIVAS>) alternativasDAO.buscarAlternativasPorPergunta(pergunta);
+		LinkedList<Auxiliar> listaDeRetorno = new LinkedList<RespostasPesquisaDAO.Auxiliar>();
+		
+		for(TB_ALTERNATIVAS alternativa : listaAlternativasPorPergunta){
+			
+			ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_RESPOSTAS_PESQUISA WHERE ID_ALTERNATIVA="+alternativa.getID_ALTERNATIVA());
+			
+			int i =0;
+			while(rs.next()){
+				i++; //contando quantas alternativas foram marcadas
+			}
+			
+			//Testa se houveram alternativas marcadas
+			if(i!=0){
+				Auxiliar auxiliar = new Auxiliar();
+				auxiliar.setAlternativa(alternativa);
+				auxiliar.setSomaDestaAlternativa(i);
+				listaDeRetorno.add(auxiliar);
+			}
+		}
+		
+		return listaDeRetorno;
+	}
+	
+	public class Auxiliar{
+		private TB_ALTERNATIVAS alternativa;
+		public TB_ALTERNATIVAS getAlternativa() {
+			return alternativa;
+		}
+		public void setAlternativa(TB_ALTERNATIVAS alternativa) {
+			this.alternativa = alternativa;
+		}
+		public int getSomaDestaAlternativa() {
+			return somaDestaAlternativa;
+		}
+		public void setSomaDestaAlternativa(int somaDestaAlternativa) {
+			this.somaDestaAlternativa = somaDestaAlternativa;
+		}
+		private int somaDestaAlternativa;
+	}
+	
 	public boolean verificarSeAlternativaFoiRespondidaPorEmpresa(TB_EMPRESAS empresa, TB_ALTERNATIVAS alternativa) throws ClassNotFoundException, SQLException{
 		ResultSet rs = getStatement().executeQuery("SELECT * FROM TB_RESPOSTAS_PESQUISA WHERE ID_EMPRESA="+empresa.getID_EMPRESA()+" AND ID_ALTERNATIVA="+alternativa.getID_ALTERNATIVA());
 		
