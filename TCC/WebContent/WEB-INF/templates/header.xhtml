@@ -34,7 +34,11 @@
 		            <p:menuitem value="Retificar Resposta" url="/respostas/empresasQueResponderam.faces" />
 		        </p:submenu>
 		        
-		        <p:menuitem value="Visualizar Respostas" url="/respostas/visualizarRespostas.faces" />		       
+		         <p:submenu label="Visualizar Respostas" icon="ui-icon-document">  
+		  			<p:menuitem value="Visualizar Respostas Por Empresa" url="/respostas/visualizarRespostas.faces" />
+		            <p:separator />
+		            <p:menuitem value="Visualizar Gráfico por Pergunta" url="/respostas/visualizarRespostasPorPergunta.faces" />
+		        </p:submenu>
 		        		        
 		        <p:submenu label="Extrair conhecimento" icon="ui-icon-document">
 		    		<p:menuitem value="Tarefa de Classificação" url="/conhecimento/classificacao.faces"/>

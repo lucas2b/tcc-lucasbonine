@@ -6,9 +6,13 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
+
 import tcc.dao.EmpresasDAO;
 import tcc.dao.PerguntasDAO;
 import tcc.dao.RespostasPesquisaDAO;
+import tcc.dao.RespostasPesquisaDAO.Auxiliar;
 import tcc.dtos.TB_ALTERNATIVAS;
 import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PERGUNTAS;
@@ -21,12 +25,41 @@ public class VisualizarRespostasBEAN {
 	private PerguntasDAO perguntasDAO = new PerguntasDAO();
 	private RespostasPesquisaDAO respostasDAO = new RespostasPesquisaDAO();
 	
+	//---------------- Componentes de exibição --------------------
 	List<ClasseAuxiliar> exibicao = new LinkedList<VisualizarRespostasBEAN.ClasseAuxiliar>();
-	
+	private BarChartModel graficoBarras;
+	private boolean flagExibir = false;
 
+	//------------- Componentes de seleção na tela ---------------
 	private TB_EMPRESAS empresaSelecionada;
+	private TB_PERGUNTAS perguntaSelecionada;
 	
-	//GETTERS e SETTERS
+	//------------------ GETTERS e SETTERS -----------------------
+
+	public TB_PERGUNTAS getPerguntaSelecionada() {
+		return perguntaSelecionada;
+	}
+
+	public void setPerguntaSelecionada(TB_PERGUNTAS perguntaSelecionada) {
+		this.perguntaSelecionada = perguntaSelecionada;
+	}
+
+	public boolean isFlagExibir() {
+		return flagExibir;
+	}
+
+	public void setFlagExibir(boolean flagExibir) {
+		this.flagExibir = flagExibir;
+	}
+
+	public BarChartModel getGraficoBarras() {
+		return graficoBarras;
+	}
+
+	public void setGraficoBarras(BarChartModel graficoBarras) {
+		this.graficoBarras = graficoBarras;
+	}
+
 	public List<ClasseAuxiliar> getExibicao() {
 		return exibicao;
 	}
@@ -86,6 +119,32 @@ public class VisualizarRespostasBEAN {
 		return retorno;
 	}
 	
+	public List<SelectItem> getPerguntas() throws ClassNotFoundException, SQLException{
+		List<TB_PERGUNTAS> listaDePerguntas = perguntasDAO.listarTodos();
+		
+		List<SelectItem> retorno = new LinkedList<SelectItem>();
+		for(TB_PERGUNTAS pergunta : listaDePerguntas){
+			retorno.add(new SelectItem(pergunta, pergunta.getPERGUNTA_TXT()));
+		}
+		
+		return retorno;
+	}
+	
+	//Monta e exibe o gráfico de barras na tela
+	public String listarRespostasPorPergunta() throws ClassNotFoundException, SQLException{
+		flagExibir=true; 
+		graficoBarras = new BarChartModel();
+		 LinkedList<Auxiliar> listaDeAlternativasRespondidas = respostasDAO.listarRespostasPorPergunta(perguntaSelecionada);
+		 
+		 ChartSeries alternativa = new ChartSeries();
+		 for(Auxiliar auxiliar : listaDeAlternativasRespondidas){
+		        alternativa.set(auxiliar.getAlternativa().getCOD_ALTERNATIVA(), auxiliar.getSomaDestaAlternativa());
+		 }
+		 
+	       graficoBarras.addSeries(alternativa);
+	       
+	     return "refreshVisualizarRespostasPorPergunta";
+	}
 
 	//Classe que monta os atributos para visualização na tela
 	public class ClasseAuxiliar{
