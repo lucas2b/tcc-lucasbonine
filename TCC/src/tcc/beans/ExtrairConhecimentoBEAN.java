@@ -121,7 +121,7 @@ public class ExtrairConhecimentoBEAN{
 	public String realizarClassificacao() throws Exception{
 		arquivo = new DataSource(externalContext.getRealPath("/conhecimento/pesquisa.arff"));
 		classificacao.classificar(idAlternativa, arquivo);
-		imagemClassificacao.setUrl(externalContext.getRealPath("/conhecimento/classific.jpg"));
+		imagemClassificacao.setUrl("/conhecimento/classific.jpg");
 		return "refreshClassific";
 	}
 	
