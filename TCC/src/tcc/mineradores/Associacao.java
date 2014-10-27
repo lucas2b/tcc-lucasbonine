@@ -39,10 +39,19 @@ public class Associacao {
 		FilteredAssociator filteredAssociator = new FilteredAssociator();
 		
 		// filtro de remoção
-		if(remover != null){			
+		if(remover != ""){
+			
+			String[] alternativas = remover.split(",");
+			String alternativaColetada="";
+				
+			for(String alternativa : alternativas){
+				alternativaColetada += String.valueOf(Integer.parseInt(alternativa)+1);
+				alternativaColetada+=",";
+			}
+			
 			System.out.println(remover);
 			Remove rm = new Remove();
-			rm.setAttributeIndices(remover);
+			rm.setAttributeIndices(alternativaColetada);
 			filteredAssociator.setFilter(rm);
 		}
 		
