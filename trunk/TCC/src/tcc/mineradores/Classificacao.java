@@ -13,7 +13,6 @@ import weka.gui.treevisualizer.PlaceNode1;
 import weka.gui.treevisualizer.TreeVisualizer;
 
 public class Classificacao{
- 
 	public boolean classificar(int index, DataSource arquivo) throws Exception{
     	Instances instancias = arquivo.getDataSet();
     	instancias.setClassIndex(index);
@@ -57,8 +56,6 @@ public class Classificacao{
 		
 		//Criando novo arquivo
 		File arquivoImagem = new File(caminhoDeEscrita+"/classific.jpg");
-		
-		arquivoImagem = new File(caminhoDeEscrita+"/classific.jpg");
 		
 		if(ImageIO.write(imagem, "jpg", arquivoImagem))
         	return true;
