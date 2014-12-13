@@ -21,6 +21,8 @@
 		<f:selectItems value="#{visualizarRespostasBEAN.empresasQueResponderam}"/>
 	</h:selectOneMenu>
 	<h:commandButton value="Listar Respostas" action="#{visualizarRespostasBEAN.atualizar}"/>
+	<br></br>
+	<h:commandButton value="Gerar Arquivo Weka" action="#{visualizarRespostasBEAN.escreveArquivo}"/>
 	</p:panelGrid>
 	<br></br>
 	<p:dataTable value="#{visualizarRespostasBEAN.exibicao}" var="item" border="1">

@@ -17,6 +17,7 @@ import tcc.dtos.TB_ALTERNATIVAS;
 import tcc.dtos.TB_EMPRESAS;
 import tcc.dtos.TB_PERGUNTAS;
 import tcc.dtos.TB_RESPOSTAS_PESQUISA;
+import tcc.mineradores.ColetorDeInstancias;
 
 
 public class VisualizarRespostasBEAN {
@@ -164,5 +165,13 @@ public class VisualizarRespostasBEAN {
 			this.respostas = respostas;
 		}
 	
+	}
+	
+	//------------------------- Montador do arquivo ----------------------------
+	ColetorDeInstancias coletorDeInstancias = new ColetorDeInstancias();
+	
+	public String escreveArquivo() throws Exception{
+		coletorDeInstancias.escreveArquivoArff();
+		return "null";
 	}
 }
