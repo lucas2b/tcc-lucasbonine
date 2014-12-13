@@ -15,6 +15,8 @@ public class DatabaseUtil {
 		if(conn == null){
 			 Class.forName("com.mysql.jdbc.Driver");
              conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dump34", "root", "root");
+             //conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/pesquisa_wagner", "root", "root");
+             //conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/pesquisa_filipe", "root", "root");
 		}
 		return conn;
 	}
