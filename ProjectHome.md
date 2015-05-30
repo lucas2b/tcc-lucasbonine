@@ -1,0 +1,1 @@
+Esse trabalho dedica-se a minerar os dados advindos da pesquisa realizada pelo projeto de extensão universitária APL ALIMENTOS SUL realizado pela Universidade Federal de Pelotas. Busca-se descobrir conhecimentos relevantes para os objetivos propostos pela pesquisa.
